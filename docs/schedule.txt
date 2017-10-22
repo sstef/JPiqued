@@ -1,0 +1,43 @@
+Day 1 (W8D2)
+-work on auth
+-begin styling auth
+
+Day 2 (W8D3)
+-finish styling login/signup page
+-begin user elements including follows
+-begin styling profile page
+
+Day 3 (W8D4)
+-finish styling user profile page
+-start work on individual pin components
+
+Day 4 (W8D5)
+-finish work on pin components
+-begin styling pin components
+
+Day 5 (W8D6)
+-finish styling pin components
+-begin working on index page components
+
+Day 6 (W8D7)
+-finish index page components
+-begin styling index page
+
+Day 7 (W9D1)
+-finish styling the index page
+-work on board components
+-begin styling boards
+
+Day 8 (W9DD2)
+-finish styling boards
+-ensure linkage between all different indexes and show pages
+-start work on search element
+
+Day 9 (W9D3)
+-finish work on search element
+-begin work on possible modals for image previews
+-begin work on notifications
+
+Day 10 (W9D4)
+-finish work on notifications and/or modals
+-finalize styling of all web app components

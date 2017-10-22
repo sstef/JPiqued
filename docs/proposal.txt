@@ -1,0 +1,125 @@
+++++++++COMPONENT HIERARCHY++++++++
+GENERAL
+-App
+  1.NavBar
+       +SearchBar
+  2.MainPage
+  3.Footer
+
+SESSION FORM
+-SessionFormContainer
+  +SessionForm
+
+MAIN/FEED PAGE
+-PinIndexContainer
+   +PinIndex
+        >PinIndexItem
+
+BOARD SHOW PAGE
+-BoardShowContainer
+   +BoardShowItem
+
+PIN SHOW PAGE
+-PinShowContainer
+   +PinShow
+   +PinIndex
+        >PinIndexItem
+
+USER PROFILE PAGE
+-UserShowContainer
+    +UserShow
+    +BoardIndex
+          >BoardIndexItem
+
+
+*****SCHEMA*****
+Please see schema file in db. Also, I have established model level
+validations and associations.
+
+
+#######STATE SHAPE######
+{
+  entities: {
+    users: {
+        1: {
+          id: 1,
+          username: "demo",
+          email: "some@gmail.com",
+          image_url: "something.com/some.jpg",
+          follows: [2, 3]
+        }
+        2: {
+          id: 2,
+          username: "trial",
+          email: "some_else@gmail.com",
+          image_url: "something.com/other.jpg",
+          follows: [1, 3]
+        },
+        3: {
+          id: 3,
+          username: "user",
+          email: "other@gmail.com",
+          image_url: "something.com/demo.jpg",
+          follows: [1, 2]
+        }
+    },
+    pins: {
+        1: {
+          id: 1,
+          title: "A new title",
+          description: "A new description",
+          image_url: "demo.com/pin.jpg",
+          link_url: "demo.com/something.html",
+          creator_id: 1,
+          board_id: 1
+        },
+        2: {
+          id: 2,
+          title: "A new title2",
+          description: "A new description2",
+          image_url: "demo.com/pin2.jpg",
+          link_url: "demo.com/something/else.html",
+          creator_id: 2,
+          board_id: 2
+        }
+    },
+    boards: {
+        1: {
+          id: 1,
+          name: "BOARD",
+          description: "This is a board",
+          creator_id: 1,
+        },
+        2: {
+          id: 2,
+          name: "ANOTHER BOARD",
+          description: "This is also board",
+          creator_id: 2,
+        }
+    },
+    comments: {
+        1: {
+          id: 1,
+          heading: "love this pin",
+          body: "so nice!"
+          author_id: 1,
+          pin_id: 2
+        },
+        2: {
+          id: 2,
+          heading: "This pin is great",
+          body: "amazing!"
+          author_id: 3,
+          pin_id: 1
+        }
+    }
+  },
+  ui: {
+    loading: true/false
+  },
+  errors: {
+    login: ["Incorrect username/password combination"],
+    pinForm: ["Pin title can't be blank"],
+    commentForm: ["Title cannot be blank"],
+  },
+}

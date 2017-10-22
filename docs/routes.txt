@@ -1,0 +1,38 @@
+#########Front End Routes#########
+/login
+/signup
+/  - root / feed / homepage route
+/feed  - pin feed, homepage
+/users/:userId  - user profile
+/pins/new  - create a pin
+/pins/:pinId  - pin show
+/pins/:pinId/edit  - update
+/users/boards/:boardId  - board show
+
+#########Back End Routes##########
+USERS
+GET /api/users - returns the user information for the User Search feature
+POST /api/users - sign up
+
+PINS
+GET /api/pins - returns all pins
+GET /api/pins/:id - returns a specific pin
+POST /api/pins - creates a pin
+PATCH /api/pins/:id - edit a pin
+DELETE /api/pins/:id - remove a pin
+
+Boards
+GET /api/:userId/boards  - returns all boards for a user
+GET/api/:userId/:boardId - returns a board
+POST /api/:userId/boards/new - creates a board
+PATCH /api/:userId/:boardId - edit a board
+DELETE /api/:userId/:boardId - delete a board
+
+Follows
+PATCH /api/users/:id/follow - follow a user
+PATCH /api/users/:id/unfollow - unfollow a user
+
+Comments
+GET /api/pins/:pinId/comments - return comments for pin
+POST /api/pins/:pinId/comments/new - create a comment
+DELETE /api/pins/:pinId/comments/:commentId - delete a comment
