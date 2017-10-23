@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 20171021200101) do
     t.integer "follows", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["session_token"], name: "index_users_on_session_token", unique: true
+    t.index ["username"], name: "index_users_on_username"
   end
 
 end
