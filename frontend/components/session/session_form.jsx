@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
           <p></p>
           <label className={(this.props.match.path === "/login") ? 'hidden' : ''}>
             Email:
-            <input type="text" value={this.state.email} onChange={this.update('email')}/>
+            <input type="text" value={this.state.email} onChange={this.update('')}/>
           </label>
           <p></p>
           <input type="submit" value={this.props.formType} />
