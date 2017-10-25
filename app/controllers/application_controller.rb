@@ -12,16 +12,17 @@ class ApplicationController < ActionController::Base
   end
 
   def login!(user)
-    @current_user = user
+    @currentUser = user
     session[:session_token] = user.reset_session_token!
   end
 
   def logout!
-    current_user.try(:reset_session_token!)
+    currentUser.try(:reset_session_token!)
     session[:session_token] = nil
+    @currentUser = nil
   end
 
   def require_login
-    redirect_to new_session_url unless logged_in?
+    render :login unless logged_in?
   end
 end
