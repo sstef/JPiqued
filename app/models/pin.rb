@@ -17,8 +17,8 @@ class Pin < ApplicationRecord
 
   belongs_to :user,
     foreign_key: :creator_id,
-    class_name: :user
+    class_name: :User
 
   belongs_to :board
-  
+
 end

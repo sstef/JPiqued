@@ -16,8 +16,8 @@ class Board < ApplicationRecord
 
   belongs_to :user,
     foreign_key: :creator_id,
-    class_name: :user
+    class_name: :User
 
   has_many :pins
-  
+
 end

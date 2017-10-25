@@ -21,6 +21,8 @@
 .login-page {
   height: 100%;
   width: 100%;
+  display: table;
+  background-color: none;
 }
 
 .session-box {
@@ -29,11 +31,11 @@
   background-color: #fff;
   border-radius: 10px;
   z-index: 1;
-  display: float;
-  align-content: center;
   box-shadow: 5px;
   align-items: center;
   text-align: center;
   padding: 20px;
-  vertical-align: middle
+  vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
