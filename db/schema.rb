@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171021200101) do
     t.text "description", null: false
     t.string "image_url", null: false
     t.string "link_url"
+    t.integer "board_id"
     t.integer "creator_id", null: false
     t.string "keywords", default: [], array: true
     t.datetime "created_at", null: false

@@ -15,6 +15,10 @@
 class Pin < ApplicationRecord
   validates :description, :image_url, :creator_id, presence: true
 
-  belongs_to :user
-  belongs_ to :board
+  belongs_to :user,
+    foreign_key: :creator_id,
+    class_name: :user
+
+  belongs_to :board
+  
 end

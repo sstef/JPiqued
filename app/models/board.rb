@@ -14,6 +14,10 @@
 class Board < ApplicationRecord
   validates :name, :creator_id, presence: true
 
-  belongs_to :user
+  belongs_to :user,
+    foreign_key: :creator_id,
+    class_name: :user
+
   has_many :pins
+  
 end
