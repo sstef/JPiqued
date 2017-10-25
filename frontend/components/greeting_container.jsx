@@ -23,16 +23,15 @@ const Greeting = (props) => {
         <button onClick={props.logout}>Logout!</button>
       </div>
     );
+  }else{
+    return (
+      <div className="logout-bar">
+        <Link to='/signup'>Sign Up!</Link>
+        <br></br>
+        <Link to='/login'>Log In!</Link>
+      </div>
+    );
   }
-  // }else{
-  //   return (
-  //     <div className="logout-bar">
-  //       <Link to='/signup'>Sign Up!</Link>
-  //       <br></br>
-  //       <Link to='/login'>Log In!</Link>
-  //     </div>
-  //   );
-  // }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Greeting);

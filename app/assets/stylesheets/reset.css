@@ -1,7 +1,5 @@
-body, root {
-  height: 100%;
+html, body, #root, #app, #app > div {
+  height: 99%;
   width: 100%;
-  overflow: scroll;
   align-items: center;
-  
 }
