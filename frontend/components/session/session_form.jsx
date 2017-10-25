@@ -29,7 +29,6 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    debugger
     this.props.processForm(user);
   }
 
@@ -50,7 +49,7 @@ class SessionForm extends React.Component {
     )});
 
     return(
-      <ul>
+      <ul className="errors">
         {errors}
       </ul>
     );
@@ -62,15 +61,16 @@ class SessionForm extends React.Component {
     body.style.backgroundImage = 'url(https://i.pinimg.com/originals/0e/75/d7/0e75d7ff4a5f47686defa9b3edfb202e.jpg)';
     return (
       <div className="login-page">
+
         <div className="session-box">
           <h1>Welcome to JPiqued</h1>
           <br/>
           <div>
             Please { text } or {this.navLink()}
           </div>
-
-          {this.renderErrors()}
-
+          <div clasName="errors">
+            {this.renderErrors()}
+          </div>
           <form onSubmit={this.handleSubmit} className="session-form">
 
             <label className={(this.props.match.path === "/signup") ? 'email-form' : 'hidden'} >

@@ -11,7 +11,10 @@
 
 .session-box {
   width: 350px;
-  height: 300px;;
+  height: auto;;
+  position: relative;
+  top: 50%;
+  transform: translateY(30%);
   background-color: #fff;
   border-radius: 10px;
   z-index: 1;
@@ -28,6 +31,18 @@
   font-size: 18px;
 }
 
+.session-box > div > a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.errors {
+  font-family: 'Antic', sans-serif;
+  font-size: 15px;
+  list-style: none;
+  margin-right: 35px;
+}
+
 .session-form > label > input {
   display: block;
   text-align: center;
@@ -42,4 +57,19 @@
   outline: 0;
   box-shadow: none;
   border-bottom: solid 3px #1E84A4
+}
+
+
+.session-form > input[type="submit"] {
+  border-radius: 15px;
+  background-color: #C1E6F2;
+  border: 1px solid black;
+  font-size: 14px;
+  width: 70px;
+  height: 30px;
+}
+
+.session-form > input[type="submit"]:hover {
+  background-color: #61C5E3;
+  border: 2px solid black;
 }
