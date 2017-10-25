@@ -64,6 +64,7 @@
 .session-form > label > input.focus,
 .session-form > label > input:focus {
   outline: 0;
+  cursor: pointer;
   box-shadow: none;
   border-bottom: solid 3px #1E84A4
 }
@@ -76,6 +77,7 @@
   font-size: 14px;
   width: 70px;
   height: 30px;
+  cursor: pointer;
 }
 
 .session-form > input[type="submit"]:hover {
