@@ -57,6 +57,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    let text = this.props.formType === 'login' ? "log in" : "sign up"
     let body = document.getElementById('root');
     body.style.backgroundImage = 'url(https://i.pinimg.com/originals/0e/75/d7/0e75d7ff4a5f47686defa9b3edfb202e.jpg)';
     return (
@@ -64,27 +65,40 @@ class SessionForm extends React.Component {
         <div className="session-box">
           <h1>Welcome to JPiqued</h1>
           <br/>
-          Please {this.props.formType} or {this.navLink()}
+          <div>
+            Please { text } or {this.navLink()}
+          </div>
+
           {this.renderErrors()}
-          <form onSubmit={this.handleSubmit}>
+
+          <form onSubmit={this.handleSubmit} className="session-form">
+
             <label className={(this.props.match.path === "/signup") ? 'email-form' : 'hidden'} >
-              Name:
-              <input type="text" value={this.state.name} onChange={this.update('name')}/>
+              <input type="text"
+                placeholder="Name"
+                value={this.state.name}
+                onChange={this.update('name')}/>
             </label>
             <p></p>
-            <label>Email:
+
+            <label>
               <input type="text"
                 value={this.state.email}
+                placeholder="Email"
                 onChange={this.update('email')} />
             </label>
             <p></p>
-            <label>Password:
+
+            <label>
               <input type="password"
+                placeholder="Password"
                 value={this.state.password}
                 onChange={this.update('password')} />
             </label>
             <p></p>
-            <input type="submit" value={this.props.formType} />
+
+            <input type="submit" value={text} />
+
           </form>
         </div>
       </div>

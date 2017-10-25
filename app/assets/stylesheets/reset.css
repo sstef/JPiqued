@@ -2,4 +2,5 @@ html, body, #root, #app, #app > div {
   height: 99%;
   width: 100%;
   align-items: center;
+  font-family: 'Antic', sans-serif;
 }
