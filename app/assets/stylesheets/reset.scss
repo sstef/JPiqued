@@ -4,3 +4,10 @@ html, body, #root, #app, #app > div {
   align-items: center;
   font-family: 'Antic', sans-serif;
 }
+
+.logo {
+  background-image: image_url('logo.png');
+  height: 60px;
+  width: 60px;
+  background-size: 100%;
+}

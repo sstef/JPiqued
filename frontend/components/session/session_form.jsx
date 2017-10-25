@@ -63,6 +63,9 @@ class SessionForm extends React.Component {
       <div className="login-page">
 
         <div className="session-box">
+          <div className="logo-container">
+            <div className="logo"> </div>
+          </div>
           <h1>Welcome to JPiqued</h1>
           <br/>
           <div>

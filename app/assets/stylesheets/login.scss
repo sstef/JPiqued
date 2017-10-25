@@ -9,20 +9,29 @@
   display: flex;
 }
 
+
 .session-box {
   width: 350px;
   height: auto;;
-  position: relative;
+  position: absolute;
   top: 50%;
-  transform: translateY(30%);
+  transform: translate(50%, -50%);;
   background-color: #fff;
   border-radius: 10px;
   z-index: 1;
   box-shadow: 5px;
   align-items: center;
   text-align: center;
+  align-content: center;
   padding: 20px;
   font-family: 'Bilbo Swash Caps', cursive;
+  margin: auto auto;
+}
+.logo-container {
+  display: flex;
+}
+
+.logo {
   margin: auto;
 }
 
