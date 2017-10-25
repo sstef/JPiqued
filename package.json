@@ -25,7 +25,8 @@
   },
   "engines": {
     "npm": "5.4.2",
-    "node": "8.7.0"
+    "node": "8.7.0",
+    "ruby": "2.3.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
