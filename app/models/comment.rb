@@ -18,8 +18,8 @@ class Comment < ApplicationRecord
     class_name: :User
 
   belongs_to :pin,
-    foreign_key: :pin_id
+    foreign_key: :pin_id,
     class_name: :Pin
 
-  
+
 end
