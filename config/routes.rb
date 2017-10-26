@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  get 'boards/create'
-
-  get 'boards/update'
-
-  get 'boards/show'
-
-  get 'boards/destroy'
-
-  namespace :api do
-    get 'pins/create'
-  end
-=======
->>>>>>> master
 
   namespace :api, defaults: {format: :json} do
     resource :session, only: [:create, :destroy]
