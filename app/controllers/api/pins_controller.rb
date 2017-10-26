@@ -7,7 +7,7 @@ class Api::PinsController < ApplicationController
   def create
     @pin = Pin.new(pin_params)
     @pin.creator_id = currentUser.id
-    @pin.board_id = 1
+    @pin.board_id = currentUser.boards.first
     if @pin.save
       render json: @pin
     else
@@ -26,7 +26,7 @@ class Api::PinsController < ApplicationController
   end
 
   def show
-    @pin = Pin.find_by(params[:id])
+    @pin = Pin.find(params[:id])
     render json: @pin
   end
 
