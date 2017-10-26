@@ -3,6 +3,7 @@ import PinIndexItem from './pin_index_item';
 // import PinFormContainer from './pin_form_container';
 import NavBar from '../navbar_container'
 
+
 class PinIndex extends React.Component {
 
   componentDidMount() {
@@ -12,6 +13,8 @@ class PinIndex extends React.Component {
   }
 
   render () {
+    let body = document.getElementById('root');
+    body.style.backgroundColor = "#EDEDED"
     return (
       <div>
         <header>

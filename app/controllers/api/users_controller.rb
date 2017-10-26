@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
     if @user.save
       Board.create!(description: '', creator_id: @user.id, title: 'Your first board!')
       login!(@user)
-      render :show
+      render json: @user
     else
       render json: @user.errors.full_messages, status: 422
     end

@@ -1,6 +1,6 @@
 import PinIndex from './pin_index'
 import { connect } from 'react-redux';
-import { fetchPins, deletePin } from '../../actions/pin_actions';
+import { fetchPins, deletePin, fetchPin } from '../../actions/pin_actions';
 
 const mapStateToProps = state => ({
   pins: Object.keys(state.entities.pins).map(id => state.entities.pins[id])
