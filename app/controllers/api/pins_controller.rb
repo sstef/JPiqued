@@ -29,9 +29,6 @@ class Api::PinsController < ApplicationController
   end
 
   def destroy
-<<<<<<< HEAD
-
-=======
     @pin = Pin.find(params[:id])
 
     if @pin.destroy
@@ -39,7 +36,6 @@ class Api::PinsController < ApplicationController
     else
       render json: @pin.errors.full_messages, status: 422
     end
->>>>>>> master
   end
 
   private

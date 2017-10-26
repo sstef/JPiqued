@@ -21,7 +21,6 @@ class PinIndex extends React.Component {
             ))
           }
         </ul>
-        <PinFormContainer/>
       </div>
     );
   }
