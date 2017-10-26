@@ -31,11 +31,7 @@ class Api::BoardsController < ApplicationController
     @board = Board.find(params[:id])
 
     if @board.destroy
-<<<<<<< HEAD
-      render :show
-=======
       render :index
->>>>>>> master
     else
       render json: @board.errors.full_messages, status: 422
     end
