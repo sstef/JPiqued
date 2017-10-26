@@ -11,7 +11,7 @@ class Api::PinsController < ApplicationController
   end
 
   def update
-    @pin = Pin.find_by(params[:id])
+    @pin = Pin.find(params[:id])
 
     if @pin.update_attributes
       render json: :show
@@ -21,7 +21,7 @@ class Api::PinsController < ApplicationController
   end
 
   def show
-    @pin = Pin.find_by(params[:id])
+    @pin = Pin.find(params[:id])
   end
 
   def destroy
