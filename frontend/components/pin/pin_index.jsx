@@ -1,6 +1,7 @@
 import React from 'react';
 import PinIndexItem from './pin_index_item';
-import PinFormContainer from './pin_form_container';
+// import PinFormContainer from './pin_form_container';
+import GreetingContainer from '../greeting_container';
 
 class PinIndex extends React.Component {
 
@@ -9,18 +10,26 @@ class PinIndex extends React.Component {
   }
 
   render () {
+    let body = document.getElementById('root');
+    body.style.backgroundColor = "#EDEDED"
     return (
       <div>
-        <ul>
-          {
-            this.props.pins.map(pin => (
-              <PinIndexItem
-                key={pin.id}
-                deletePin={this.props.deletePin}
-                pin={pin} />
-            ))
-          }
-        </ul>
+        <div className="NavBar">
+          <GreetingContainer />
+        </div>
+
+        <div className="pin-index-view">
+          <ul>
+            {
+              this.props.pins.map(pin => (
+                <PinIndexItem
+                  key={pin.id}
+                  deletePin={this.props.deletePin}
+                  pin={pin} />
+              ))
+            }
+          </ul>
+        </div>
       </div>
     );
   }
