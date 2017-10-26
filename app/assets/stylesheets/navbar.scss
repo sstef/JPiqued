@@ -1,14 +1,23 @@
 .logo {
-  height: 35px!important;
-  width: 35px!important;
+  height: 40px!important;
+  width: 40px!important;
+  margin-top: 3px;
 }
 
 .navigation-header {
   display: flex;
-  padding: 8px;
+  padding: 7px;
   justify-content: space-around;
   align-content: center;
   text-align: center;
+  height: 45px;
+  border-bottom: 1px solid #D1D0D0;
+  color: #979696;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #E9E8E8
 }
 
 .user-dropdown {
@@ -17,10 +26,20 @@
 
 .clickable {
   background-color: #E9E8E8!important;
-  border-radius: 10px!important;
+  border-radius: 20px!important;
   box-shadow: none;
 }
 
+.navlogo-container {
+  height: 50px;
+  width: 50px;
+}
+
 .clickable:hover {
-  background-color: !important;
+  background-color: #D1D0D0 !important;
+  cursor: pointer;
+}
+
+.logout-button, .user-dropdown{
+  padding: 15px;
 }

@@ -11,7 +11,7 @@ const PinIndexItem = ({ pin, router, deletePin, history }) => {
       <Link to={`/pins/${pin.id}/edit`}>
         Edit
       </Link>
-      <button onClick={() => deletePost(pin.id)}>Delete</button>
+      <button onClick={() => deletePin(pin.id)}>Delete</button>
     </li>);
 };
 

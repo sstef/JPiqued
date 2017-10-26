@@ -28,8 +28,8 @@ const NavBar = (props) => {
           {props.currentUser.name.split(' ')[0]}
         </div>
 
-        <div className="logout-button clickable">
-          <button onClick={props.logout}>Logout!</button>
+        <div onClick={props.logout} className="logout-button clickable">
+          Logout
         </div>
       </div>
     );
