@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_many :follows
+  # has_many :follows
   has_many :boards
   has_many :pins
   has_many :comments

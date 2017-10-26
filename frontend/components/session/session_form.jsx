@@ -11,7 +11,7 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
-
+    this.guestLogin = this.guestLogin.bind(this);
   }
 
   clearForm () {
@@ -39,6 +39,10 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+
+  guestLogin() {
+    this.props.loginAction({email: "guest@guest.com", password: "password"});
   }
 
   navLink() {
@@ -110,6 +114,8 @@ class SessionForm extends React.Component {
               { (this.props.errors.length > 0) ? this.renderErrors() : null }
               <input type="submit" value={text} />
             </div>
+
+            <input type="submit" onClick={this.guestLogin} value="Demo" />
 
           </form>
         </div>
