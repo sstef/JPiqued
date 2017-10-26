@@ -1,4 +1,8 @@
 class Api::PinsController < ApplicationController
+  def index
+    @pins = Pin.all
+  end
+
   def create
     @pin = Pin.new(pin_params)
     @pin.creator_id = currentUser.id
@@ -13,7 +17,7 @@ class Api::PinsController < ApplicationController
   def update
     @pin = Pin.find(params[:id])
 
-    if @pin.update_attributes
+    if @pin.update(pin_params)
       render json: :show
     else
       render json: @pin.errors.full_messages, status: 422
@@ -25,7 +29,17 @@ class Api::PinsController < ApplicationController
   end
 
   def destroy
+<<<<<<< HEAD
 
+=======
+    @pin = Pin.find(params[:id])
+
+    if @pin.destroy
+      render :index
+    else
+      render json: @pin.errors.full_messages, status: 422
+    end
+>>>>>>> master
   end
 
   private
