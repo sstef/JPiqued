@@ -1,20 +1,20 @@
 export const fetchPins = () => (
   $.ajax({
-    url: '/pins',
+    url: 'api/pins',
     method: 'GET'
   })
 );
 
 export const fetchPin = id => (
   $.ajax({
-    url: `/pins/${id}`,
+    url: `api/pins/${id}`,
     method: 'GET'
   })
 );
 
 export const createPin = pin => (
   $.ajax({
-    url: `/pins`,
+    url: `api/pins`,
     method: 'POST',
     data: { pin }
   })
@@ -22,7 +22,7 @@ export const createPin = pin => (
 
 export const updatePin = pin => (
   $.ajax({
-    url: `/pins/${pin.id}`,
+    url: `api/pins/${pin.id}`,
     method: 'PATCH',
     data: { pin }
   })
@@ -30,7 +30,7 @@ export const updatePin = pin => (
 
 export const deletePin = pinId => (
   $.ajax({
-    url: `/pins/${pinId}`,
+    url: `api/pins/${pinId}`,
     method: 'DELETE',
   })
 );
