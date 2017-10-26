@@ -11,13 +11,22 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+
   }
 
+  clearForm () {
+    let state = { name: "", password: "", email: "" };
+    this.setState(state);
+    this.props.clearErrors();
+  }
 
   componentWillReceiveProps (nextProps){
     if (nextProps.loggedIn) {
       this.props.history.push('/');
     }
+    this.props.history.listen((location) => {
+      this.clearForm();
+    });
   }
 
   update(field) {
@@ -34,9 +43,9 @@ class SessionForm extends React.Component {
 
   navLink() {
     if (this.props.formType === 'login') {
-      return <Link to="/signup">sign up</Link>;
+      return <Link to="/signup" onClick={this.clearForm}>sign up</Link>;
     } else {
-      return <Link to="/login">log in</Link>;
+      return <Link to="/login" onClick={this.clearForm}>log in</Link>;
     }
   }
 
@@ -47,7 +56,6 @@ class SessionForm extends React.Component {
           {error}
         </li>
     )});
-
     return(
       <ul className="errors">
         {errors}
@@ -66,13 +74,13 @@ class SessionForm extends React.Component {
           <div className="logo-container">
             <div className="logo"> </div>
           </div>
+
           <h1>Welcome to JPiqued</h1>
           <div>
             Please { text } or {this.navLink()}
           </div>
-          <div clasName="errors">
-            {this.renderErrors()}
-          </div>
+          {this.renderErrors()}
+
           <form onSubmit={this.handleSubmit} className="session-form">
 
             <label className={(this.props.match.path === "/signup") ? 'email-form' : 'hidden'} >
@@ -84,10 +92,10 @@ class SessionForm extends React.Component {
             <p></p>
 
             <label>
-              <input type="text"
-                value={this.state.email}
-                placeholder="Email"
-                onChange={this.update('email')} />
+                <input type="text"
+                  value={this.state.email}
+                  placeholder="Email"
+                  onChange={this.update('email')} />
             </label>
             <p></p>
 
@@ -103,6 +111,9 @@ class SessionForm extends React.Component {
 
           </form>
         </div>
+
+        // <span className={(this.props.errors.length > 0) ? 'errors' : 'hidden'}>
+        // </span>
       </div>
     );
   }

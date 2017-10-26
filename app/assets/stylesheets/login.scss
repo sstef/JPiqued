@@ -6,16 +6,15 @@
 .login-page {
   height: 100%;
   width: 100%;
+  padding-top: 150px;
   display: flex;
+  justify-content: center;
 }
 
 
 .session-box {
   width: 350px;
   height: auto;;
-  position: absolute;
-  top: 50%;
-  transform: translate(100%, -50%);;
   background-color: #fff;
   border-radius: 10px;
   z-index: 1;
@@ -25,7 +24,10 @@
   align-content: center;
   padding: 20px;
   font-family: 'Bilbo Swash Caps', cursive;
+  font-size: 40px;
   margin: auto auto;
+  line-height: 1.5;
+  position: absolute;
 }
 .logo-container {
   display: flex;
@@ -49,7 +51,10 @@
   font-family: 'Antic', sans-serif;
   font-size: 15px;
   list-style: none;
-  margin-right: 35px;
+  height: 70px;
+  width: 70px;
+  z-index: 1000;
+  position: relative;
 }
 
 .session-form > label > input {
@@ -59,6 +64,7 @@
   border: none;
   border-bottom: solid 2px #3F88B9;
   transition: border 0.3s;
+  line-height: 2.5
 }
 
 .session-form > label > input.focus,
