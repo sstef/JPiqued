@@ -20,11 +20,8 @@ export const deleteUser = userId => dispatch => {
   return UserUtil.deleteUser(userId).then(user => dispatch(removeUser(userId)))
 };
 
-<<<<<<< HEAD
+
 const receiveUsers = users => ({
-=======
-const receiveUser = users => ({
->>>>>>> master
   type: RECEIVE_USERS,
   users
 });
