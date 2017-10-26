@@ -1,23 +1,17 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get 'pins/create'
-  end
-
-  namespace :api do
-    get 'pins/update'
-  end
-
-  namespace :api do
-    get 'pins/show'
-  end
-
-  namespace :api do
-    get 'pins/destroy'
-  end
 
   namespace :api, defaults: {format: :json} do
     resource :session, only: [:create, :destroy]
-    resources :users, only: [:create]
+
+    resources :users, only: [:create, :show, :update] do
+      resources :boards, except: [:new, :edit]
+    end
+
+    resources :pins, except: [:new, :edit] do
+      resources :comments, only: [:create, :show]
+    end
+
+    resources :comments, only: [:destroy]
   end
 
   root to: 'static_pages#root'
