@@ -5,7 +5,7 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 export const REMOVE_USER = 'REMOVE_USER';
 
 
-export const fetchUser = () => dispatch => {
+export const fetchUsers = () => dispatch => {
   return UserUtil.fetchUser().then(users => dispatch(receiveAllUser(users)))
 };
 
@@ -21,7 +21,7 @@ export const deleteUser = userId => dispatch => {
   return UserUtil.deleteUser(userId).then(user => dispatch(removeUser(userId)))
 };
 
-const receiveUser = users => ({
+const receiveUsers = users => ({
   type: RECEIVE_USERS,
   users
 });

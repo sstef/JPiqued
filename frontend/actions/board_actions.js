@@ -5,7 +5,7 @@ export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const REMOVE_BOARD = 'REMOVE_BOARD';
 
 
-export const fetchBoard = () => dispatch => {
+export const fetchBoards = () => dispatch => {
   return BoardUtil.fetchBoard().then(boards => dispatch(receiveAllBoard(boards)))
 };
 
@@ -25,7 +25,7 @@ export const deleteBoard = boardId => dispatch => {
   return BoardUtil.deleteBoard(boardId).then(board => dispatch(removeBoard(boardId)))
 };
 
-const receiveBoard = boards => ({
+const receiveBoards = boards => ({
   type: RECEIVE_BOARDS,
   boards
 });
