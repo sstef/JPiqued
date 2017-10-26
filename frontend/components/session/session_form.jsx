@@ -57,7 +57,7 @@ class SessionForm extends React.Component {
         </li>
     )});
     return(
-      <ul className="errors">
+      <ul className="session-errors">
         {errors}
       </ul>
     );
@@ -79,7 +79,6 @@ class SessionForm extends React.Component {
           <div>
             Please { text } or {this.navLink()}
           </div>
-          {this.renderErrors()}
 
           <form onSubmit={this.handleSubmit} className="session-form">
 
@@ -107,13 +106,13 @@ class SessionForm extends React.Component {
             </label>
             <p></p>
 
-            <input type="submit" value={text} />
+            <div className="session-submit-button">
+              { (this.props.errors.length > 0) ? this.renderErrors() : null }
+              <input type="submit" value={text} />
+            </div>
 
           </form>
         </div>
-
-        // <span className={(this.props.errors.length > 0) ? 'errors' : 'hidden'}>
-        // </span>
       </div>
     );
   }
