@@ -47,14 +47,51 @@
   font-weight: bold;
 }
 
-.errors {
+
+.session-submit-button {
+  position: relative;
+}
+
+.session-errors {
   font-family: 'Antic', sans-serif;
   font-size: 15px;
   list-style: none;
   height: 70px;
   width: 70px;
   z-index: 1000;
-  position: relative;
+  position: absolute;
+  background: white;
+  border: 2px solid #3F88B9;
+  border-radius: 5px;
+  top: 12px;
+  left: 232px;
+  width: 250px;
+  height: auto;
+  padding: 10px;
+}
+
+.session-errors:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 14px solid white;
+  top: 11px;
+  left: -13px;
+}
+
+.session-errors:before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-right: 15px solid #3F88B9;
+  top: 10px;
+  left: -16px;
 }
 
 .session-form > label > input {
