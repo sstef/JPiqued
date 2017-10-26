@@ -2,6 +2,7 @@ class Api::PinsController < ApplicationController
   def create
     @pin = Pin.new(pin_params)
     @pin.creator_id = currentUser.id
+    @pin.board_id = 1
     if @pin.save
       render json: :show
     else

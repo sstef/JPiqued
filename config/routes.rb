@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'boards/create'
+
+  get 'boards/update'
+
+  get 'boards/show'
+
+  get 'boards/destroy'
+
   namespace :api do
     get 'pins/create'
   end
