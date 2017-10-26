@@ -1,9 +1,14 @@
 class Api::PinsController < ApplicationController
+  def index
+    @pins = Pin.all
+    render json: @pins
+  end
+
   def create
     @pin = Pin.new(pin_params)
     @pin.creator_id = currentUser.id
     if @pin.save
-      render json: :show
+      render json: @pin
     else
       render json: @pin.errors.full_messages, status: 422
     end
@@ -13,7 +18,7 @@ class Api::PinsController < ApplicationController
     @pin = Pin.find_by(params[:id])
 
     if @pin.update_attributes
-      render json: :show
+      render json: @pin
     else
       render json: @pin.errors.full_messages, status: 422
     end
@@ -21,10 +26,13 @@ class Api::PinsController < ApplicationController
 
   def show
     @pin = Pin.find_by(params[:id])
+    render json: @pin
   end
 
   def destroy
-
+    pin = Pin.find(params[:id])
+    pin.destroy
+    render json: {}
   end
 
   private
