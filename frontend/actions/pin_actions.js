@@ -2,7 +2,7 @@ export const RECEIVE_PINS = 'RECEIVE_PINS';
 export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const REMOVE_PIN = 'REMOVE_PIN';
 
-import * as PinUtil from '../utl/pin_util';
+import * as PinUtil from '../util/pin_util';
 
 export const fetchPins = () => dispatch => {
   return PinUtil.fetchPins().then(pins => dispatch(receiveAllPins(pins)))
@@ -24,17 +24,17 @@ export const deletePin = pinId => dispatch => {
   return PinUtil.deletePin(pinId).then(pin => dispatch(removePin(pinId)))
 };
 
-const RECEIVE_PINS = pins => ({
+const receivePins = pins => ({
   type: RECEIVE_PINS,
   pins
 });
 
-const RECEIVE_PIN = pin => ({
+const receivePin = pin => ({
   type: RECEIVE_PIN,
   pin
 });
 
-const REMOVE_PIN = pinId => ({
+const removePin = pinId => ({
   type: REMOVE_PIN,
   pinId
 });

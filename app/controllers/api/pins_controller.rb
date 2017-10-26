@@ -1,7 +1,7 @@
 class Api::PinsController < ApplicationController
   def create
     @pin = Pin.new(pin_params)
-
+    @pin.creator_id = currentUser.id
     if @pin.save
       render json: :show
     else
@@ -24,7 +24,7 @@ class Api::PinsController < ApplicationController
   end
 
   def destroy
-    
+
   end
 
   private
