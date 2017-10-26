@@ -1,0 +1,26 @@
+.logo {
+  height: 35px!important;
+  width: 35px!important;
+}
+
+.navigation-header {
+  display: flex;
+  padding: 8px;
+  justify-content: space-around;
+  align-content: center;
+  text-align: center;
+}
+
+.user-dropdown {
+
+}
+
+.clickable {
+  background-color: #E9E8E8!important;
+  border-radius: 10px!important;
+  box-shadow: none;
+}
+
+.clickable:hover {
+  background-color: !important;
+}
