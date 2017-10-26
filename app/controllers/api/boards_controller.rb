@@ -1,4 +1,8 @@
 class Api::BoardsController < ApplicationController
+  def index
+    @boards = Board.all
+  end
+
   def create
     @board = Board.new(board_params)
     @board.creator_id = currentUser.id
@@ -27,7 +31,7 @@ class Api::BoardsController < ApplicationController
     @board = Board.find(params[:id])
 
     if @board.destroy
-      render :show
+      render :index
     else
       render json: @board.errors.full_messages, status: 422
     end
