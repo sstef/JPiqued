@@ -1,7 +1,7 @@
 class Api::PinsController < ApplicationController
   def index
     @pins = Pin.all
-    render json: @pins
+    render :index
   end
 
   def create
@@ -10,7 +10,7 @@ class Api::PinsController < ApplicationController
     board = Board.find_by(creator_id: currentUser.id)
     @pin.board_id = board.id
     if @pin.save
-      redirect_to action: :index
+      render json: @pin
     else
       render json: @pin.errors.full_messages, status: 422
     end
@@ -34,7 +34,7 @@ class Api::PinsController < ApplicationController
   def destroy
     pin = Pin.find(params[:id])
     pin.destroy
-    render json: pin
+    render json: {}
   end
 
   private

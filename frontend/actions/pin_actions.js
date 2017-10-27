@@ -5,7 +5,9 @@ export const REMOVE_PIN = 'REMOVE_PIN';
 import * as PinUtil from '../util/pin_util';
 
 export const fetchPins = () => dispatch => {
-  return PinUtil.fetchPins().then(pins => dispatch(receivePins(pins)))
+  return PinUtil.fetchPins().then(pins => {
+    dispatch(receivePins(pins))
+  })
 };
 
 export const fetchPin = id => dispatch => {

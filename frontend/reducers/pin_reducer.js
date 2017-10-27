@@ -10,7 +10,7 @@ const PinReducer = (state = {}, action) => {
       return merge({}, state, {[action.pin.id]: action.pin});
     case REMOVE_PIN:
       let newState = merge({}, state);
-      delete newState[action.pin.id];
+      delete newState[action.pinId];
       return newState;
     default:
       return state;

@@ -1,10 +1,11 @@
 import React from 'react';
+import { popover, OverlayTrigger, Button } from 'react-bootstrap';
 
 class PinForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state ;
+    this.state = {description: "", link_url: "", image_url: ""};
   }
 
   update(field) {
@@ -13,9 +14,15 @@ class PinForm extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState(nextProps.pin)
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createPin(this.state);
+    this.props.createPin(this.state)
+      .then(() => this.setState({description: "", link_url: "", image_url: ""}))
+      // .then(() => document.getElementsByClassName('popover-pin-form').Popover('hide'))
   }
 
   render () {
@@ -33,6 +40,7 @@ class PinForm extends React.Component {
           <input
             type="text"
             onChange={this.update('link_url')}
+            value={this.state.link_url}
             placeholder="Add a url here"/>
           <br />
 
@@ -40,6 +48,7 @@ class PinForm extends React.Component {
           <br />
             <input type="text"
               onChange={this.update('image_url')}
+              value={this.state.image_url}
               placeholder="Link your image" />
             <br/>
 
@@ -48,6 +57,7 @@ class PinForm extends React.Component {
             <textarea
               type="text"
               onChange={this.update('description')}
+              value={this.state.description}
               placeholder="Describe this image" />
             <br/>
             <input type="submit" value="Pin it!" />

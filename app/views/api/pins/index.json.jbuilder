@@ -1,5 +1,5 @@
-@pins do |pin|
-  json.set!(pin.id) pin do |p|
-    json.partial! 'api/pins/pin', pin: p
+@pins.each do |pin|
+  json.set! pin.id do
+    json.partial! 'pin', pin: pin
   end
 end

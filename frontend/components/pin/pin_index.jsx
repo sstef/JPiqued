@@ -6,6 +6,11 @@ import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 
 
 class PinIndex extends React.Component {
+  constructor (props){
+    super(props);
+    this.deletePin = this.props.deletePin.bind(this);
+
+  }
 
   componentWillMount() {
     let body = document.getElementById('root');
@@ -17,8 +22,8 @@ class PinIndex extends React.Component {
     this.props.fetchPins();
   }
 
-  componentWillUpdate(newProps){
-    this.props.pins !== newProps.pins;
+  componentWillReceiveProps(newProps){
+    this.setState({pins: newProps.pins})
   }
 
   render () {
@@ -39,7 +44,7 @@ class PinIndex extends React.Component {
               this.props.pins.map(pin => (
                 <PinIndexItem
                   key={pin.id}
-                  deletePin={this.props.deletePin}
+                  deletePin={this.deletePin}
                   pin={pin} />
               ))
             }
@@ -51,6 +56,7 @@ class PinIndex extends React.Component {
           <div className="popover-form-button">
             <OverlayTrigger trigger="click"
               rootClose
+              animation={true}
               placement="top"
               container={this}
               overlay={popoverTop}

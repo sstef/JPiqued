@@ -1,3 +1,4 @@
+json.id pin.id
 json.description pin.description
 json.creator_id pin.creator_id
 json.keywords pin.keywords
