@@ -7,12 +7,13 @@ const PinIndexItem = ({ pin, router, deletePin, history }) => {
     <li>
       <Link to={`/pins/${pin.id}`}>
         {pin.description}
-      </Link>&nbsp;
+      </Link>;
       <Link to={`/pins/${pin.id}/edit`}>
         Edit
       </Link>
       <button onClick={() => deletePin(pin.id)}>Delete</button>
-    </li>);
+    </li>
+  );
 };
 
 export default withRouter(PinIndexItem);

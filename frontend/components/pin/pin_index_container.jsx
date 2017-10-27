@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchPins, deletePin, fetchPin } from '../../actions/pin_actions';
 
 const mapStateToProps = state => ({
-  pins: Object.keys(state.entities.pins).map(id => state.entities.pins[id])
+  pins: Object.keys(state.entities.pins).map(id => state.entities.pins[id]),
 });
 
 const mapDispatchToProps = dispatch => ({

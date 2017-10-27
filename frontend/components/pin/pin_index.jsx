@@ -17,6 +17,10 @@ class PinIndex extends React.Component {
     this.props.fetchPins();
   }
 
+  componentWillUpdate(newProps){
+    this.props.pins !== newProps.pins;
+  }
+
   render () {
     const popoverTop = (
        <Popover id="popover-pin-form">

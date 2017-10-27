@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PinShow from './pin_show';
 
 const mapStateToProps = (state, ownProps) => ({
-  pin: state.pins[ownProps.match.params.pinId]
+  pin: state.entities.pins[ownProps.match.params.pinId]
 });
 
 const mapDispatchToProps = dispatch => ({

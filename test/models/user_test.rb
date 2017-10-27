@@ -3,9 +3,8 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  username        :string           not null
 #  email           :string           not null
-#  image_url       :string
+#  name            :string           not null
 #  session_token   :string
 #  password_digest :string           not null
 #  follows         :integer          default([]), is an Array

@@ -34,7 +34,7 @@ class Api::PinsController < ApplicationController
   def destroy
     pin = Pin.find(params[:id])
     pin.destroy
-    render json: {}
+    render json: pin
   end
 
   private

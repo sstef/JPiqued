@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 
 class PinShow extends React.Component {
   componentDidMount() {
-    this.props.fetchPin(this.props.pinId);
+    this.props.fetchPin(this.props.match.params.pinId);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.props.fetchPin(nextProps.match.params.pinId);
+    if (this.props.match.params.pinId !== nextProps.match.params.pinId) {
+      this.props.fetchPin(nextProps.match.params.pinId);
+    }
   }
 
   render () {
@@ -18,7 +20,7 @@ class PinShow extends React.Component {
 
     return (
       <div>
-        <h2 className={post.name.length > 0 ? "title-header" : "hidden"}>
+        <h2 className={pin.title ? "title-header" : "hidden"}>
           {pin.title}
         </h2>
 
@@ -37,7 +39,7 @@ class PinShow extends React.Component {
         <p>{pin.description}</p>
 
         <div className="pin-show-user-info">
-          {pin.user.name}
+          User info
         </div>
 
       </div>

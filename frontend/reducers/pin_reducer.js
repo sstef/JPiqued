@@ -5,7 +5,7 @@ const PinReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_PINS:
-      return action.pins;
+      return merge({}, action.pins);
     case RECEIVE_PIN:
       return merge({}, state, {[action.pin.id]: action.pin});
     case REMOVE_PIN:
