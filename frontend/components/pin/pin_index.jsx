@@ -21,7 +21,7 @@ class PinIndex extends React.Component {
     return (
       <div>
         <header>
-          <NavBar />
+          <NavBar props={this.props} />
         </header>
         <div className="index-pins">
           <ul>
