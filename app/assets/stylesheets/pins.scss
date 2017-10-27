@@ -1,0 +1,94 @@
+.add-button-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.popover-form-button {
+  position: relative;
+}
+
+.popover-form-button > Button {
+  height: 40px;
+  width: 40px;
+  z-index: 100;
+  border-radius: 25px;
+  font-size: 30px;
+  border: 1px solid #3F88B9;
+  background-color: #fff;
+  color: #979696;
+  cursor: pointer;
+}
+
+#popover-pin-form {
+  position: fixed;
+  right: 7%;
+  top: 44%;
+  display: block;
+  width: 200px;
+  height: 324px;
+  z-index: 100;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.index-pins {
+  width: 100%;
+}
+
+.pin-form > h3 {
+  height: 25px;
+  background-color: #3F88B9;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.pin-form > label {
+  align-content: flex-start;
+}
+
+.pin-form > input,
+.pin-form > textarea {
+  align-content: flex-end;
+}
+
+.pin-form {
+  text-align: center;
+  font-weight: bold;
+  color: #979696;
+  line-height: 1;
+}
+
+.pin-form > form > input {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin: auto;
+  border: none;
+  border-bottom: solid 2px #3F88B9;
+  transition: border 0.3s;
+  line-height: 1.6
+}
+
+.pin-form > form > input:focus {
+  outline: 0;
+  cursor: pointer;
+  box-shadow: none;
+  border-bottom: solid 3px #1E84A4
+}
+
+.pin-form > form > textarea {
+  max-width: 174px;
+  border-radius: 4px;
+  border: solid 1px #1E84A4
+}
+
+#image-preview {
+  height: 100px;
+  width: 100px
+}

@@ -1,7 +1,9 @@
 import React from 'react';
 import PinIndexItem from './pin_index_item';
 // import PinFormContainer from './pin_form_container';
-import NavBar from '../navbar_container'
+import NavBar from '../navbar_container';
+import PinForm from './pin_form'
+import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 
 
 class PinIndex extends React.Component {
@@ -17,6 +19,11 @@ class PinIndex extends React.Component {
   }
 
   render () {
+    const popoverTop = (
+       <Popover id="popover-pin-form">
+         <PinForm />
+       </Popover>
+    );
 
     return (
       <div>
@@ -35,6 +42,24 @@ class PinIndex extends React.Component {
             }
           </ul>
         </div>
+
+        <div className="add-button-wrapper">
+
+          <div className="popover-form-button">
+            <OverlayTrigger trigger="click"
+              rootClose
+              placement="top"
+              container={this}
+              overlay={popoverTop}
+              arrowOffsetTop={90}
+              arrowOffsetLeft={90}
+              >
+              <Button> + </Button>
+            </OverlayTrigger>
+
+          </div>
+        </div>
+
       </div>
     );
   }
