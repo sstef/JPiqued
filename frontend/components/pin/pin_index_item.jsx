@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 const PinIndexItem = ({ pin, router, deletePin, history }) => {
   return (
     <li>
-      <Link to={`/pin/${pin.id}`}>
+      <Link to={`/pins/${pin.id}`}>
         {pin.description}
       </Link>&nbsp;
       <Link to={`/pins/${pin.id}/edit`}>

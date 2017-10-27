@@ -4,7 +4,7 @@ class PinForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {description: "", image_url: "", link_url: ""};
+    this.state ;
   }
 
   update(field) {
@@ -15,7 +15,7 @@ class PinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state).then(() => this.props.history.push('/'));
+    this.props.createPin(this.state);
   }
 
   render () {
@@ -29,10 +29,9 @@ class PinForm extends React.Component {
 
           <label>Add a link:</label>
           <br />
-          
+
           <input
             type="text"
-            value={this.state.link_url}
             onChange={this.update('link_url')}
             placeholder="Add a url here"/>
           <br />
@@ -40,7 +39,6 @@ class PinForm extends React.Component {
           <label>Upload your image:</label>
           <br />
             <input type="text"
-              value={this.state.image_url}
               onChange={this.update('image_url')}
               placeholder="Link your image" />
             <br/>
@@ -49,10 +47,9 @@ class PinForm extends React.Component {
             <br />
             <textarea
               type="text"
-              value={this.state.description}
               onChange={this.update('description')}
               placeholder="Describe this image" />
-            <p />
+            <br/>
             <input type="submit" value="Pin it!" />
         </form>
       </div>

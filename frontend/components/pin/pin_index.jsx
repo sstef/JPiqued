@@ -30,7 +30,7 @@ class PinIndex extends React.Component {
           <NavBar props={this.props} />
         </header>
         <div className="index-pins">
-          <ul>
+          <ul className="pin-index-list">
             {
               this.props.pins.map(pin => (
                 <PinIndexItem

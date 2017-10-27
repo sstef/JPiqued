@@ -1,9 +1,9 @@
-import { fetchPin } from '../../actions/Pin_actions';
+import { fetchPin } from '../../actions/pin_actions';
 import { connect } from 'react-redux';
-import PinShow from './Pin_show';
+import PinShow from './pin_show';
 
 const mapStateToProps = (state, ownProps) => ({
-  pin: state.Pins[ownProps.match.params.PinId]
+  pin: state.pins[ownProps.match.params.pinId]
 });
 
 const mapDispatchToProps = dispatch => ({

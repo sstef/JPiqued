@@ -33,6 +33,24 @@
   padding: 10px;
   overflow-y: scroll;
 }
+.pin-index-list {
+  padding: 15px;
+
+// This column solution is thanks to  Roko C. Buljan at Stack Overflow
+// @ this article https://stackoverflow.com/questions/12332528/how-to-display-list-items-as-columns
+
+  -webkit-column-width: 250px;
+  -moz-column-width: 250px;
+  -o-column-width: 250px;
+  -ms-column-width: 250px;
+  column-width: 250px;
+
+  -webkit-column-rule-style: hidden;
+  -moz-column-rule-style: hidden;
+  -o-column-rule-style: hidden;
+  -ms-column-rule-style: hidden;
+  column-rule-style: hidden;
+}
 
 .index-pins {
   width: 100%;

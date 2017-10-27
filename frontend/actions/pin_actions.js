@@ -8,8 +8,8 @@ export const fetchPins = () => dispatch => {
   return PinUtil.fetchPins().then(pins => dispatch(receivePins(pins)))
 };
 
-export const fetchPin = pin => dispatch => {
-  return PinUtil.fetchPin(pin).then(pin => dispatch(receivePin(pin)))
+export const fetchPin = id => dispatch => {
+  return PinUtil.fetchPin(id).then(pin => dispatch(receivePin(pin)))
 };
 
 export const createPin = pin => dispatch => {
