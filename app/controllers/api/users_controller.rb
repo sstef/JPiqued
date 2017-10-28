@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
     # user: { username, password }
     @user = User.new(user_params)
 
-    if @user.save && (@user.avatar.present? && @user.avatar.url.exists?)
+    if @user.save
       Board.create!(description: '', creator_id: @user.id, name: 'Your first board!')
       login!(@user)
       render :show
@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if @user.update(user_params) && (@user.avatar.present? && @user.avatar.url.exists?)
+    if @user.update(user_params)
       render :show
     else
       render json: @user.errors.full_messages, status: 422

@@ -5,7 +5,7 @@ class Api::PinsController < ApplicationController
   end
 
   def create
-    @pin = Pin.new(pin_params) && (@pin.image.present? && @pin.image.url.exists?)
+    @pin = Pin.new(pin_params) # && (@pin.image.present? && @pin.image.url.exists?)
     @pin.creator_id = currentUser.id
     board = Board.find_by(creator_id: currentUser.id)
     @pin.board_id = board.id
@@ -19,7 +19,7 @@ class Api::PinsController < ApplicationController
   def update
     @pin = Pin.find(params[:id])
 
-    if @pin.update(pin_params) && (@pin.image.present? && @pin.image.url.exists?)
+    if @pin.update(pin_params) # && (@pin.image.present? && @pin.image.url.exists?)
       render json: @pin
     else
       render json: @pin.errors.full_messages, status: 422
