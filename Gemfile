@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
+gem 'figaro'
+gem 'aws-sdk', '< 3.0'
 gem 'pusher'
 
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"

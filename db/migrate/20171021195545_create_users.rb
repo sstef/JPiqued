@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :session_token
       t.string :password_digest, null: false
       t.integer :follows, array: true, default: []
+      t.attachment :avatar
 
       t.timestamps
     end

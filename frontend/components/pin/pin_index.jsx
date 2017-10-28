@@ -9,7 +9,7 @@ class PinIndex extends React.Component {
   constructor (props){
     super(props);
     this.deletePin = this.props.deletePin.bind(this);
-
+    this.setState({ modalOpen: false });
   }
 
   componentWillMount() {
@@ -25,6 +25,15 @@ class PinIndex extends React.Component {
   componentWillReceiveProps(newProps){
     this.setState({pins: newProps.pins})
   }
+
+  getInitialModalState (){
+    return({ modalOpen: false });
+  }
+
+  _handleClick(){
+    this.setState({modalOpen:true});
+  }
+
 
   render () {
     const popoverTop = (

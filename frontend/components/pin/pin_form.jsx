@@ -5,7 +5,7 @@ class PinForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {description: "", link_url: "", image_url: ""};
+    this.state = {description: "", title: "", link_url: ""};
   }
 
   update(field) {
@@ -14,14 +14,11 @@ class PinForm extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps){
-    this.setState(nextProps.pin)
-  }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.createPin(this.state)
-      .then(() => this.setState({description: "", link_url: "", image_url: ""}))
+      .then(() => this.setState({description: "", title: "", link_url: ""}))
       // .then(() => document.getElementsByClassName('popover-pin-form').Popover('hide'))
   }
 
@@ -47,8 +44,8 @@ class PinForm extends React.Component {
           <label>Upload your image:</label>
           <br />
             <input type="text"
-              onChange={this.update('image_url')}
-              value={this.state.image_url}
+              onChange={this.update('title')}
+              value={this.state.title}
               placeholder="Link your image" />
             <br/>
 
