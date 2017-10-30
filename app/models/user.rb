@@ -21,9 +21,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: true
-  has_attached_file :avatar, default_url: "assets/images/default_avatar.png",
-    styles: { large: "100x100>", medium: "50x50>", thumb: "32x32>" }
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  has_attached_file :image, default_url: "assets/images/default_avatar.png",
+    styles: { large: "150x150>", medium: "50x50>", thumb: "32x32>" }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
 

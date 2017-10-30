@@ -46,7 +46,7 @@ class UserShow extends React.Component {
           </article>
 
           <div className="image-show">
-            placeholder for avatar
+            <img src={user.image_url} />
           </div>
         </section>
 

@@ -7,7 +7,7 @@ class CreatePins < ActiveRecord::Migration[5.1]
       t.integer :creator_id, null: false
       t.string :keywords, array: true, default: []
       t.string :title
-      t.attachment :image
+      t.attachment :avatar
 
       t.timestamps
     end

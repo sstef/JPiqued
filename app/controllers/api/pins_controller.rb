@@ -1,5 +1,4 @@
 class Api::PinsController < ApplicationController
-  # before_filter :parse_raw_upload, only: [:create, :update]
 
   def index
     @pins = Pin.all.shuffle
@@ -11,9 +10,9 @@ class Api::PinsController < ApplicationController
     @pin.creator_id = currentUser.id
     board = Board.find_by(creator_id: currentUser.id)
     @pin.board_id = board.id
-    @pin.image = @raw_image
+    debugger
     if @pin.save
-      render json: @pin
+      render :show
     else
       render json: @pin.errors.full_messages, status: 422
     end
@@ -44,15 +43,6 @@ class Api::PinsController < ApplicationController
 
   def pin_params
     params.require(:pin).permit(:description, :keywords, :title, :link_url, :image)
-  end
-
-  def parse_raw_upload
-    if env['HTTP_X_FILE_UPLOAD'] == 'true'
-      @raw_image = env['rack.input']
-      @raw_image.class.class_eval { attr_accessor :original_filename, :content_type }
-      @raw_image.original_imagename = env['HTTP_X_FILE_NAME']
-      @raw_image.content_type = env['HTTP_X_MIME_TYPE']
-    end
   end
 
 end
