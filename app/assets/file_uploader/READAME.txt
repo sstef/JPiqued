@@ -1,0 +1,6 @@
+This folder is an integral part of my drag and drop file upload system. I chose
+this because it was easy to tie in with Paperclip and also offered superior
+functionality over most drag and drop gems.
+
+The credit for this amazing work goes to Valum and you can see the repository for this
+at: https://github.com/Valums-File-Uploader/file-uploader

@@ -5,13 +5,12 @@ import { Link, withRouter } from 'react-router-dom';
 const PinIndexItem = ({ pin, router, deletePin, history }) => {
   return (
     <li>
-      <Link to={`/pins/${pin.id}`}>
-        {pin.description}
-      </Link>;
-      <Link to={`/pins/${pin.id}/edit`}>
-        Edit
-      </Link>
-      <button onClick={() => deletePin(pin.id)}>Delete</button>
+      <div className="pin-index-item">
+        <Link to={`/pins/${pin.id}`} style={{cursor:'zoom-in'}} >
+          <img src={pin.image_url} />
+        </Link>
+        <button onClick={() => deletePin(pin.id)}>Delete</button>
+      </div>
     </li>
   );
 };

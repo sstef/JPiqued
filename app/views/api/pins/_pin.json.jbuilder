@@ -5,3 +5,4 @@ json.keywords pin.keywords
 json.link_url pin.link_url
 json.board_id pin.board_id
 json.title pin.title
+json.image_url asset_path(pin.image.url(:original))

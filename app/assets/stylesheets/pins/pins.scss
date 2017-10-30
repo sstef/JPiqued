@@ -32,6 +32,7 @@
   border-radius: 5px;
   padding: 10px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .pin-index-list {
   padding: 15px;
@@ -107,6 +108,30 @@
 }
 
 #image-preview {
-  height: 100px;
-  width: 100px
+  
+  height: 150px;
+  width: 150px;
+}
+
+.pin-index-item  {
+  display: block;
+  border-radius: 10px;
+  width: 250px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.pin-index-item:hover {
+  cursor: zoom-in;
+  background-color: #C8C8C8;
+  box-shadow: 10px 5px 5px -4px #EFEFEF;
+}
+
+.imagedropshadow {
+  box-shadow: inset 0px -30px 186px -9px #A1A8A6;
+}
+
+.pin-index-item > a > img {
+  width: 100% !important;
+  border-radius: 5px;
 }

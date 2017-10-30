@@ -19,8 +19,8 @@
 
 class Pin < ApplicationRecord
   validates :description, :creator_id, presence: true
-  has_attached_file :image, default_url: "missing.png"
-  validates_attachment :image, presence: true,
+  has_attached_file :image, default_url: "https://s3-us-east-2.amazonaws.com/jpiqued-dev/pins/images/000/000/002/original/missing_image.jpg"
+  validates_attachment :image,
     content_type: { content_type: /\Aimage\/.*\Z/ }
 
   belongs_to :user,
@@ -28,5 +28,9 @@ class Pin < ApplicationRecord
     class_name: :User
 
   belongs_to :board
+
+  def image_from_url(url)
+    self.image = URI.parse(url)
+  end
 
 end

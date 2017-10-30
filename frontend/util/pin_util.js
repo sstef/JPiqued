@@ -1,3 +1,5 @@
+import * as PinActions from '../actions/pin_actions'
+
 export const fetchPins = () => (
   $.ajax({
     url: 'api/pins',
@@ -12,13 +14,19 @@ export const fetchPin = id => (
   })
 );
 
-export const createPin = pin => (
-  $.ajax({
+export const createPin = formData => {
+  return $.ajax({
     url: `api/pins`,
     method: 'POST',
-    data: { pin }
-  })
-);
+    processData: false,
+    contentType: false,
+    dataType: 'json',
+    data: formData,
+    success: function(pin) {
+      PinActions.fetchPin(pin);
+   }
+ });
+}
 
 export const updatePin = pin => (
   $.ajax({
