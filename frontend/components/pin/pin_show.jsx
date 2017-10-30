@@ -16,6 +16,14 @@ class PinShow extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+
+  componentWillMount() {
+    let body = document.getElementById('root');
+    body.style.backgroundImage = null
+    body.style.backgroundColor = "#EDEDED"
+  }
+
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -81,53 +89,50 @@ class PinShow extends React.Component {
     }
 
     return (
-      <div>
         <div className="pin-show-page">
+            <Link to="/">
+              <div className="index-link clickable">X</div>
+            </Link>
 
-            <div className="index-link clickable">
-              <Link to="/">X</Link>
+            <div className="pin-details">
+              <h2 className={pin.title ? "title-header" : "hidden"}>
+                {pin.title}
+              </h2>
+
+              <div className="image-show">
+                <img src={pin.image_url} />
+              </div>
+
+              <div className={(this.props.currentUser.name) ? "edit-button" : "hidden"}>
+                <div onClick={this.openModal} className="clickable">Edit</div>
+                  <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal} >
+
+                    <h2 ref={subtitle => this.subtitle = subtitle}>Edit this pin</h2>
+                    <button onClick={this.closeModal}>close</button>
+                    <PinEditForm pin={ pin } />
+                  </Modal>
+              </div>
+
+              <div className="pin-show-link-button clickable">
+                <a href={pin.link_url} target="_blank">Visit</a>
+              </div>
+
+              <p>{pin.description}</p>
+              <p>Marked as: {pin.keywords}</p>
+              <div className="pin-show-user-info">
+                <h5>Pinned by: <strong>{pin.creator_id}</strong> on
+                  <strong>{pin.board_id}</strong></h5>
+              </div>
             </div>
 
-          <div className="pin-details">
-            <h2 className={pin.title ? "title-header" : "hidden"}>
-              {pin.title}
-            </h2>
-
-            <div className="image-show">
-              <img src={pin.image_url} />
+            <div className="index-pins">
+              <h3>Related</h3>
+              {this._relatedPins()}
             </div>
-
-            <div className={(this.props.currentUser.name) ? "edit-button" : "hidden"}>
-              <div onClick={this.openModal} className="clickable">Edit</div>
-                <Modal
-                  isOpen={this.state.modalIsOpen}
-                  onAfterOpen={this.afterOpenModal}
-                  onRequestClose={this.closeModal} >
-
-                  <h2 ref={subtitle => this.subtitle = subtitle}>Edit this pin</h2>
-                  <button onClick={this.closeModal}>close</button>
-                  <PinEditForm pin={ pin } />
-                </Modal>
-            </div>
-
-          <div className="pin-show-link-button clickable">
-            <a href={pin.link_url} target="_blank">Visit</a>
-          </div>
-
-          <p>{pin.description}</p>
-          <p>Marked as: {pin.keywords}</p>
-          <div className="pin-show-user-info">
-            <h5>Pinned by: <strong>{pin.creator_id}</strong> on
-              <strong>{pin.board_id}</strong></h5>
-          </div>
         </div>
-
-          <div className="index-pins">
-            <h3>Related</h3>
-            {this._relatedPins()}
-          </div>
-        </div>
-      </div>
     );
   }
 }

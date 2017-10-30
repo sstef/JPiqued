@@ -1,9 +1,6 @@
 .pin-show-page {
   width: 100%;
-  overflow-y: scroll;
   padding-top: 50px;
-  padding-left: 5%;
-  padding-right: 5%;
 }
 
 .pin-details {
@@ -18,15 +15,19 @@
   align-items: center;
   line-height: 1.5;
   text-align: center;
+  margin-left: 6%;
+  margin-right: 10%;
+  padding-top: 20px;
 }
 
 .index-link {
   font-size: 20px;
-  width: 30px;
+  width: 19px;
   padding: 5px;
   float: right;
   text-align: center;
   font-weight: bold;
+  margin-right: 20px;
 }
 
 .index-link > a, .index-link:visited {
@@ -43,26 +44,20 @@
   width: 100%;
   min-width: 250px;
   max-width: 1000px;
-  display: block;
-    border-radius: 10px;
+  display: block
 }
 
-.image_show > img {
+.image_show img {
   width: 100% !important;
+  border-radius: 15px;
 }
 
 .edit-button {
-  background-color: #3F88B9!important;
-  border-radius: 5px!important;
-  box-shadow: none;
-  padding: 5px;
+  width: 40px !important;
+  padding: 5px !important;
   float: left;
   text-align: center;
   font-weight: bold;
-}
-
-.edit-button:hover {
-  background-color: #212761!important;
 }
 
 .edit-button > a, .edit-button:visited {
@@ -93,4 +88,9 @@ strong > a, strong:visited {
   color: #A6ACAF;
   font-weight: bold;
   text-align: center;
+}
+
+.index-pins {
+  background-color: #EDEDED;
+  padding-top: 30px;
 }
