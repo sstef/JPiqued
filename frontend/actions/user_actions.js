@@ -1,7 +1,7 @@
 import * as UserUtil from '../util/user_util';
 
 export const RECEIVE_USERS = 'RECEIVE_USERS';
-export const RECEIVE_USER = 'RECEIVE_USER';
+export const RECEIVE_USER_PINS = 'RECEIVE_USER_PINS';
 export const REMOVE_USER = 'REMOVE_USER';
 
 export const fetchUsers = () => dispatch => {
@@ -19,7 +19,6 @@ export const updateUser = user => dispatch => {
 export const deleteUser = userId => dispatch => {
   return UserUtil.deleteUser(userId).then(user => dispatch(removeUser(userId)))
 };
-
 
 const receiveUsers = users => ({
   type: RECEIVE_USERS,

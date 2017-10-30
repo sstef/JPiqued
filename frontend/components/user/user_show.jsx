@@ -2,16 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Tabs from './tabs';
 import NavBar from '../navbar_container';
+import merge from 'lodash/merge';
+import PinIndexItem from '../pin/pin_index_item'
 
 class UserShow extends React.Component {
   componentDidMount() {
     this.props.fetchUser( parseInt(this.props.match.params.userId) );
+  //  this.props.fetchUserPins( parseInt(this.props.match.params.userId) );
+    this.getUserPins = this.getUserPins.bind(this);
   }
 
   componentWillMount() {
     let body = document.getElementById('root');
-    body.style.backgroundImage = null
-    body.style.backgroundColor = "#EDEDED"
+    body.style.backgroundImage = null;
+    body.style.backgroundColor = "#EDEDED";
   }
 
   componentWillReceiveProps(nextProps) {
@@ -19,7 +23,18 @@ class UserShow extends React.Component {
   }
 
   getUserPins(){
-
+    debugger
+    return(
+      <ul className="pin-index-list">
+        {
+          this.props.pins.map(pin => (
+            <PinIndexItem
+              key={pin.id}
+              pin={pin} />
+          ))
+        }
+      </ul>
+    );
   }
 
   render () {
@@ -27,11 +42,12 @@ class UserShow extends React.Component {
     if (!user) {
       return <div>Loading...</div>;
     }
-
+    debugger
     const panes = [
       {title: 'Boards', content: 'boards placeholder'},
-      {title: 'Pins', content: 'pins placeholder'}
+      {title: 'Pins', content: this.getUserPins() }
     ]
+
     return (
       <div className="user-show-page">
         <header>
