@@ -21,8 +21,32 @@
 }
 
 .user-dropdown {
-
+  position: relative;
+  vertical-align: middle;
+  padding: 5px;
+  width: 80px;
 }
+
+.user-dropdown > img {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px
+}
+
+.dropdown {
+  display: block;
+  position: absolute;
+  background-color: white;
+  width: 160px;
+  height: 95px;
+  border-bottom-left-radius: 15px;
+  top: 60px;
+  right: 8%;
+  border-bottom-right-radius: 15px;
+  border: 2px solid #3F88B9;
+  border-top: white;
+}
+
 
 .clickable {
   background-color: #E9E8E8!important;
@@ -40,6 +64,28 @@
   cursor: pointer;
 }
 
-.logout-button, .user-dropdown{
-  padding: 15px;
+.logout-button{
+  width: 160px;
+  cursor: pointer;
+  padding-top: 15px;
+}
+
+a, a:visited {
+  color: #979696;
+  text-decoration: none;
+}
+
+.logout-button:hover {
+  color: navy;
+  background-color: #D1D0D0 !important;
+  padding: inherit;
+  border-bottom-left-radius: 14px;
+  padding-bottom: 17px;
+  border-bottom-right-radius: 14px;
+  padding-top: 15px;
+}
+
+a > h1 {
+  width: 100%;
+  padding-top: 15px;
 }

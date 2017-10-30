@@ -41,8 +41,9 @@ class UserShow extends React.Component {
         <section className="user-info">
           <article id="following-info">
             <h1>{user.name}</h1>
-            <p>Follows: {user.follows ? user.follows.length : 0}
-               Following: XXXXX</p>
+            <p>Follows: <strong>{user.follows ? user.follows.length : 0}</strong>
+              <br />
+               Following: <strong>XXXXX</strong></p>
           </article>
 
           <div className="image-show">

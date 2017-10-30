@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: true
-  has_attached_file :avatar, default_url: "app/assets/images/default_avatar.png",
+  has_attached_file :avatar, default_url: "https://s3-us-east-2.amazonaws.com/jpiqued-dev/users/avatars/000/000/004/original/default_avatar.jpg",
     styles: { large: "150x150>", medium: "50x50>", thumb: "32x32>" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
