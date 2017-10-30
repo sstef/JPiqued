@@ -12,7 +12,7 @@ const App = () => {
     <div>
       <Switch>
         <Route path="/pins/:pinId" component={PinShowContainer} />
-        <Route path="/users/:userId" component={UserShowContainer} />
+        <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
         <AuthRoute path="/login" component={SessionFormContainer} />
         <AuthRoute path="/signup" component={SessionFormContainer} />
         <ProtectedRoute path="/" component={PinIndexContainer} />

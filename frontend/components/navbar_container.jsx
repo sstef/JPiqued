@@ -50,46 +50,46 @@ class NavBar extends React.Component {
   }
 
   render() {
-    if (this.props.currentUser){
+    if (!this.props.currentUser){
+      return <div></div>;
+    };
+    return (
+        <div className="navigation-header">
+          <div className="navlogo-container clickable">
+            <Link to='/'>
+              <div className="logo"></div>
+            </Link>
+          </div>
 
-      return (
-          <div className="navigation-header">
-            <div className="navlogo-container clickable">
-              <Link to='/'>
-                <div className="logo"></div>
+          <div className="searchbar">
+            Placeholder for search
+          </div>
+
+          <div className="user-dropdown clickable"
+            onClick={this.handleClick}
+            ref={node => { this.node = node; }} >
+
+            <img src={this.props.currentUser.avatar_url} />
+            {this.props.currentUser.name.split(' ')[0]}
+          </div>
+
+            <div className={(this.state.isOpen) ? "dropdown" : "hidden"}>
+
+              <Link to={`/users/${this.props.currentUser.id}`} >
+                <h1>Go to profile</h1>
               </Link>
-            </div>
 
-            <div className="searchbar">
-              Placeholder for search
-            </div>
+              <br />
 
-            <div className="user-dropdown clickable"
-              onClick={this.handleClick}
-              ref={node => { this.node = node; }} >
-
-              <img src={this.props.currentUser.avatar_url} />
-              {this.props.currentUser.name.split(' ')[0]}
-            </div>
-
-              <div className={(this.state.isOpen) ? "dropdown" : "hidden"}>
-
-                <Link to={`/users/${this.props.currentUser.id}`} >
-                  <h1>Go to profile</h1>
-                </Link>
-
-                <br />
-
-                <div onClick={this.props.logout} className="logout-button">
-                  Logout
-                </div>
-
+              <div onClick={this.props.logout} className="logout-button">
+                Logout
               </div>
 
-          </div>
-        );
-    };
-  }
+            </div>
+
+        </div>
+      );
+    }
 
 }
 
