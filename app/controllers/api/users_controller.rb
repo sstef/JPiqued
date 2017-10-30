@@ -4,9 +4,9 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      Board.create!(description: '', creator_id: @user.id, name: 'Your first board!')
+      Board.create!(description: 'default', creator_id: @user.id, name: 'Your first board!')
       login!(@user)
-      render :show
+      render json: @user
     else
       render json: @user.errors.full_messages, status: 422
     end
