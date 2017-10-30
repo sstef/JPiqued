@@ -2,18 +2,18 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  email              :string           not null
-#  name               :string           not null
-#  session_token      :string
-#  password_digest    :string           not null
-#  follows            :integer          default([]), is an Array
-#  image_file_name    :string
-#  image_content_type :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                  :integer          not null, primary key
+#  email               :string           not null
+#  name                :string           not null
+#  session_token       :string
+#  password_digest     :string           not null
+#  follows             :integer          default([]), is an Array
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
 
 class User < ApplicationRecord
@@ -21,9 +21,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password_digest, presence: true
-  has_attached_file :image, default_url: "assets/images/default_avatar.png",
+  has_attached_file :avatar, default_url: "app/assets/images/default_avatar.png",
     styles: { large: "150x150>", medium: "50x50>", thumb: "32x32>" }
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
 

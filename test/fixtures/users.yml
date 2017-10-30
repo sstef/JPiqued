@@ -2,18 +2,18 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  email              :string           not null
-#  name               :string           not null
-#  session_token      :string
-#  password_digest    :string           not null
-#  follows            :integer          default([]), is an Array
-#  image_file_name    :string
-#  image_content_type :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                  :integer          not null, primary key
+#  email               :string           not null
+#  name                :string           not null
+#  session_token       :string
+#  password_digest     :string           not null
+#  follows             :integer          default([]), is an Array
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

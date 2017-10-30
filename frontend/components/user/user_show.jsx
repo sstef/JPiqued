@@ -46,7 +46,7 @@ class UserShow extends React.Component {
           </article>
 
           <div className="image-show">
-            <img src={user.image_url} />
+            <img src={user.avatar_url} />
           </div>
         </section>
 
