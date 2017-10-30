@@ -2,6 +2,7 @@ import { RECEIVE_BOARDS, RECEIVE_BOARD, REMOVE_BOARD } from '../actions/board_ac
 import merge from 'lodash/merge'
 
 const BoardReducer = (state = {}, action) => {
+  Object.freeze(state);
   switch(action.type){
     case RECEIVE_BOARDS:
       return merge({}, action.boards);
@@ -15,3 +16,5 @@ const BoardReducer = (state = {}, action) => {
       return state;
   }
 }
+
+export default BoardReducer;

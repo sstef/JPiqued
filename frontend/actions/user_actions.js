@@ -8,8 +8,8 @@ export const fetchUsers = () => dispatch => {
   return UserUtil.fetchUser().then(users => dispatch(receiveAllUser(users)))
 };
 
-export const fetchUser = user => dispatch => {
-  return UserUtil.fetchUser(user).then(user => dispatch(receiveUser(user)))
+export const fetchUser = id => dispatch => {
+  return UserUtil.fetchUser(id).then(user => dispatch(receiveUser(user)))
 };
 
 export const updateUser = user => dispatch => {
