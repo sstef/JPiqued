@@ -7,7 +7,6 @@ const UserReducer = (state = {}, action) => {
     case RECEIVE_USERS:
       return merge({}, action.users);
     case RECEIVE_USER:
-      debugger
       return merge({}, state, action.user);
     case REMOVE_USER:
       let newState = merge({}, state);
