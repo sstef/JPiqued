@@ -20,5 +20,6 @@ const App = () => {
    </div>
  );
 };
+// <Route path="/:username/board/:boardId" component={BoardIndexContainer} />
 
 export default App;

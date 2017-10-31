@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Tabs from './tabs';
-import NavBar from '../navbar_container';
 import merge from 'lodash/merge';
 import Modal from 'react-modal';
+import Tabs from './tabs';
+import NavBar from '../navbar_container';
 import PinIndexItem from '../pin/pin_index_item';
+import BoardIndexItem from '../board/board_index_item';
 import UserEditForm from './user_edit';
 
 class UserShow extends React.Component {
@@ -15,11 +16,11 @@ class UserShow extends React.Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.getUserPins = this.getUserPins.bind(this);
+    this.getUserBoards = this.getUserBoards.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchUser( parseInt(this.props.match.params.userId) );
-  //  this.props.fetchUserPins( parseInt(this.props.match.params.userId) );
+    this.props.fetchUser(this.props.match.params.userId);
   }
 
   componentWillMount() {
@@ -45,6 +46,47 @@ class UserShow extends React.Component {
     this.setState({users: nextProps.users});
   }
 
+  getUserBoards(){
+    // if (this.props.boards.length < 1) {
+    //   return <div></div>
+    // }
+    // for(board in this.props.boards) {
+    //   board[pin_ids].map(id => this.props.pins[id] );
+    // };
+    // boards.forEach(board => board = Object.assign({}, board, {author: user.name}));
+
+    return(
+      <ul className="pin-index-list">
+        <li className="create-board">
+            <div onClick={this.openModal} className="add-board">
+              <h2>+</h2>
+              <h4>Create Board</h4>
+            </div>
+              <Modal
+                isOpen={this.state.modalIsOpen}
+                onAfterOpen={this.afterOpenModal}
+                onRequestClose={this.closeModal} >
+
+                <h2 ref={subtitle => this.subtitle = subtitle}>Create a new board</h2>
+                <button onClick={this.closeModal}>X</button>
+                <p/>
+              </Modal>
+        </li>
+        {
+          this.props.boards.map(boardItem => {
+            let board = Object.assign({}, boardItem, {author: this.props.user.name});
+            return (
+              <BoardIndexItem
+                key={board.id}
+                pins={this.props.pins}
+                board={board}
+                deleteBoard={this.props.deleteBoard} />
+            )})
+        }
+      </ul>
+    )
+  }
+
   getUserPins(){
     return(
       <ul className="pin-index-list">
@@ -61,16 +103,17 @@ class UserShow extends React.Component {
 
   render () {
     const user = this.props.user;
-    const currentUser = this.props.currentUser || {}
-    
-    if (user.length < 2) {
+    const currentUser = this.props.currentUser || {};
+
+    if (!user) {
       return <div>Loading...</div>;
     }
 
     const panes = [
-      {title: 'Boards', content: 'boards placeholder'},
+      {title: 'Boards', content: this.getUserBoards() },
       {title: 'Pins', content: this.getUserPins() }
     ]
+
     return (
       <div className="user-show-page">
         <header>

@@ -48,7 +48,7 @@
 }
 
 
-.clickable {
+.clickable, #clickable {
   background-color: #E9E8E8!important;
   border-radius: 20px!important;
   box-shadow: none;
@@ -59,7 +59,7 @@
   width: 50px;
 }
 
-.clickable:hover {
+.clickable:hover, #clickable:hover {
   background-color: #D1D0D0 !important;
   cursor: pointer;
 }

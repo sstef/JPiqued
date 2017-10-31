@@ -122,8 +122,9 @@ class PinShow extends React.Component {
               <p>{pin.description}</p>
               <p>Marked as: {pin.keywords}</p>
               <div className="pin-show-user-info">
-                <h5>Pinned by: <strong>{pin.creator_id}</strong> on
-                  <strong>{pin.board_id}</strong></h5>
+                <h5>Pinned by:
+                  <strong>{pin.creator}</strong> on <strong> {pin.board_name}</strong>
+                </h5>
               </div>
             </div>
 

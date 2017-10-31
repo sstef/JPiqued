@@ -14,6 +14,7 @@ class Headers extends React.Component {
         <li
           key={index}
           className={klass}
+          id="clickable"
           onClick={this.props.onTabChosen.bind(null, index)}>
           {title}{' '}
         </li>

@@ -41,3 +41,50 @@
 .image-show > img {
   width:100%;
 }
+
+.create-board {
+  width: 80%;
+  border: 1px solid #3F88B9;
+  border-radius: 10px;
+  max-height: 200px;
+  height: 300px;
+  opacity: 0.6;
+  background-color: white;
+}
+
+.add-board {
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-board > h2 {
+  font-size: 125px;
+}
+
+.add-board > h4 {
+  font-size: 35px;
+}
+
+.tabs {
+  margin-top: 30px;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 25px;
+  color: #979696;
+  text-align: center;
+}
+.tab-header > li {
+  height: 30px;
+  padding-top: 5px;
+}
+
+.tab-header > li:first-of-type {
+  width: 95px;
+}
+
+.tab-header > li:last-of-type {
+  width: 65px;
+}

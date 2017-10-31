@@ -1,3 +1,5 @@
-json.array! @boards.id do
-  json.partial! 'board' board: board
+@boards.each do |board|
+  json.set! board.id do
+    json.partial! 'api/boards/board', board: board
+  end
 end

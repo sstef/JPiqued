@@ -1,5 +1,6 @@
 import { RECEIVE_PINS, RECEIVE_PIN, REMOVE_PIN } from '../actions/pin_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
+import { RECEIVE_BOARD } from '../actions/board_actions';
 import merge from 'lodash/merge';
 
 const PinReducer = (state = {}, action) => {
@@ -12,6 +13,10 @@ const PinReducer = (state = {}, action) => {
       const newPins = {};
       action.user.pins.forEach( pin => newPins[pin.id] = pin );
       return merge({}, newPins);
+    case RECEIVE_BOARD:
+      const boardPins = {};
+      action.board.pins.forEach( pin => boardPins[pin.id] = pin );
+      return merge({}, boardPins);
     case RECEIVE_PIN:
       return merge({}, state, action.pin);
     case REMOVE_PIN:
