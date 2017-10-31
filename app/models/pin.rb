@@ -23,6 +23,9 @@ class Pin < ApplicationRecord
   validates_attachment :image,
     content_type: { content_type: /\Aimage\/.*\Z/ }
 
+  attr_accessor image_file_name 
+
+
   belongs_to :user,
     foreign_key: :creator_id,
     class_name: :User
