@@ -10,7 +10,6 @@ class Api::PinsController < ApplicationController
     @pin.creator_id = currentUser.id
     board = Board.find_by(creator_id: currentUser.id)
     @pin.board_id = board.id
-    debugger
     if @pin.save
       render :show
     else
@@ -22,7 +21,7 @@ class Api::PinsController < ApplicationController
     @pin = Pin.find(params[:id])
 
     if @pin.update(pin_params) # && (@pin.image.present? && @pin.image.url.exists?)
-      render json: @pin
+      render :show
     else
       render json: @pin.errors.full_messages, status: 422
     end

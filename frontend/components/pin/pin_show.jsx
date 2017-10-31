@@ -57,20 +57,19 @@ class PinShow extends React.Component {
   }
 
   _relatedPins(){
-    // const related = {};
-    const pins = this.props.pins;
-    // for (keyword in this.props.pin.keywords) {
-    //   pins.forEach((rel_pin) => {
-    //     if (rel_pin.keywords.includes(keyword)) related.push(rel_pin);
-    //   });
-    // }
-    //
-    // const list = isEmpty(related) ? this.pins : this.related;
+    const related = {};
+    const pins = this.props.pins || [];
+    for (keyword in this.props.pin.keywords) {
+      pins.forEach((rel_pin) => {
+        if (rel_pin.keywords.includes(keyword)) related.push(rel_pin);
+      });
+    }
+    const list = isEmpty(related) ? this.props.pins : this.related;
 
     return(
       <ul className="pin-index-list">
         {
-          pins.map(pin => (
+          list.map(pin => (
             <PinIndexItem
               key={pin.id}
               deletePin={this.deletePin}
@@ -103,7 +102,7 @@ class PinShow extends React.Component {
                 <img src={pin.image_url} />
               </div>
 
-              <div className={(this.props.currentUser.name) ? "edit-button" : "hidden"}>
+              <div className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
                 <div onClick={this.openModal} className="clickable">Edit</div>
                   <Modal
                     isOpen={this.state.modalIsOpen}
