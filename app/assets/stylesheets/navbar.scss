@@ -64,10 +64,16 @@
   cursor: pointer;
 }
 
+.dropdown > br{
+  position: relative;;
+}
+
 .logout-button{
   width: 160px;
   cursor: pointer;
   padding-top: 15px;
+  position: relative;
+  top: -17px;
 }
 
 a, a:visited {
@@ -83,9 +89,17 @@ a, a:visited {
   padding-bottom: 17px;
   border-bottom-right-radius: 14px;
   padding-top: 15px;
+  top: -17px;
+  position: relative;
 }
 
 a > h1 {
   width: 100%;
   padding-top: 15px;
+  padding-bottom: 17px;
+}
+
+a > h1:hover {
+  color: navy;
+  background-color: #D1D0D0 !important;
 }

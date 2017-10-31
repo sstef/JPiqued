@@ -1,13 +1,13 @@
 .pin-show-page {
   width: 100%;
   padding-top: 50px;
+  background-color: inherit;
 }
 
 .pin-details {
   background-color: #fff;
   display: block;
-  width: 90%;
-  max-width: 1000px;
+  width: 80%;
   min-width: 300px;
   padding-left: 30px;
   padding-right: 40px;
@@ -18,6 +18,8 @@
   margin-left: 6%;
   margin-right: 10%;
   padding-top: 20px;
+  border-radius: 15px;
+  padding-bottom: 20px;
 }
 
 .index-link {
@@ -47,13 +49,15 @@
   display: block
 }
 
-.image_show img {
+.pin-details > img {
   width: 100% !important;
   border-radius: 15px;
+  margin-top: 7px;
+  margin-top: 7px;
 }
 
 .edit-button {
-  width: 40px !important;
+  width: 70px !important;
   padding: 5px !important;
   float: left;
   text-align: center;
@@ -70,7 +74,9 @@
   float: right;
   text-align: center;
   font-weight: bold;
-
+  width: 70px;
+  height: 32px;
+  color: black;
 }
 
 strong {
@@ -93,4 +99,92 @@ strong > a, strong:visited {
 .index-pins {
   background-color: #EDEDED;
   padding-top: 30px;
+}
+
+.edit-form > h3 {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  padding-top: 3px;
+  margin-bottom: 10px;
+}
+
+.edit-form > label {
+  align-content: flex-start;
+}
+
+.edit-form > input,
+.edit-form > textarea {
+  align-content: flex-end;
+}
+
+.edit-form {
+  text-align: center;
+  font-weight: bold;
+  color: #979696;
+  line-height: 1;
+}
+
+.edit-form > form > input {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin: auto;
+  border: none;
+  border-bottom: solid 2px #3F88B9;
+  transition: border 0.3s;
+  line-height: 1.6
+}
+
+.edit-form > form > input:focus {
+  outline: 0;
+  cursor: pointer;
+  box-shadow: none;
+  border-bottom: solid 3px #1E84A4
+}
+
+.edit-form > form > textarea {
+  max-width: 174px;
+  border-radius: 4px;
+  border: solid 1px #1E84A4
+}
+
+.ReactTags__tag {
+    background-color: #C1E6F2;
+    color: black !important;
+    padding: 2px;
+    margin: 3px;
+}
+
+.ReactTags__selected {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  justify-content: center;
+}
+
+.ReactTags__tagInputField {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin: auto;
+  border: none;
+  border-bottom: solid 2px #3F88B9;
+  transition: border 0.3s;
+  line-height: 1.6;
+  align-content: flex-end;
+}
+
+.ReactTags__tagInputField:focus {
+  outline: 0;
+  cursor: pointer;
+  box-shadow: none;
+  border-bottom: solid 3px #1E84A4
+}
+
+.ReactTags__remove {
+  color: red;
+  font-size: 21px;
+  padding: 3px;
 }

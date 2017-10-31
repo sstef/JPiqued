@@ -24,19 +24,6 @@ class PinShow extends React.Component {
   }
 
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-   // references are now sync'd and can be accessed.
-     this.subtitle.style.color = '#f00';
-   }
-
-   closeModal() {
-     this.setState({modalIsOpen: false});
-   }
-
   componentDidMount() {
     this.props.fetchPins();
   }
@@ -47,9 +34,17 @@ class PinShow extends React.Component {
     }
   }
 
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
 
-  getInitialModalState (){
-    return({ modalOpen: false });
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   _handleClick(){
@@ -57,11 +52,12 @@ class PinShow extends React.Component {
   }
 
   _relatedPins(){
-    const related = {};
+    const related = [];
     const pins = this.props.pins || [];
-    for (keyword in this.props.pin.keywords) {
+    for (var keyword in Object.values(this.props.pin.keywords)) {
       pins.forEach((rel_pin) => {
-        if (rel_pin.keywords.includes(keyword)) related.push(rel_pin);
+        let rel_keywords = Object.values(rel_pin.keywords)
+        if (rel_keywords.includes(keyword)) related.push(rel_pin);
       });
     }
     const list = isEmpty(related) ? this.props.pins : this.related;
@@ -87,6 +83,31 @@ class PinShow extends React.Component {
       return <div>Loading...</div>;
     }
 
+  const modalStyle = {
+      overlay : {
+        position          : 'fixed',
+        top               : 0,
+        left              : 0,
+        right             : 0,
+        bottom            : 0,
+        backgroundColor  : 'none',
+      },
+      content : {
+        position                   : 'absolute',
+        top                        : '40%',
+        left                       : '8%',
+        border                     : '1px solid #ccc',
+        background                 : '#fff',
+        overflow                   : 'auto',
+        WebkitOverflowScrolling    : 'touch',
+        borderRadius               : '15px',
+        outline                    : 'none',
+        padding                    : '20px',
+        width                      : '200px',
+        height                     : '300px',
+      }
+    }
+
     return (
         <div className="pin-show-page">
             <Link to="/">
@@ -98,31 +119,28 @@ class PinShow extends React.Component {
                 {pin.title}
               </h2>
 
-              <div className="image-show">
-                <img src={pin.image_url} />
-              </div>
+              <img src={pin.image_url} />
 
               <div className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
                 <div onClick={this.openModal} className="clickable">Edit</div>
                   <Modal
+                    style={modalStyle}
                     isOpen={this.state.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal} >
 
-                    <h2 ref={subtitle => this.subtitle = subtitle}>Edit this pin</h2>
-                    <button onClick={this.closeModal}>close</button>
-                    <PinEditForm pin={ pin } />
+                    <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
+                    <PinEditForm pin={ pin }  closeModal={this.colseModal}/>
                   </Modal>
               </div>
 
-              <div className="pin-show-link-button clickable">
-                <a href={pin.link_url} target="_blank">Visit</a>
-              </div>
+              <a href={pin.link_url} target="_blank">
+                <div className="pin-show-link-button clickable">Visit</div>
+              </a>
 
               <p>{pin.description}</p>
               <p>Marked as: {pin.keywords}</p>
               <div className="pin-show-user-info">
-                <h5>Pinned by:
+                <h5>Pinned by:{' '}
                   <strong>{pin.creator}</strong> on <strong> {pin.board_name}</strong>
                 </h5>
               </div>

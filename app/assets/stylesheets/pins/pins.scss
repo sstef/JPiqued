@@ -20,20 +20,6 @@
   cursor: pointer;
 }
 
-#popover-pin-form {
-  position: fixed;
-  right: 7%;
-  top: 44%;
-  display: block;
-  width: 200px;
-  height: 324px;
-  z-index: 100;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 10px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
 .pin-index-list {
   padding: 15px;
 
@@ -134,4 +120,8 @@
 .pin-index-item > a > img {
   width: 100% !important;
   border-radius: 5px;
+}
+
+.pin-show-page, .pin-index-page {
+  background-color: #E9E8E8;
 }
