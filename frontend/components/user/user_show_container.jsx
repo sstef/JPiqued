@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
   const pins = user.pins.map( id => state.entities.pins[id] );
   return ({
     user,
-    pins
+    pins,
+    currentUser: state.session.currentUser
   });
 };
 
