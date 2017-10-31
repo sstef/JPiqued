@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import Tabs from './tabs';
 import NavBar from '../navbar_container';
 import merge from 'lodash/merge';
-import PinIndexItem from '../pin/pin_index_item'
+import PinIndexItem from '../pin/pin_index_item';
+import UserEditForm from './user_edit.jsx';
 
 class UserShow extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     this.props.fetchUser( parseInt(this.props.match.params.userId) );
   //  this.props.fetchUserPins( parseInt(this.props.match.params.userId) );
@@ -23,7 +28,6 @@ class UserShow extends React.Component {
   }
 
   getUserPins(){
-    debugger
     return(
       <ul className="pin-index-list">
         {

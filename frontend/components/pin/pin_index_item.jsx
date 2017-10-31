@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 
-const PinIndexItem = ({ pin, router, deletePin, history }) => {debugger
+const PinIndexItem = ({ pin, router, deletePin, history }) => {
   return (
     <li>
       <div className="pin-index-item">
