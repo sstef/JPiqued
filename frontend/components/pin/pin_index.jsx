@@ -58,6 +58,8 @@ class PinIndex extends React.Component {
         },
         content : {
           position                   : 'absolute',
+          top : 'none',
+          left: 'none',
           bottom                     : '65px',
           right                       : '25px',
           border                     : '1px solid #ccc',
@@ -68,7 +70,7 @@ class PinIndex extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '250px',
-          height                     : '365px',
+          height                     : '450px',
         }
       }
 

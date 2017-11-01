@@ -52,12 +52,15 @@ class PinShow extends React.Component {
   }
 
   _relatedPins(){
+    if (!this.props) {
+      return (<div></div>);
+    }
     const related = [];
     const rel_pins = [];
     for (var keyword in this.props.pin.keywords) {
       this.props.pins.forEach((rel_pin) => {
-        let rel_keywords = Object.values(rel_pin.keywords)
         debugger
+        let rel_keywords = Object.values(rel_pin.keywords)
         if (rel_keywords.includes(keyword[text])) related.push(rel_pin);
       });
     }
