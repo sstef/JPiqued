@@ -32,7 +32,7 @@ gem 'figaro'
 gem 'aws-sdk', '< 3.0'
 gem 'pusher'
 
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'aws-sdk', '< 3.0'
