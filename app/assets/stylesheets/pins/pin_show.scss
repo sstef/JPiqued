@@ -56,19 +56,6 @@
   margin-top: 7px;
 }
 
-.edit-button {
-  width: 70px !important;
-  padding: 5px !important;
-  float: left;
-  text-align: center;
-  font-weight: bold;
-}
-
-.edit-button > a, .edit-button:visited {
-  color: white;
-  text-decoration: none;
-}
-
 .pin-show-link-button {
   padding: 5px;
   float: right;
@@ -187,4 +174,21 @@ strong > a, strong:visited {
   color: red;
   font-size: 21px;
   padding: 3px;
+}
+
+.edit-button {
+  background-image: image_url('edit.png');
+  opacity: 0.6;
+  padding: 6px;
+  height: 35px;
+  width: 35px;
+  background-size: 100%;
+  height: 15px;
+  width: 15px;
+}
+
+.edit-button:hover {
+  background-color: #D1D0D0;
+  cursor: pointer;
+  padding: 10px;
 }

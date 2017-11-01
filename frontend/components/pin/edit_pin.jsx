@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { updatePin } from '../../actions/pin_actions';
 import map from 'lodash/map';
 import { WithContext as ReactTags } from 'react-tag-input';
 
@@ -39,7 +38,7 @@ class PinEditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.updatePin(this.state).then(() => {
-      this.props.closeModal()
+      this.props.closeModal();
     });
   }
 

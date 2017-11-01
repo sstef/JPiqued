@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { updateUser } from '../../actions/user_actions';
 import map from 'lodash/map';
 
 class UserEditForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.user;
+    this.state = Object.assign({}, this.props.user);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
    }

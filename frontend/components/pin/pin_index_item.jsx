@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 
-const PinIndexItem = ({ pin, router, deletePin, history }) => {
+const PinIndexItem = ({ key, pin, router, deletePin, history }) => {
   return (
-    <li>
+    <li key={key}>
       <div className="pin-index-item">
         <Link to={`/pins/${pin.id}`} style={{cursor:'zoom-in'}} >
           <img src={pin.image_url} />

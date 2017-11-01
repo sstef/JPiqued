@@ -2,7 +2,8 @@ import { logoutAction } from '../actions/session_actions';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-// import classes from '../../assets/stylesheets/navbar.scss'
+import Modal from 'react-modal';
+import UserEditForm from './user/user_edit';
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logoutAction())
+    logout: () => dispatch(logoutAction()),
+    updateUser: user => dispatch(updateUser(user)),
   };
 };
 
@@ -21,11 +23,21 @@ class NavBar extends React.Component {
   // you can view the article here: https://larsgraubner.com/handle-outside-clicks-react/
   constructor(props){
       super(props);
-      this.state =  Object.assign({}, this.props, {isOpen: false});
+      this.state =  Object.assign({}, this.props, {isOpen: false, modalIsOpen: false});
       this.toggleDropdown = this.toggleDropdown.bind(this);
       this.handleClick = this.handleClick.bind(this);
       this.handleOutsideClick = this.handleOutsideClick.bind(this);
+      this.openModal = this.openModal.bind(this);
+      this.closeModal = this.closeModal.bind(this);
   }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+ closeModal() {
+     this.setState({modalIsOpen: false});
+   }
 
   toggleDropdown () {
     this.setState({isOpen: !this.state.isOpen});
@@ -41,7 +53,7 @@ class NavBar extends React.Component {
      this.toggleDropdown()
   }
 
-  handleOutsideClick(e) {
+  handleOutsideClick (e) {
     if (this.node.contains(e.target)) {
       return;
     }
@@ -53,6 +65,34 @@ class NavBar extends React.Component {
     if (!this.props.currentUser){
       return <div></div>;
     };
+
+    const modalStyle = {
+        overlay : {
+          position          : 'fixed',
+          top               : 0,
+          left              : 0,
+          right             : 0,
+          bottom            : 0,
+          backgroundColor  : 'none',
+        },
+        content : {
+          position                   : 'absolute',
+          top : '59px',
+          left: 'none',
+          bottom                     : '59px',
+          right                      : '-1px',
+          border                     : '1px solid #ccc',
+          background                 : '#fff',
+          overflow                   : 'auto',
+          WebkitOverflowScrolling    : 'touch',
+          borderBottomLeftRadius     : '15px',
+          outline                    : 'none',
+          padding                    : '20px',
+          width                      : '250px',
+          height                     : '450px',
+        }
+      }
+
     return (
         <div className="navigation-header">
           <div className="navlogo-container clickable">
@@ -76,11 +116,24 @@ class NavBar extends React.Component {
             <div className={(this.state.isOpen) ? "dropdown" : "hidden"}>
 
               <Link to={`/users/${this.props.currentUser.id}`} >
-                <h1>Go to profile</h1>
+                <h1>Go to Profile</h1>
               </Link>
-
               <br />
 
+              <div className="edit-account" >
+                  <div onClick={this.openModal} className="account-button">Edit Account</div>
+                    <Modal
+                      style={modalStyle}
+                      isOpen={this.state.modalIsOpen}
+                      onAfterOpen={this.afterOpenModal}
+                      onRequestClose={this.closeModal} >
+
+                      <button onClick={this.closeModal}>close</button>
+                      <UserEditForm user={ this.props.currentUser } updateUser={() => this.props.updateUser} />
+                    </Modal>
+                </div>
+
+                <br />
               <div onClick={this.props.logout} className="logout-button">
                 Logout
               </div>

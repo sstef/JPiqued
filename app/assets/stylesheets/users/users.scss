@@ -17,10 +17,6 @@
   justify-content: space-between;
 }
 
-.pin-board-tabs {
-
-}
-
 .following-info > h1 {
   text-align: center;
   font-size: 37px;
@@ -41,6 +37,7 @@
 
 .image-show > img {
   width:100%;
+  border-radius: 200px;
 }
 
 .create-board {
@@ -77,6 +74,7 @@
   color: #979696;
   text-align: center;
 }
+
 .tab-header > li {
   height: 30px;
   padding-top: 5px;

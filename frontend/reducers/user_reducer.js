@@ -1,4 +1,5 @@
 import { RECEIVE_USERS, RECEIVE_USER, REMOVE_USER } from '../actions/user_actions';
+import { RECEIVE_BOARD } from '../actions/board_actions';
 import merge from 'lodash/merge'
 
 const UserReducer = (state = {}, action) => {
@@ -6,10 +7,12 @@ const UserReducer = (state = {}, action) => {
   switch(action.type){
     case RECEIVE_USERS:
       return merge({}, action.users);
+    case RECEIVE_BOARD:
+      return merge({}, state, {[action.board.creator.id]: action.board.creator})
     case RECEIVE_USER:
       const newUser = Object.assign({}, action.user);
       newUser.pins = newUser.pins.map(pin => pin.id);
-      newUser.boards = newUser.boards.map(board => board.id);    
+      newUser.boards = newUser.boards.map(board => board.id);
       return merge({}, state, { [newUser.id]: newUser });
     case REMOVE_USER:
       let newState = merge({}, state);

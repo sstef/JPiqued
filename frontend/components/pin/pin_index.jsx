@@ -73,13 +73,15 @@ class PinIndex extends React.Component {
           height                     : '450px',
         }
       }
-
-
+      if (!this.props){
+        return <div></div>
+      }
+      debugger
     return (
       <div className="pin-index-page">
-        <header>
-          <NavBar props={this.props} />
-        </header>
+        // <header>
+        //   <NavBar props={this.props} />
+        // </header>
         <div className="index-pins">
           <ul className="pin-index-list">
             {

@@ -6,41 +6,18 @@ import Tabs from './tabs';
 import NavBar from '../navbar_container';
 import PinIndexItem from '../pin/pin_index_item';
 import BoardIndexItem from '../board/board_index_item';
-import UserEditForm from './user_edit';
 
 class UserShow extends React.Component {
   constructor(props){
     super(props);
-    this.state = Object.assign({}, this.props.user, { modalIsOpen: false });
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.state = this.props.user
     this.getUserPins = this.getUserPins.bind(this);
     this.getUserBoards = this.getUserBoards.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchUser(this.props.match.params.userId);
+  componentDidMount(){
+    this.props.fetchUser(this.props.match.params.userId)
   }
-
-  componentWillMount() {
-    let body = document.getElementById('root');
-    body.style.backgroundImage = null;
-    body.style.backgroundColor = "#EDEDED";
-  }
-
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-   // references are now sync'd and can be accessed.
-     this.subtitle.style.color = '#f00';
-   }
-
-   closeModal() {
-     this.setState({modalIsOpen: false});
-   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({users: nextProps.users});
@@ -113,7 +90,6 @@ class UserShow extends React.Component {
       {title: 'Boards', content: this.getUserBoards() },
       {title: 'Pins', content: this.getUserPins() }
     ]
-
     return (
       <div className="user-show-page">
         <header>
@@ -126,20 +102,6 @@ class UserShow extends React.Component {
             <p>Follows: <strong>{user.follows ? user.follows.length : 0}</strong>
               <br />
                Following: <strong>XXXXX</strong></p>
-
-
-             <div className={(currentUser.id === user.id) ? "edit-button" : "hidden"}>
-               <div onClick={this.openModal} className="clickable">Edit</div>
-                 <Modal
-                   isOpen={this.state.modalIsOpen}
-                   onAfterOpen={this.afterOpenModal}
-                   onRequestClose={this.closeModal} >
-
-                   <h2 ref={subtitle => this.subtitle = subtitle}>Update your profile</h2>
-                   <button onClick={this.closeModal}>close</button>
-                   <UserEditForm user={ user } />
-                 </Modal>
-             </div>
 
           </article>
 

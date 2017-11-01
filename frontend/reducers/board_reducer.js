@@ -12,7 +12,10 @@ const BoardReducer = (state = {}, action) => {
       action.user.boards.forEach( board => newBoards[board.id] = board );
       return merge({}, newBoards);
     case RECEIVE_BOARD:
-      return merge({}, state, {[action.board.id]: action.board});
+      const newBoard = merge({}, action.board);
+      newBoard.pins = newBoard.pins.map(pin => pin.id);
+      newBoard.creator = newBoard.creator.id;
+      return merge({}, state, newBoard);
     case REMOVE_BOARD:
       let newState = merge({}, state);
       delete newState[action.board.id];

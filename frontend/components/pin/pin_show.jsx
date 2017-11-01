@@ -12,7 +12,6 @@ class PinShow extends React.Component {
     this._relatedPins = this._relatedPins.bind(this);
     this.state = Object.assign({}, this.props.pin, { modalIsOpen: false });
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -38,10 +37,6 @@ class PinShow extends React.Component {
     this.setState({modalIsOpen: true});
   }
 
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
 
   closeModal() {
     this.setState({modalIsOpen: false});
@@ -59,7 +54,6 @@ class PinShow extends React.Component {
     const rel_pins = [];
     for (var keyword in this.props.pin.keywords) {
       this.props.pins.forEach((rel_pin) => {
-        debugger
         let rel_keywords = Object.values(rel_pin.keywords)
         if (rel_keywords.includes(keyword[text])) related.push(rel_pin);
       });
@@ -133,7 +127,9 @@ class PinShow extends React.Component {
                     onRequestClose={this.closeModal} >
 
                     <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-                    <PinEditForm pin={ pin }  closeModal={this.colseModal}/>
+                    <PinEditForm pin={ this.props.pin }
+                      updateUser={this.props.updateUser.bind(this)}
+                      closeModal={this.colseModal}/>
                   </Modal>
               </div>
 

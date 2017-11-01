@@ -9,6 +9,8 @@
 #  pin_ids     :integer          default([]), is an Array
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category    :string
+#  secret      :boolean          default(FALSE)
 #
 
 class Board < ApplicationRecord

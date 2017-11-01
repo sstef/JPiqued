@@ -49,4 +49,9 @@ caption, th, td {
 
 #root {
   background-color: #EDEDED;
+  position: absolute;;
+}
+
+#root > div {
+  margin: 0 auto;
 }

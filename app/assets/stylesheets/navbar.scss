@@ -38,11 +38,11 @@
   position: absolute;
   background-color: white;
   width: 160px;
-  height: 95px;
-  border-bottom-left-radius: 15px;
+  height: 142px;
+  border-bottom-left-radius: 16px;
   top: 60px;
   right: 8%;
-  border-bottom-right-radius: 15px;
+  border-bottom-right-radius: 16px;
   border: 2px solid #3F88B9;
   border-top: white;
 }
@@ -57,6 +57,11 @@
 .navlogo-container {
   height: 50px;
   width: 50px;
+}
+
+.edit-account {
+  position: relative;
+  height: 31px;
 }
 
 .clickable:hover, #clickable:hover {
@@ -102,4 +107,22 @@ a > h1 {
 a > h1:hover {
   color: navy;
   background-color: #D1D0D0 !important;
+}
+
+.account-button{
+  width: 160px;
+  cursor: pointer;
+  padding-top: 15px;
+  position: relative;
+  top: -17px;
+}
+
+.account-button:hover {
+  color: navy;
+  background-color: #D1D0D0 !important;
+  padding: inherit;
+  padding-bottom: 17px;
+  padding-top: 15px;
+  top: -17px;
+  position: relative;
 }
