@@ -21,10 +21,17 @@
 }
 
 .user-dropdown {
-  position: relative;
-  vertical-align: middle;
   padding: 5px;
-  width: 80px;
+  font-size: 3.0vw !important;
+  width: 200px;
+  display: inline-block;
+  justify-content: center;
+  font-size: 25px;
+  padding-left: 0px;
+  max-width: 140px;
+  padding-right: 0px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .user-dropdown > img {

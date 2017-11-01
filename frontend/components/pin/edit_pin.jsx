@@ -37,8 +37,10 @@ class PinEditForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updatePin(this.state).then(() => {
-      this.props.closeModal();
+    this.setState({keywords: this.state.keywords.map(keyword => keyword.text)}, () => {
+      this.props.updatePin(this.state).then(() => {
+        this.props.closeModal();
+      });
     });
   }
 

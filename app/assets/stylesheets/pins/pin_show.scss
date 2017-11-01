@@ -5,6 +5,7 @@
 }
 
 .pin-details {
+  position: relative;
   background-color: #fff;
   display: block;
   width: 80%;
@@ -176,6 +177,10 @@ strong > a, strong:visited {
   padding: 3px;
 }
 
+.interactive-pin-buttons {
+  position:relative;
+}
+
 .edit-button {
   background-image: image_url('edit.png');
   opacity: 0.6;
@@ -185,10 +190,15 @@ strong > a, strong:visited {
   background-size: 100%;
   height: 15px;
   width: 15px;
+  position: absolute;
+  left: 8px;
+  top: 5px;
 }
 
 .edit-button:hover {
   background-color: #D1D0D0;
   cursor: pointer;
   padding: 10px;
+  border-radius: 10px;
+  border: 4px solid #D1D0D0;
 }

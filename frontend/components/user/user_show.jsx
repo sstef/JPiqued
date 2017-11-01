@@ -90,6 +90,8 @@ class UserShow extends React.Component {
       {title: 'Boards', content: this.getUserBoards() },
       {title: 'Pins', content: this.getUserPins() }
     ]
+
+    
     return (
       <div className="user-show-page">
         <header>

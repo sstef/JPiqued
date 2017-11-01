@@ -19,6 +19,7 @@ class Api::PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
+    debugger
 
     if @pin.update(pin_params) # && (@pin.image.present? && @pin.image.url.exists?)
       render :show
@@ -41,7 +42,7 @@ class Api::PinsController < ApplicationController
   private
 
   def pin_params
-    params.require(:pin).permit(:description, :keywords, :title, :link_url, :image)
+    params.require(:pin).permit(:description, :title, :link_url, :image, keywords: [])
   end
 
 end

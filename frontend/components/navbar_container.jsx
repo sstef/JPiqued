@@ -110,7 +110,7 @@ class NavBar extends React.Component {
             ref={node => { this.node = node; }} >
 
             <img src={this.props.currentUser.avatar_url} />
-            {this.props.currentUser.name.split(' ')[0]}
+            <div>{this.props.currentUser.name.split(' ')[0]}</div>
           </div>
 
             <div className={(this.state.isOpen) ? "dropdown" : "hidden"}>

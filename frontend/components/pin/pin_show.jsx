@@ -55,7 +55,7 @@ class PinShow extends React.Component {
     for (var keyword in this.props.pin.keywords) {
       this.props.pins.forEach((rel_pin) => {
         let rel_keywords = Object.values(rel_pin.keywords)
-        if (rel_keywords.includes(keyword[text])) related.push(rel_pin);
+        if (rel_keywords.includes(keyword.text)) related.push(rel_pin);
       });
     }
     const list = isEmpty(related) ? this.props.pins : this.related;
@@ -118,9 +118,9 @@ class PinShow extends React.Component {
               </h2>
 
               <img src={pin.image_url} />
-
+            <div className="interactive-pin-buttons">
               <div className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
-                <div onClick={this.openModal} className="clickable">Edit</div>
+                <div onClick={this.openModal}></div>
                   <Modal
                     style={modalStyle}
                     isOpen={this.state.modalIsOpen}
@@ -128,17 +128,18 @@ class PinShow extends React.Component {
 
                     <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
                     <PinEditForm pin={ this.props.pin }
-                      updateUser={this.props.updateUser.bind(this)}
-                      closeModal={this.colseModal}/>
+                      updatePin={this.props.updatePin}
+                      closeModal={this.closeModal}/>
                   </Modal>
               </div>
 
               <a href={pin.link_url} target="_blank">
                 <div className="pin-show-link-button clickable">Visit</div>
               </a>
+            </div>
 
               <p>{pin.description}</p>
-              <p>Marked as: {pin.keywords}</p>
+              <p>Marked as: {pin.keywords.map(keyword => keyword.text).join(', ')}</p>
               <div className="pin-show-user-info">
                 <h5>Pinned by:{' '}
                   <strong>{pin.creator}</strong> on <strong> {pin.board_name}</strong>
