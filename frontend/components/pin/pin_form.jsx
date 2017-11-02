@@ -70,10 +70,8 @@ class PinForm extends React.Component {
         keywords: [],
         imageUrl: "",
         imageFile: null
-      },
-        this.closeModal()
-      );
-    });
+      });
+    }).then(() => this.props.closeModal());
   }
 
   render () {

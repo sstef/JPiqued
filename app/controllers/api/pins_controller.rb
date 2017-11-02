@@ -19,8 +19,7 @@ class Api::PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
-    debugger
-
+    
     if @pin.update(pin_params) # && (@pin.image.present? && @pin.image.url.exists?)
       render :show
     else

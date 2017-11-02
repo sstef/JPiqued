@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigation } from 'react-router-dom';
 import NavBar from '../navbar_container';
 import isEmpty from 'lodash/isEmpty';
 import PinIndexItem from './pin_index_item';
-import PinEditForm from './edit_pin_container';
+import PinEditForm from './edit_pin';
 import Modal from 'react-modal';
 
 class PinShow extends React.Component {
@@ -36,6 +36,7 @@ class PinShow extends React.Component {
   openModal() {
     this.setState({modalIsOpen: true});
   }
+
 
 
   closeModal() {
@@ -117,26 +118,27 @@ class PinShow extends React.Component {
                 {pin.title}
               </h2>
 
+
+
               <img src={pin.image_url} />
             <div className="interactive-pin-buttons">
-              <div className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
-                <div onClick={this.openModal}></div>
-                  <Modal
+              <div onClick={this.openModal} className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
+                <Modal
                     style={modalStyle}
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal} >
 
                     <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
                     <PinEditForm pin={ this.props.pin }
-                      updatePin={this.props.updatePin}
-                      closeModal={this.closeModal}/>
+                      updatePin={this.props.updatePin.bind(this)}
+                      closeModal={this.closeModal.bind(this)}/>
                   </Modal>
               </div>
 
               <a href={pin.link_url} target="_blank">
                 <div className="pin-show-link-button clickable">Visit</div>
               </a>
-            </div>
+          </div>
 
               <p>{pin.description}</p>
               <p>Marked as: {pin.keywords.map(keyword => keyword.text).join(', ')}</p>

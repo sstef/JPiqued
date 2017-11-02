@@ -105,7 +105,7 @@ class PinIndex extends React.Component {
             onRequestClose={this.closeModal} >
 
             <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-            <PinFormContainer closeModal={this.colseModal} />
+            <PinFormContainer closeModal={this.closeModal.bind(this)} />
           </Modal>
         </div>
 

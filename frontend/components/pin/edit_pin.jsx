@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React from 'react';
 import map from 'lodash/map';
 import { WithContext as ReactTags } from 'react-tag-input';
@@ -37,11 +36,14 @@ class PinEditForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (this.keywords.tags != []) {
     this.setState({keywords: this.state.keywords.map(keyword => keyword.text)}, () => {
       this.props.updatePin(this.state).then(() => {
         this.props.closeModal();
       });
-    });
+    });} else {
+      this.props.updatePin(this.state).then(() => this.props.closeModal());
+    }
   }
 
   render () {
