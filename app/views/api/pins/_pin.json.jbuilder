@@ -5,7 +5,6 @@ json.creator pin.user.name
 json.keywords pin.keywords
 json.link_url pin.link_url
 json.title pin.title
-json.category pin.board.category
 json.image_url asset_path(pin.image.url(:original))
 json.board do
   json.id pin.board_id

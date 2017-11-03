@@ -8,5 +8,4 @@ json.creator do
   json.avatar_url asset_path(board.user.avatar.url(:thumb))
 end
 json.description board.description
-json.category board.category
 json.secret board.secret
