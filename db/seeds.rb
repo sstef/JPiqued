@@ -39,16 +39,16 @@ IMAGES = [
     'https://s3.us-east-2.amazonaws.com/jpiqued-seeds/seeds/zoidberg.jpg'
 ]
 
-# User.destroy_all
-# User.create!(name: "Demo User", email: "guest@guest.com", password: "password")
-# 5.times do
-#   User.create!(
-#     name: Faker::BackToTheFuture.character,
-#     email: Faker::Internet.email(Faker::DragonBall.character),
-#     password: 'password'
-#   )
-# end
-#
+User.destroy_all
+User.create!(name: "Demo User", email: "guest@guest.com", password: "password")
+5.times do
+  User.create!(
+    name: Faker::BackToTheFuture.character,
+    email: Faker::Internet.email(Faker::DragonBall.unique.character),
+    password: 'password'
+  )
+end
+
 
 Board.destroy_all
 
