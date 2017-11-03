@@ -43,7 +43,7 @@ User.destroy_all
 User.create!(name: "Demo User", email: "guest@guest.com", password: "password")
 5.times do
   User.create!(
-    name: Faker::BackToTheFuture.character,
+    name: Faker::HarryPotter.character,
     email: Faker::Internet.email(Faker::DragonBall.unique.character),
     password: 'password'
   )
