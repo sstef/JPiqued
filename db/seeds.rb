@@ -78,7 +78,7 @@ end
 10.times do
   User.all.each do |user|
     user.boards.each do |board|
-      board.update_attribute(:pin_ids, 5.times.collect { Pins.all.sample.id } )
+      board.update_attribute(:pin_ids, 5.times.collect { Pin.all.sample.id } )
     end
   end
 end
