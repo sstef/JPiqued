@@ -10,7 +10,7 @@ export const login = (user) => {   //expect to be object with username and passw
   return $.ajax({
       url: 'api/session',
       method: "POST",
-      data:  user
+      data:  { user }
   });
 };
 
