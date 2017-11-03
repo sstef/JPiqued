@@ -40,10 +40,10 @@ class UserEditForm extends React.Component {
     formData.append("user[password]", this.state.password);
 
     if (file) {
-      formData.append("user[image]", file);
+      formData.append("user[avatar]", file);
     }
 
-    this.props.updateUser(this.state).then(() => {
+    this.props.updateUser(this.state, () => {
       this.setState(name: "", email: "", password: "", imageUrl: "", imageFile: null)
     });
   }

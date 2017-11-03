@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import PinIndexItem from './pin_index_item';
 import PinEditForm from './edit_pin';
 import Modal from 'react-modal';
+import find from 'lodash/find';
 
 class PinShow extends React.Component {
   constructor(props){
@@ -17,6 +18,7 @@ class PinShow extends React.Component {
 
 
   componentWillMount() {
+    window.scrollTo(0, 0);
     let body = document.getElementById('root');
     body.style.backgroundImage = null
     body.style.backgroundColor = "#EDEDED"
@@ -38,8 +40,6 @@ class PinShow extends React.Component {
     this.setState({modalIsOpen: true});
   }
 
-
-
   closeModal() {
     this.setState({modalIsOpen: false});
   }
@@ -60,6 +60,11 @@ class PinShow extends React.Component {
         if (rel_keywords.includes(keyword.text)) related.push(rel_pin);
       });
     }
+
+    const cat_pins = find(this.props.pins, {category: this.props.pin.category});
+    related.concat(rel_pins);
+    related.concat(cat_pins);
+
     const list = isEmpty(related) ? this.props.pins : this.related;
 
     return(
@@ -139,16 +144,21 @@ class PinShow extends React.Component {
               <a href={pin.link_url} target="_blank">
                 <div className="pin-show-link-button clickable">Visit</div>
               </a>
-          </div>
 
-              <p>{pin.description}</p>
-              <p>Marked as: {pin.keywords.map(keyword => keyword.text).join(', ')}</p>
-              <div className="pin-show-user-info">
-                <h5>Pinned by:{' '}
-                  <strong>{pin.creator}</strong> on <strong> {pin.board_name}</strong>
-                </h5>
               </div>
-            </div>
+                <div style={{fontSize: '20px', marginTop: '55px'}}>
+                  <p style={{marginBottom: '15px'}}>{pin.description}</p>
+                  <p style={{marginBottom: '15px'}}>Marked as: {pin.keywords.map(keyword => keyword.text).join(', ')}</p>
+                  <div className="pin-show-user-info">
+                    <h5>Pinned by:{' '}
+                      <Link to={`/users/${pin.creator_id}`}><strong>
+                        {pin.creator}</strong></Link> on
+                     <Link to={`${this.props.currentUser.name.split(' ').join("_")}/board/${pin.board_id}`} >
+                       <strong> {pin.board_name}</strong></Link>
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
             <div className="index-pins">
               <h3>Related</h3>

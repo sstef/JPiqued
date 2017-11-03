@@ -11,12 +11,17 @@ class BoardEditForm extends React.Component {
     this.state = this.props.board;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this._onSelect = this._onSelect.bind(this);
   }
 
   update(field) {
     return (e) => {
       this.setState({[field]: e.target.value});
     };
+  }
+
+  _onSelect(name){
+    this.setState({category: name.label});
   }
 
   handleChange (e) {
@@ -76,10 +81,9 @@ class BoardEditForm extends React.Component {
           <br />
 
           <label>Update category:
-            <Dropdown options={options}
-              value={this.state.category}
-              onChange={this.update('category')}
-              placeholder="Select an category" />
+            <Dropdown options={names}
+              onSelect={this._onSelect}
+              placeholder="Select a board" />
           </label>
           <br/>
 

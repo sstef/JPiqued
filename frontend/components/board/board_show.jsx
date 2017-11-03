@@ -92,7 +92,7 @@ class BoardShow extends React.Component {
                   onRequestClose={this.closeModal} >
 
                   <div onClick={this.closeModal} className='modal-close clickable'>X</div>
-                  <BoardEditForm board={ this.board } />
+                  <BoardEditForm board={ this.board } updateBoard={this.props.createBoard}/>
                 </Modal>
               </div>
               <div className="board-info">

@@ -14,7 +14,7 @@ export const fetchBoard = id => (
 
 export const createBoard = board => (
   $.ajax({
-    url: `api/boards/${board.id}`,
+    url: `api/boards`,
     method: 'POST',
     data: { board }
   })

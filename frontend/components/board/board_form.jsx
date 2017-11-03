@@ -11,15 +11,24 @@ class BoardForm extends React.Component {
                 name: "",
                 description: "",
                 category: "",
-                private: false }
+                private: false };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.onSelect = this.onSelect.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
+
 
   update(field) {
     return (e) => {
+      e.preventDefault();
       this.setState({[field]: e.target.value});
     };
+  }
+
+  onSelect(option){
+    debugger
+    this.setState({category: option.label});
   }
 
   handleChange (e) {
@@ -29,66 +38,56 @@ class BoardForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const board = {
-      name: this.state.name,
-      description: this.state.description,
-      category: this.state.category,
-      private: this.state.private,
-    }
+    debugger
 
-    this.props.updateBoard(board).then(() => {
+    this.props.createBoard(this.state).then(() => {
       this.setState(name: "", description: "", category: "", secret: false );
     });
   }
 
   render () {
-    if (!this.props.board){
-      return ( <div></div> )
-    }
+    // if (!this.props.board){
+    //   return ( <div></div> )
+    // }
     const options = [
         'Home', 'Electronics', 'Fashion',
         'Crafts', 'Animals', 'Architecture',
         'Art', 'Car', 'Cars and motorcycles',
-        'Design', 'Entertainment', 'Food and drink',
+        'Design', 'Food and drink',
         'Travel', 'Science and nature', 'Technology',
         'Hobbies', 'Health and fitness', 'Hair and beauty',
         'Motivational', 'Entertainment', 'Sports',
         'Kids and parenting', 'Humor', 'Holidays',
-        'Tattoos', 'Sports', 'Holiday and events'
+        'Tattoos', 'Holiday and events'
       ]
     return (
-      <div className="board-form">
+      <div className="pin-form">
         <h3>Create a Board</h3>
         <form onSubmit={this.handleSubmit}>
 
-          <label>Create board name:
+          <label>Create board name:</label>
           <input type="text"
             onChange={this.update('name')}
             placeholder="Add a board name" />
-          </label>
           <br />
 
-          <label>Board description:
+          <label>Board description:</label>
           <textarea
-            onChange={this.update('email')}
+            onChange={this.update('description')}
             placeholder="What is the board about?" />
-          </label>
           <br />
 
-          <label> category:
+          <label>Make it private:</label>
+          <Toggle
+            onSelect={this.handleChange}
+            value={this.state.secret} />
+
+          <label>Category:</label>
             <Dropdown options={options}
-              onChange={this.update('category')}
+              onChange={this.onSelect}
               placeholder="Select a category" />
-          </label>
-          <br/>
 
-          <label>Make it private:
-            <Toggle
-              defaultChecked={this.state.secret}
-              onChange={this.handleChange} />
-          </label>
-
-          <input type="submit" value="Update" />
+          <input type="submit" value="Create" />
         </form>
       </div>
     );

@@ -37,8 +37,8 @@ class PinForm extends React.Component {
     };
   }
 
-  _onSelect(name){
-    this.setState({board_name: name.label});
+  _onSelect(option){
+    this.setState({board_name: option.label});
   }
 
   uploadFile(e){
@@ -87,7 +87,7 @@ class PinForm extends React.Component {
 
     const tags = this.keywords.tags;
     const boards = this.props.boards;
-    debugger
+
     const names = [];
     this.props.boards.forEach(board => names.push(board.name));
     return (
@@ -117,14 +117,6 @@ class PinForm extends React.Component {
             placeholder="Add a url here" />
           <br />
 
-            <label>Add keywords:</label>
-            <div>
-              <ReactTags tags={tags}
-                  handleDelete={this.handleDelete}
-                  placeholder={'Add keywords:'}
-                  handleAddition={this.handleAddition} />
-            </div>
-
             <label>Add a description of this pin:</label>
             <textarea
               type="text"
@@ -146,3 +138,15 @@ class PinForm extends React.Component {
 }
 
 export default PinForm;
+
+
+
+// TODO: Create keyword tags table and implement the tagging of keywords
+//
+// <label>Add keywords:</label>
+// <div>
+//   <ReactTags tags={tags}
+//     handleDelete={this.handleDelete}
+//     placeholder={'Add keywords:'}
+//     handleAddition={this.handleAddition} />
+// </div>

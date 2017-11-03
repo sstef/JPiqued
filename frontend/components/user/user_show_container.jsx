@@ -1,5 +1,5 @@
 import { fetchUser } from '../../actions/user_actions';
-import { deleteBoard } from '../../actions/board_actions';
+import { deleteBoard, createBoard } from '../../actions/board_actions';
 import { connect } from 'react-redux';
 import UserShow from './user_show';
 
@@ -18,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchUser: id => dispatch(fetchUser(id)),
-  deletBoard: id => dispatch(deletBoard(id))
+  deleteBoard: id => dispatch(deleteBoard(id)),
+  createBoard: board => dispatch(createBoard())
 });
 
 export default connect(

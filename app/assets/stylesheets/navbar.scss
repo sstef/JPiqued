@@ -1,7 +1,7 @@
 .logo {
-  height: 40px!important;
-  width: 40px!important;
-  margin-top: 3px;
+  height: 30px !important;
+  width: 30px !important;
+  margin-top: 8px;
 }
 
 .navigation-header {
@@ -22,7 +22,7 @@
 
 .user-dropdown {
   padding: 5px;
-  font-size: 3.0vw !important;
+  font-size: 2.0vw !important;
   width: 200px;
   display: inline-block;
   justify-content: center;
@@ -33,10 +33,14 @@
   display: inline-flex;
   align-items: center;
 }
+.user-dropdown > div {
+  margin-left: 4px;
+  margin-top: 4px;
+}
 
 .user-dropdown > img {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 20px
 }
 
@@ -132,4 +136,19 @@ a > h1:hover {
   padding-top: 15px;
   top: -17px;
   position: relative;
+}
+
+.searchbar {
+  background-color: white;
+  border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 28%;
+  padding-left: 10px;
+}
+
+.home-button {
+  padding: 9px;
+  margin-top: 7%;
+  font-size: 2.2vw;
 }

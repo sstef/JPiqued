@@ -49,7 +49,6 @@ class PinEditForm extends React.Component {
   render () {
     const pin = this.props.pin;
     const tags = this.keywords.tags;
-
     return (
       <div className="edit-form">
         <h3>Edit this pin</h3>
@@ -69,13 +68,6 @@ class PinEditForm extends React.Component {
             placeholder="Add a url here" />
           <br />
 
-          <label>Add keywords:</label>
-          <div>
-            <ReactTags tags={tags}
-                handleDelete={this.handleDelete}
-                placeholder={'Add keywords:'}
-                handleAddition={this.handleAddition} />
-          </div>
 
           <label>Edit the description:</label>
           <textarea
@@ -93,3 +85,14 @@ class PinEditForm extends React.Component {
 }
 
 export default PinEditForm;
+
+
+// TODO: Add the keyword functionality
+
+// <label>Add keywords:</label>
+// <div>
+//   <ReactTags tags={tags}
+//     handleDelete={this.handleDelete}
+//     placeholder={'Add keywords:'}
+//     handleAddition={this.handleAddition} />
+// </div>

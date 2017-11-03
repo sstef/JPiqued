@@ -9,7 +9,6 @@ class Headers extends React.Component {
       if (index === selected) {
         klass = 'active';
       }
-
       return (
         <li
           key={index}

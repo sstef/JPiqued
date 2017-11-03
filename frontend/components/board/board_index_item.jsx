@@ -5,14 +5,24 @@ const BoardIndexItem = ({ board, router, deleteBoard, history, pins=null }) => {
   const user = board.author.replace(/ /g, "_");
   const boardPins = board.pins || pins
   const randomPin = boardPins[Math.floor(Math.random() * boardPins.length)];
+
+//  TODO: Implement secret board display logic
+  //
+  // if ((board.secret === true) && (board.author)){
+  //
+  // }
+  //
+
   return (
     <li>
+      <div className="board-index-item">
       <div className="pin-index-item">
         <Link to={`/${user}/board/${board.id}`} style={{cursor:'zoom-in'}} >
           <h3 className="board-name">{board.name}</h3>
-          <img src={randomPin.image_url}/>
+          <img src={randomPin.image_url} className="board-default"/>
         </Link>
         <button onClick={() => deleteBoard(board.id)} id="board-delete">Delete</button>
+      </div>
       </div>
     </li>
   )

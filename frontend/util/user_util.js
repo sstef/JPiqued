@@ -1,3 +1,5 @@
+import * as UserActions from '../actions/user_actions'
+
 export const fetchUsers = () => (
   $.ajax({
     url: 'api/users',
@@ -16,8 +18,14 @@ export const updateUser = user => (
   $.ajax({
     url: `api/users/${user.id}`,
     method: 'PATCH',
-    data: { user }
-  })
+    processData: false,
+    contentType: false,
+    dataType: 'json',
+    data: formData,
+    success: function(user) {
+      UserActions.fetchUser(user);
+   }
+ })
 );
 
 export const deleteUser = userId => (

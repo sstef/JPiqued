@@ -1,4 +1,5 @@
 import { logoutAction } from '../actions/session_actions';
+import { updateUser } from '../actions/user_actions';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
@@ -54,9 +55,9 @@ class NavBar extends React.Component {
   }
 
   handleOutsideClick (e) {
-    if (this.node.contains(e.target)) {
-      return;
-    }
+    // if (this.node.contains(e.target)) {
+    //   return;
+    // }
 
     this.handleClick();
   }
@@ -95,7 +96,7 @@ class NavBar extends React.Component {
 
     return (
         <div className="navigation-header">
-          <div className="navlogo-container clickable">
+          <div className="navlogo-container">
             <Link to='/'>
               <div className="logo"></div>
             </Link>
@@ -104,6 +105,10 @@ class NavBar extends React.Component {
           <div className="searchbar">
             Placeholder for search
           </div>
+
+          <Link to="/">
+            <div className="home-button clickable">Home</div>
+          </Link>
 
           <div className="user-dropdown clickable"
             onClick={this.handleClick}
@@ -128,8 +133,8 @@ class NavBar extends React.Component {
                       onAfterOpen={this.afterOpenModal}
                       onRequestClose={this.closeModal} >
 
-                      <button onClick={this.closeModal}>close</button>
-                      <UserEditForm user={ this.props.currentUser } updateUser={() => this.props.updateUser} />
+                      <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
+                      <UserEditForm user={ this.props.currentUser } updateUser={this.props.updateUser.bind(this)} />
                     </Modal>
                 </div>
 
