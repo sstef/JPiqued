@@ -25,6 +25,7 @@ class PinShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchPins();
+    window.scrollTo(0, 0);
   }
 
   componentWillReceiveProps(nextProps) {

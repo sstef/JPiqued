@@ -1,9 +1,12 @@
 import React from 'react';
 import PinIndexItem from './pin_index_item';
 import NavBar from '../navbar_container';
-import PinFormContainer from './pin_form_container'
+import PinForm from './pin_form'
 import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 import Modal from 'react-modal';
+import pickBy from 'lodash/pickBy';
+import merge from 'lodash/merge';
+
 
 class PinIndex extends React.Component {
   constructor (props){
@@ -16,13 +19,15 @@ class PinIndex extends React.Component {
   }
 
   componentWillMount() {
+    // this.props.fetchPins();
     let body = document.getElementById('root');
     body.style.backgroundImage = null
     body.style.backgroundColor = "#EDEDED"
   }
 
-  componentDidMount() {
+  componentDidMount(){
     this.props.fetchPins();
+    window.scrollTo(0, 0);
   }
 
   componentWillReceiveProps(newProps){
@@ -73,9 +78,9 @@ class PinIndex extends React.Component {
           height                     : '450px',
         }
       }
-      if (!this.props){
-        return <div></div>
-      }
+    if (this.props.length < 1) return <div></div>;
+
+    const boards = this.props.boards
 
     return (
       <div className="pin-index-page">
@@ -105,7 +110,8 @@ class PinIndex extends React.Component {
             onRequestClose={this.closeModal} >
 
             <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-            <PinFormContainer closeModal={this.closeModal.bind(this)} />
+            <PinForm boards={boards} createPin={this.props.createPin.bind(this)}
+              closeModal={this.closeModal.bind(this)} currentUser={this.props.currentUser} />
           </Modal>
         </div>
 

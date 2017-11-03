@@ -1,17 +1,20 @@
 import React from 'react';
 import { popover, OverlayTrigger, Button } from 'react-bootstrap';
 import { WithContext as ReactTags } from 'react-tag-input';
+import Dropdown from 'react-dropdown';
+import find from 'lodash/find';
 
 class PinForm extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
-    this.state = {description: "", title: "", link_url: "", keywords: []};
+    this.state = {description: "", title: "", link_url: "", keywords: [], board_name: null};
     this.keywords = {tags: this.state.keywords};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAddition = this.handleAddition.bind(this);
-   }
+    this._onSelect = this._onSelect.bind(this);
+ }
 
    handleDelete(i) {
        let tags = this.kewords.tags;
@@ -34,6 +37,10 @@ class PinForm extends React.Component {
     };
   }
 
+  _onSelect(name){
+    this.setState({board_name: name.label});
+  }
+
   uploadFile(e){
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
@@ -50,7 +57,7 @@ class PinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    const board = find(this.props.boards, {name: "Mickey Aldrin"});
     const file = this.state.imageFile;
     const formData = new FormData();
 
@@ -58,6 +65,7 @@ class PinForm extends React.Component {
     formData.append("pin[link_url]", this.state.link_url);
     formData.append("pin[description]", this.state.description);
     formData.append("pin[keywords]", this.keywords);
+    formData.append("pin[baord_id]", board.id);
 
     if (file) {
       formData.append("pin[image]", file);
@@ -68,6 +76,7 @@ class PinForm extends React.Component {
         title: "",
         link_url: "",
         keywords: [],
+        board_name: null,
         imageUrl: "",
         imageFile: null
       });
@@ -75,8 +84,12 @@ class PinForm extends React.Component {
   }
 
   render () {
-    const tags = this.keywords.tags;
 
+    const tags = this.keywords.tags;
+    const boards = this.props.boards;
+    debugger
+    const names = [];
+    this.props.boards.forEach(board => names.push(board.name));
     return (
       <div className="pin-form">
         <h3>ADD A PIN</h3>
@@ -119,6 +132,11 @@ class PinForm extends React.Component {
               value={this.state.description}
               placeholder="Describe this image" />
             <br/>
+
+            <label>Pick a board:</label>
+            <Dropdown options={names}
+              onSelect={this._onSelect}
+              placeholder="Select a board" />
 
             <input type="submit" value="Pin it!" />
         </form>

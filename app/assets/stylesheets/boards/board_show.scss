@@ -36,7 +36,10 @@
 }
 
 .board-info > h2 {
-  font-size: 40px;
+  font-size: 3vw !important;
+  top: 10px;
+  position: relative;
+  left: 5px;
 }
 
 .board-info > h5 {

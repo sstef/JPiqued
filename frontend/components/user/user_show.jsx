@@ -16,7 +16,8 @@ class UserShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchUser(this.props.match.params.userId)
+    this.props.fetchUser(this.props.match.params.userId);
+    window.scrollTo(0, 0);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -91,7 +92,7 @@ class UserShow extends React.Component {
       {title: 'Pins', content: this.getUserPins() }
     ]
 
-    
+
     return (
       <div className="user-show-page">
         <header>

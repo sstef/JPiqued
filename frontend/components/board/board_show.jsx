@@ -15,6 +15,7 @@ class BoardShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchBoard(parseInt(this.props.match.params.boardId));
+    window.scrollTo(0, 0);
   }
 
   componentWillReceiveProps(nextProps) {

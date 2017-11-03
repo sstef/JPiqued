@@ -125,3 +125,22 @@
 .pin-show-page, .pin-index-page {
   background-color: #E9E8E8;
 }
+
+.Dropdown-control {
+  border: 1px solid black;
+  margin-bottom: 8px;
+  height: 22px;
+  color: darkslateblue;
+  border-radius: 8px;
+}
+
+.dropdown-root{
+  position: absolute;
+  width: 185px;
+  left: 17%;
+}
+
+.pin-form > form > input[type="submit"],
+.pin-form > form > input[type="submit"]:hover {
+  margin-top: 35px;
+}
