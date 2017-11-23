@@ -20,12 +20,6 @@ class UserShow extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-  //
-  // shouldComponentUpdate(nextProps){
-  //   const diffBoards = this.props.boards !== nextProps.boards
-  //   return diffBoards;
-  // }
-
 
   componentDidMount(){
     this.props.fetchUser(this.props.match.params.userId);
@@ -86,7 +80,7 @@ class UserShow extends React.Component {
       }
     return(
       <ul className="pin-index-list">
-        <li className={(this.props.currentUser.id === this.props.user.id) ? "create-board" : "hidden"}
+        <li className={(this.props.currentUser.user.id === this.props.user.id) ? "create-board" : "hidden"}
           onClick={this.openModal} >
             <div className="add-board">
               <h2>+</h2>
@@ -98,7 +92,7 @@ class UserShow extends React.Component {
                 onRequestClose={this.closeModal} >
 
                 <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-                <BoardForm createBoard={this.props.createBoard.bind(this)} />
+                <BoardForm formType={'Create'} action={this.props.createBoard.bind(this)} />
               </Modal>
         </li>
         {

@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React from 'react';
 import map from 'lodash/map';
 import Dropdown from 'react-dropdown';
@@ -7,11 +6,13 @@ import Toggle from 'react-toggle'
 class BoardForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    debugger
+    this.state = this.props.board || {
                 name: "",
                 description: "",
                 category: "",
                 private: false };
+    this.action = this.props.action;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -27,7 +28,6 @@ class BoardForm extends React.Component {
   }
 
   onSelect(option){
-    debugger
     this.setState({category: option.label});
   }
 
@@ -38,9 +38,8 @@ class BoardForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
 
-    this.props.createBoard(this.state).then(() => {
+    this.action(this.state).then(() => {
       this.setState(name: "", description: "", category: "", secret: false );
     });
   }
@@ -60,19 +59,24 @@ class BoardForm extends React.Component {
         'Kids and parenting', 'Humor', 'Holidays',
         'Tattoos', 'Holiday and events'
       ]
+
+    let index = options.findIndex(this.state.category) || options[0];
+
     return (
       <div className="pin-form">
-        <h3>Create a Board</h3>
+        <h3>{formType} a Board</h3>
         <form onSubmit={this.handleSubmit}>
 
-          <label>Create board name:</label>
+          <label>{formType} board name:</label>
           <input type="text"
+            value={this.state.name}
             onChange={this.update('name')}
             placeholder="Add a board name" />
           <br />
 
           <label>Board description:</label>
           <textarea
+            value={this.state.description}
             onChange={this.update('description')}
             placeholder="What is the board about?" />
           <br />
@@ -84,6 +88,7 @@ class BoardForm extends React.Component {
 
           <label>Category:</label>
             <Dropdown options={options}
+              value={index}
               onChange={this.onSelect}
               placeholder="Select a category" />
 

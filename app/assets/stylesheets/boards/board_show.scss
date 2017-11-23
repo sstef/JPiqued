@@ -6,7 +6,6 @@
 .board-details{
   height: 150px;
   width: 450px;
-  background-color: white;
   padding: 30px;
   margin-left: 23%;
   border-radius: 15px;
@@ -75,4 +74,10 @@
   top: -30px;
   left: 426px;
   position: absolute;
+}
+
+#secret {
+  position: absolute;
+  top: 79px;
+  left: 6px;
 }

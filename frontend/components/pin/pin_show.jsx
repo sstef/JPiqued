@@ -18,10 +18,10 @@ class PinShow extends React.Component {
 
 
   componentWillMount() {
-    window.scrollTo(0, 0);
     let body = document.getElementById('root');
-    body.style.backgroundImage = null
-    body.style.backgroundColor = "#EDEDED"
+    body.style.backgroundImage = null;
+    body.style.backgroundColor = "#EDEDED";
+    window.scrollTo(0, 0);
   }
 
 
@@ -49,28 +49,19 @@ class PinShow extends React.Component {
   }
 
   _relatedPins(){
-    if (!this.props) {
-      return (<div></div>);
-    }
-    const related = [];
+    const pin = this.props.pin;
+
     const rel_pins = [];
-    for (var keyword in this.props.pin.keywords) {
-      this.props.pins.forEach((rel_pin) => {
-        let rel_keywords = Object.values(rel_pin.keywords)
-        if (rel_keywords.includes(keyword.text)) related.push(rel_pin);
-      });
-    }
-
-    const cat_pins = find(this.props.pins, {category: this.props.pin.category});
-    related.concat(rel_pins);
-    related.concat(cat_pins);
-
-    const list = isEmpty(related) ? this.props.pins : this.related;
+    this.props.pins.forEach((rel_pin) => {
+      if (rel_pin.category === pin.category) {
+        rel_pins.push(rel_pin);
+      }
+    });
 
     return(
       <ul className="pin-index-list">
         {
-          list.map(pin => (
+          rel_pins.map(pin => (
             <PinIndexItem
               key={pin.id}
               deletePin={this.deletePin}
@@ -153,8 +144,8 @@ class PinShow extends React.Component {
                     <h5>Pinned by:{' '}
                       <Link to={`/users/${pin.creator_id}`}><strong>
                         {pin.creator}</strong></Link> on
-                     <Link to={`${this.props.currentUser.name.split(' ').join("_")}/board/${pin.board_id}`} >
-                       <strong> {pin.board_name}</strong></Link>
+                     <Link to={`/${pin.creator.split(' ').join("_")}/board/${pin.board.id}`} >
+                       <strong> {pin.board.name}</strong></Link>
                     </h5>
                   </div>
                 </div>

@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import BoardShow from './board_show';
 
 const mapStateToProps = (state, ownProps) => {
+  let board = state.entities.boards[parseInt(ownProps.match.params.boardId)] || {pin_ids:[], pins: []};
+  let pinns = (board.pin_ids) ? board.pin_ids.map(id => state.entities.pins[id]) : board.pins;
 
   return({
-    board: state.entities.boards,
-    pins: state.entities.pins,
+    board,
+    pins: pinns,
     user: state.entities.users,
-    currentUser: state.session.currentUser,
+    currentUser: state.session.currentUser.user,
 });};
 
 const mapDispatchToProps = dispatch => ({

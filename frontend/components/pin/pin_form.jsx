@@ -7,13 +7,13 @@ import find from 'lodash/find';
 class PinForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {description: "", title: "", link_url: "", keywords: [], board_name: null};
+    this.state = {description: "", title: "", link_url: "", keywords: [], board_id: props.boards[0].id};
     this.keywords = {tags: this.state.keywords};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAddition = this.handleAddition.bind(this);
-    this._onSelect = this._onSelect.bind(this);
+    this.onSelected = this.onSelected.bind(this);
  }
 
    handleDelete(i) {
@@ -37,9 +37,10 @@ class PinForm extends React.Component {
     };
   }
 
-  _onSelect(option){
-    this.setState({board_name: option.label});
+  onSelected(e){
+    this.setState({board_id: parseInt(e.target.value)});
   }
+
 
   uploadFile(e){
     const reader = new FileReader();
@@ -65,7 +66,7 @@ class PinForm extends React.Component {
     formData.append("pin[link_url]", this.state.link_url);
     formData.append("pin[description]", this.state.description);
     formData.append("pin[keywords]", this.keywords);
-    formData.append("pin[baord_id]", board.id);
+    formData.append("pin[board_id]", this.state.board_id);
 
     if (file) {
       formData.append("pin[image]", file);
@@ -76,7 +77,7 @@ class PinForm extends React.Component {
         title: "",
         link_url: "",
         keywords: [],
-        board_name: null,
+        board_id: null,
         imageUrl: "",
         imageFile: null
       });
@@ -84,12 +85,9 @@ class PinForm extends React.Component {
   }
 
   render () {
-
     const tags = this.keywords.tags;
     const boards = this.props.boards;
 
-    const names = [];
-    this.props.boards.forEach(board => names.push(board.name));
     return (
       <div className="pin-form">
         <h3>ADD A PIN</h3>
@@ -126,10 +124,16 @@ class PinForm extends React.Component {
             <br/>
 
             <label>Pick a board:</label>
-            <Dropdown options={names}
-              onSelect={this._onSelect}
-              placeholder="Select a board" />
-
+            <br/>
+            <select onChange={this.onSelected} value={this.state.board_id}>
+              {
+                boards.map(board => {
+                  return (
+                    <option key={board.id} value={`${board.id}`}>{board.name}</option>
+                  );
+                })
+              }
+            </select>
             <input type="submit" value="Pin it!" />
         </form>
       </div>

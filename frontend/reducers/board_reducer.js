@@ -5,6 +5,7 @@ import merge from 'lodash/merge';
 
 const BoardReducer = (state = {}, action) => {
   Object.freeze(state);
+
   switch(action.type){
     case RECEIVE_BOARDS:
       return merge({}, action.boards);
@@ -19,8 +20,8 @@ const BoardReducer = (state = {}, action) => {
     case RECEIVE_BOARD:
       const newBoard = merge({}, action.board);
       newBoard.pins = newBoard.pins.map(pin => pin.id);
-      newBoard.creator = newBoard.creator.id;
-      return merge({}, state, newBoard);
+      newBoard.creator_id = newBoard.creator.id;
+      return merge({}, state, { [newBoard.id]: newBoard });
     case REMOVE_BOARD:
       let newState = merge({}, state);
       delete newState[action.board.id];

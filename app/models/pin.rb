@@ -27,7 +27,9 @@ class Pin < ApplicationRecord
     foreign_key: :creator_id,
     class_name: :User
 
-  belongs_to :board
+  belongs_to :board,
+    foreign_key: :board_id,
+    class_name: 'Board'
 
   def image_from_url(url)
     self.image = URI.parse(url)

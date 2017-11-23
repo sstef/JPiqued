@@ -6,10 +6,9 @@ class Api::PinsController < ApplicationController
   end
 
   def create
-    @pin = Pin.new(pin_params) # && (@pin.image.present? && @pin.image.url.exists?)
+    @pin = Pin.new(pin_params)
     @pin.creator_id = currentUser.id
-    board = Board.find_by(creator_id: currentUser.id)
-    @pin.board_id = board.id
+debugger
     if @pin.save
       render :show
     else
@@ -19,8 +18,8 @@ class Api::PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
-    
-    if @pin.update(pin_params) # && (@pin.image.present? && @pin.image.url.exists?)
+
+    if @pin.update(pin_params)
       render :show
     else
       render json: @pin.errors.full_messages, status: 422
@@ -41,7 +40,7 @@ class Api::PinsController < ApplicationController
   private
 
   def pin_params
-    params.require(:pin).permit(:description, :title, :link_url, :image, keywords: [])
+    params.require(:pin).permit(:description, :title, :link_url, :board_id, :image, keywords: [])
   end
 
 end

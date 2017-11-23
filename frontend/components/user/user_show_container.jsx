@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import UserShow from './user_show';
 
 const mapStateToProps = (state, ownProps) => {
+
   const user = state.entities.users[ownProps.match.params.userId] || { pins: [], boards: [] };
   const pins = user.pins.map( id => state.entities.pins[id] );
   const boards = user.boards.map( id => state.entities.boards[id] );

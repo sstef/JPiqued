@@ -8,7 +8,7 @@ import UserEditForm from './user/user_edit';
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.session.currentUser,
+    currentUser: state.session.currentUser.user,
   };
 };
 
@@ -103,7 +103,7 @@ class NavBar extends React.Component {
           </div>
 
           <div className="searchbar">
-            Placeholder for search
+
           </div>
 
           <Link to="/">
@@ -134,7 +134,7 @@ class NavBar extends React.Component {
                       onRequestClose={this.closeModal} >
 
                       <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-                      <UserEditForm user={ this.props.currentUser } updateUser={this.props.updateUser.bind(this)} />
+                      <UserEditForm user={this.props.currentUser} updateUser={this.props.updateUser.bind(this)} />
                     </Modal>
                 </div>
 

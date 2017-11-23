@@ -8,14 +8,15 @@ const PinReducer = (state = {}, action) => {
   switch(action.type){
     case RECEIVE_PINS:
       return merge({}, state, action.pins);
-    //case RECEIVE_USER_PINS:
     case RECEIVE_USER:
       const newPins = {};
       action.user.pins.forEach( pin => newPins[pin.id] = pin );
-      return merge({}, newPins);
+      return merge({}, state, newPins);
     case RECEIVE_BOARD:
       const boardPins = {};
-      action.board.pins.forEach( pin => boardPins[pin.id] = pin );
+      action.board.pins.forEach( pin => {
+        boardPins[pin.id] = pin
+      });
       return merge({}, state, boardPins);
     case RECEIVE_PIN:
       return merge({}, state, action.pin);

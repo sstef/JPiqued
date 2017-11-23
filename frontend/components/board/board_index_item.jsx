@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-const BoardIndexItem = ({ board, router, deleteBoard, history, pins=null }) => {
-  const user = board.author.replace(/ /g, "_");
+const BoardIndexItem = ({ board, router, deleteBoard, history, pins=null, user, currentUser }) => {
+  const creator = board.author.replace(/ /g, "_");
   const boardPins = board.pins || pins
-  const randomPin = boardPins[Math.floor(Math.random() * boardPins.length)];
+  // const randomPin = boardPins[Math.floor(Math.random() * boardPins.length)];
 
 //  TODO: Implement secret board display logic
   //
@@ -17,9 +17,9 @@ const BoardIndexItem = ({ board, router, deleteBoard, history, pins=null }) => {
     <li>
       <div className="board-index-item">
       <div className="pin-index-item">
-        <Link to={`/${user}/board/${board.id}`} style={{cursor:'zoom-in'}} >
+        <Link to={`/${creator}/board/${board.id}`} style={{cursor:'zoom-in'}} >
           <h3 className="board-name">{board.name}</h3>
-          <img src={randomPin.image_url} className="board-default"/>
+          <img src={pins[0].image_url} className="board-default"/>
         </Link>
         <button onClick={() => deleteBoard(board.id)} id="board-delete">Delete</button>
       </div>

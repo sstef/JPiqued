@@ -122,8 +122,12 @@
   border-radius: 5px;
 }
 
-.pin-show-page, .pin-index-page {
-  background-color: #E9E8E8;
+.pin-index-page {
+  background-color: #FFFFFC !important;
+}
+
+.pin-show-page {
+  background-color: #E9E8E8
 }
 
 .Dropdown-control {

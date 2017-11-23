@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      Board.create!(description: 'default', creator_id: @user.id, name: 'Your first board!')
+      Board.create!(description: 'This is my first board! =)', creator_id: @user.id, name: 'Your first board!')
       login!(@user)
       render :show
     else

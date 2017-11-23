@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../navbar_container';
 import PinIndexItem from '../pin/pin_index_item';
-import BoardEditForm from './edit_board';
+import BoardForm from './board_form';
 import Modal from 'react-modal';
 
 class BoardShow extends React.Component {
@@ -37,10 +37,9 @@ class BoardShow extends React.Component {
   }
 
   render () {
-
     const board = this.props.board;
-    const user = this.props.user[board.creator];
-    const pins = Object.values(this.props.pins);
+    const user = board.creator || board.creator_id;
+    const pins = this.props.pins;
 
     if (!board.id) {
       return <div>Loading...</div>;
@@ -69,7 +68,6 @@ class BoardShow extends React.Component {
           height                     : '300px',
         }
       }
-
     const privateBoard = () => {
       if (board.secret) {
         return <div id="secret">This board is secret (only you can view it!)</div>
@@ -92,7 +90,7 @@ class BoardShow extends React.Component {
                   onRequestClose={this.closeModal} >
 
                   <div onClick={this.closeModal} className='modal-close clickable'>X</div>
-                  <BoardEditForm board={ this.board } updateBoard={this.props.createBoard}/>
+                  <BoardForm board={ board } formType={'Update'} action={this.props.createBoard}/>
                 </Modal>
               </div>
               <div className="board-info">

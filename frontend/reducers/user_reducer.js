@@ -10,9 +10,9 @@ const UserReducer = (state = {}, action) => {
     case RECEIVE_BOARD:
       return merge({}, state, {[action.board.creator.id]: action.board.creator})
     case RECEIVE_USER:
-      const newUser = Object.assign({}, action.user);
-      newUser.pins = newUser.pins.map(pin => pin.id);
-      newUser.boards = newUser.boards.map(board => board.id);
+      const newUser = Object.assign({}, action.user.user);
+      newUser.pins = action.user.pins.map(pin => pin.id);
+      newUser.boards = action.user.boards.map(board => board.id);
       return merge({}, state, { [newUser.id]: newUser });
     case REMOVE_USER:
       let newState = merge({}, state);
