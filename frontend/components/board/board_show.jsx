@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../navbar_container';
 import PinIndexItem from '../pin/pin_index_item';
-import BoardForm from './board_form';
+import EditBoard from './edit_board';
 import Modal from 'react-modal';
 
 class BoardShow extends React.Component {
@@ -11,6 +11,8 @@ class BoardShow extends React.Component {
     this.state = Object.assign({}, this.props.board, { modalIsOpen: false });
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.updateBoard = this.props.updateBoard.bind(this);
+    this.deleteBoard = this.props.deleteBoard.bind(this);
   }
 
   componentDidMount() {
@@ -90,7 +92,9 @@ class BoardShow extends React.Component {
                   onRequestClose={this.closeModal} >
 
                   <div onClick={this.closeModal} className='modal-close clickable'>X</div>
-                  <BoardForm board={ board } formType={'Update'} action={this.props.createBoard}/>
+                  <EditBoard board={ board }
+                    updateBoard={this.updateBoard}
+                    deleteBoard={this.deleteBoard}/>
                 </Modal>
               </div>
               <div className="board-info">

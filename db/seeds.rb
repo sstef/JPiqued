@@ -16,7 +16,7 @@ CATEGORIES = [
     'Hobbies', 'Health and fitness', 'Hair and beauty',
     'Motivational', 'Entertainment', 'Sports',
     'Kids and parenting', 'Humor', 'Holidays',
-    'Tattoos', 'Sports', 'Holiday and events'
+    'Tattoos', 'Sports', 'Holiday and events', 'Other'
   ]
 
 IMAGES = [
@@ -82,3 +82,5 @@ end
     end
   end
 end
+
+Pin.all.each{|pin| pin.destroy if (pin.board_id == nil)}

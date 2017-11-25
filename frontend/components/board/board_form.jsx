@@ -1,21 +1,19 @@
 import React from 'react';
 import map from 'lodash/map';
-import Dropdown from 'react-dropdown';
-import Toggle from 'react-toggle'
+import Toggle from 'react-toggle';
 
 class BoardForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger
     this.state = this.props.board || {
                 name: "",
                 description: "",
                 category: "",
-                private: false };
+                secret: false };
     this.action = this.props.action;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.onSelect = this.onSelect.bind(this);
+    this.onSelected = this.onSelected.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -27,21 +25,22 @@ class BoardForm extends React.Component {
     };
   }
 
-  onSelect(option){
-    this.setState({category: option.label});
-  }
-
   handleChange (e) {
     e.preventDefault();
-    this.setState({[secret]: !e.target.value})
+    this.setState({secret: !e.target.value});
   }
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.action(this.state).then(() => {
-      this.setState(name: "", description: "", category: "", secret: false );
+    let board = this.state;
+debugger
+    this.action(board).then(() => {
+      this.setState({name: "", description: "", category: "", secret: false} );
     });
+  }
+
+  onSelected(e){
+    this.setState({category: e.target.value});
   }
 
   render () {
@@ -57,17 +56,17 @@ class BoardForm extends React.Component {
         'Hobbies', 'Health and fitness', 'Hair and beauty',
         'Motivational', 'Entertainment', 'Sports',
         'Kids and parenting', 'Humor', 'Holidays',
-        'Tattoos', 'Holiday and events'
+        'Tattoos', 'Holiday and events', 'Other'
       ]
 
-    let index = options.findIndex(this.state.category) || options[0];
+    let index = options.indexOf(this.state.category) || 0;
 
     return (
       <div className="pin-form">
-        <h3>{formType} a Board</h3>
+        <h3>{this.props.formType} a Board</h3>
         <form onSubmit={this.handleSubmit}>
 
-          <label>{formType} board name:</label>
+          <label>{this.props.formType} board name:</label>
           <input type="text"
             value={this.state.name}
             onChange={this.update('name')}
@@ -84,15 +83,20 @@ class BoardForm extends React.Component {
           <label>Make it private:</label>
           <Toggle
             onSelect={this.handleChange}
-            value={this.state.secret} />
+            defaultChecked={this.state.secret} />
 
           <label>Category:</label>
-            <Dropdown options={options}
-              value={index}
-              onChange={this.onSelect}
-              placeholder="Select a category" />
+            <select onChange={this.onSelected} value={options[index]}>
+              {
+                options.map(option => {
+                  return (
+                    <option key={options.indexOf(option)} value={option}>{option}</option>
+                  );
+                })
+              }
+            </select>
 
-          <input type="submit" value="Create" />
+          <input type="submit" value={this.props.formType} />
         </form>
       </div>
     );

@@ -58,7 +58,7 @@ class PinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const board = find(this.props.boards, {name: "Mickey Aldrin"});
+    const board = find(this.props.boards);
     const file = this.state.imageFile;
     const formData = new FormData();
 

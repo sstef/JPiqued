@@ -91,8 +91,10 @@ class UserShow extends React.Component {
                 isOpen={this.state.modalIsOpen}
                 onRequestClose={this.closeModal} >
 
-                <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-                <BoardForm formType={'Create'} action={this.props.createBoard.bind(this)} />
+                <button onClick={this.closeModal}
+                  className='clickable'
+                  style={{float: 'right'}}>X</button>
+                <BoardForm formType={'Create'} action={this.props.createBoard}/>
               </Modal>
         </li>
         {
