@@ -13,6 +13,7 @@ class BoardShow extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.updateBoard = this.props.updateBoard.bind(this);
     this.deleteBoard = this.props.deleteBoard.bind(this);
+    this.deletePin = this.props.deletePin.bind(this);
   }
 
   componentDidMount() {
@@ -139,6 +140,7 @@ class BoardShow extends React.Component {
                   pins.map(pin => (
                     <PinIndexItem
                       key={pin.id}
+                      deletePin={this.deletePin}
                       pin={pin} />
                   ))
                 }
