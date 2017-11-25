@@ -14,6 +14,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    debugger
     render :show
   end
 
@@ -21,6 +22,24 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
+      render :show
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
+  end
+
+  def follow_user
+    @user = User.find(params[:id])
+    if current_user.follow(@user.id)
+      render :show
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
+  end
+
+  def unfollow_user
+    @user = User.find(params[:id])
+    if current_user.unfollow(@user.id)
       render :show
     else
       render json: @user.errors.full_messages, status: 422
