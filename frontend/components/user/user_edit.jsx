@@ -5,7 +5,7 @@ import map from 'lodash/map';
 class UserEditForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, this.props.user);
+    this.state = this.props.user;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
    }
@@ -35,13 +35,15 @@ class UserEditForm extends React.Component {
     const file = this.state.imageFile;
     const userData = new FormData();
 
+    userData.append("user[id]", this.props.user.id);
     userData.append("user[name]", this.state.name);
-    if (this.state.email) userData.append("user[email]", this.state.email);
-    if (this.state.password) userData.append("user[password]", this.state.password);
+    if (!!this.state.email) userData.append("user[email]", this.state.email);
+    if (!!this.state.password) userData.append("user[password]", this.state.password);
 
     if (file) {
       userData.append("user[avatar]", file);
     }
+    debugger
 
     this.props.updateUser(userData).then(() => {
       this.setState(name: "", email: "", password: "", imageUrl: "", imageFile: null)

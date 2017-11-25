@@ -29,6 +29,7 @@ class NavBar extends React.Component {
       this.handleClick = this.handleClick.bind(this);
       this.handleOutsideClick = this.handleOutsideClick.bind(this);
       this.openModal = this.openModal.bind(this);
+      this.updateUser = this.props.updateUser.bind(this);
       this.closeModal = this.closeModal.bind(this);
   }
 
@@ -134,7 +135,7 @@ class NavBar extends React.Component {
                       onRequestClose={this.closeModal} >
 
                       <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-                      <UserEditForm user={this.props.currentUser} updateUser={this.props.updateUser.bind(this)} />
+                      <UserEditForm user={this.props.currentUser} updateUser={this.updateUser} />
                     </Modal>
                 </div>
 

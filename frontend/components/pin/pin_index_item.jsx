@@ -9,10 +9,11 @@ const PinIndexItem = ({ key, pin, router, deletePin, history }) => {
         <Link to={`/pins/${pin.id}`} style={{cursor:'zoom-in'}} >
           <img src={pin.image_url} />
         </Link>
-        <button onClick={() => deletePin(pin.id)}>Delete</button>
       </div>
     </li>
   );
 };
 
 export default withRouter(PinIndexItem);
+
+// <button onClick={() => deletePin(pin.id)}>Delete</button>
