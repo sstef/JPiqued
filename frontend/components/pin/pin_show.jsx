@@ -76,7 +76,7 @@ class PinShow extends React.Component {
   render () {
     const pin = this.props.pin;
     if (!pin) {
-      return <div>Loading...</div>;
+      return <div class="load"><div class="loading" /></div>;
     }
 
   const modalStyle = {

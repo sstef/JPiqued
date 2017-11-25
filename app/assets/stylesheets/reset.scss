@@ -47,6 +47,19 @@ caption, th, td {
   background-size: 100%;
 }
 
+.load {
+  display:flex;
+  justify-content: center;
+  width:100%;
+}
+
+.loading {
+  background-image: image_url('loading_spinner.gif');
+  height: 200px;
+  width: 200px;
+  background-size: 100%;
+}
+
 #root {
   background-color: #FFFFFC !important;
   position: absolute;;

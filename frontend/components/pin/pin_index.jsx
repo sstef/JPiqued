@@ -78,7 +78,20 @@ class PinIndex extends React.Component {
           height                     : '450px',
         }
       }
-    if (this.props.length < 1) return <div></div>;
+    if (this.props.length < 1) {
+      return(
+        <div className="board-show-page">
+          <div>
+            <header>
+              <NavBar />
+            </header>
+            <div class="load">
+              <div class="loading" />
+            </div>
+          </div>
+        </div>
+      );
+    }
 
     const boards = this.props.boards
 

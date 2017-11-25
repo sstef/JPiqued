@@ -33,7 +33,6 @@ class BoardForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let board = this.state;
-debugger
     this.action(board).then(() => {
       this.setState({name: "", description: "", category: "", secret: false} );
     });

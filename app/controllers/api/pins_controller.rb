@@ -8,7 +8,6 @@ class Api::PinsController < ApplicationController
   def create
     @pin = Pin.new(pin_params)
     @pin.creator_id = currentUser.id
-debugger
     if @pin.save
       render :show
     else

@@ -130,8 +130,21 @@ class UserShow extends React.Component {
   render () {
     const user = this.props.user;
     const currentUser = this.props.currentUser || {};
-    if (user.boards === []) return <div>Loading...</div>;
-
+    if (user.boards === []) {
+      return (
+          <div className="board-show-page">
+            <div>
+              <header>
+                <NavBar />
+              </header>
+              <div class="load">
+                <div class="loading" />
+              </div>
+            </div>
+          </div>
+        );
+      }
+      
     const panes = [
       {title: 'Boards', content: this.getUserBoards() },
       {title: 'Pins', content: this.getUserPins() }

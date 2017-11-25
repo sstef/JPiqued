@@ -24,7 +24,6 @@ class Api::BoardsController < ApplicationController
   end
 
   def show
-    debugger
     @board = Board.find(params[:id])
     render :show
   end

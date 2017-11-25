@@ -44,7 +44,18 @@ class BoardShow extends React.Component {
     const pins = this.props.pins;
 
     if (!board.id) {
-      return <div>Loading...</div>;
+      return (
+        <div className="board-show-page">
+          <div>
+            <header>
+              <NavBar />
+            </header>
+            <div class="load">
+              <div class="loading" />
+            </div>
+          </div>
+        </div>
+      );
     }
     const modalStyle = {
         overlay : {
