@@ -6,8 +6,16 @@ class Api::PinsController < ApplicationController
   end
 
   def create
+    image = nil
+    if pin_params[:image].include?('.com')
+      debugger
+      image = params[:pin].delete(:image)
+    end
+
     @pin = Pin.new(pin_params)
+    @pin.image_from_url(image) if !image.nil?
     @pin.creator_id = currentUser.id
+
     if @pin.save
       render :show
     else
@@ -39,7 +47,7 @@ class Api::PinsController < ApplicationController
   private
 
   def pin_params
-    params.require(:pin).permit(:description, :title, :link_url, :board_id, :image, keywords: [])
+    params.require(:pin).permit(:description, :title, :link_url, :board_id, :image)
   end
 
 end

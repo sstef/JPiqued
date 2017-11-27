@@ -1,33 +1,21 @@
 import React from 'react';
 import map from 'lodash/map';
 // import { WithContext as ReactTags } from 'react-tag-input';
-import { createPin } from '../../actions/board_actions';
-import { connect } from 'react-redux';
-
-const mapStateToProps = state => ({
-  currentUser: state.session.currentUser.user
-})
-
-const mapDispatchToProps = dispatch => ({
-  createPin: pin => dispatch(createPin(pin))
-});
-
 
 class PinIt extends React.Component {
   constructor(props) {
     super(props);
     debugger
-    const pin = this.props.pin
+    const pin = this.props.pin;
     this.state = {
             title: pin.title,
             link_url: pin.link_url,
             description: pin.description,
-            board_id: this.props.currentUser.boards[0].id,
+            board_id: this.props.boards[0].id,
             keywords: [],
-            image: pin.image_url
+            image: pin.image_url.slice(2).split('?')[0]
         }
     this.keywords = {tags: this.props.pin.keywords};
-    this.uploadFile = this.uploadFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onSelected = this.onSelected.bind(this);
    }
@@ -64,19 +52,19 @@ class PinIt extends React.Component {
     formData.append("pin[title]", this.state.title);
     formData.append("pin[link_url]", this.state.link_url);
     formData.append("pin[description]", this.state.description);
-    formData.append("pin[keywords]", this.keywords);
     formData.append("pin[board_id]", this.state.board_id);
     formData.append("pin[image]", this.state.image);
 
-    this.props.createPin(formData).then(() => this.props.closeModal());
+    this.props.createPin(formData).then(() => this.props.closePin());
   }
 
   render () {
     const pin = this.props.pin;
+    const boards = this.props.boards;
     const tags = this.keywords.tags;
     return (
       <div className="edit-form">
-        <h3>Pin it!</h3>
+        <h3>Pin It</h3>
         <form onSubmit={this.handleSubmit}>
           <label>Edit the title:</label>
           <input type="text"
@@ -113,6 +101,8 @@ class PinIt extends React.Component {
               })
             }
           </select>
+          <br></br>
+          <br></br>
           <input type="submit" value="Pin it!" />
 
         </form>
@@ -121,7 +111,4 @@ class PinIt extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PinIt);
+export default PinIt;

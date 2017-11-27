@@ -1,4 +1,4 @@
-import { fetchPins, fetchPin, updatePin } from '../../actions/pin_actions';
+import { fetchPins, fetchPin, updatePin, createPin } from '../../actions/pin_actions';
 import { connect } from 'react-redux';
 import PinShow from './pin_show';
 
@@ -15,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
   fetchPins: () => dispatch(fetchPins()),
   fetchPin: id => dispatch(fetchPin(id)),
   updatePin: pin => dispatch(updatePin(pin)),
+  createPin: pin => dispatch(createPin(pin)),
 });
 
 export default connect(

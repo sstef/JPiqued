@@ -6,14 +6,18 @@ import PinIndexItem from './pin_index_item';
 import PinEditForm from './edit_pin';
 import Modal from 'react-modal';
 import find from 'lodash/find';
+import PinIt from './pin_it';
 
 class PinShow extends React.Component {
   constructor(props){
     super(props);
     this._relatedPins = this._relatedPins.bind(this);
-    this.state = Object.assign({}, this.props.pin, { modalIsOpen: false });
+    this.state = Object.assign({}, this.props.pin, { modalIsOpen: false, pinIsOpen: false });
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.openPin = this.openPin.bind(this);
+    this.closePin = this.closePin.bind(this);
+    debugger
   }
 
 
@@ -42,6 +46,14 @@ class PinShow extends React.Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+  }
+
+  openPin() {
+    this.setState({pinIsOpen: true});
+  }
+
+  closePin() {
+    this.setState({pinIsOpen: false});
   }
 
   _handleClick(){
@@ -115,9 +127,23 @@ class PinShow extends React.Component {
                 {pin.title}
               </h2>
 
+              <div onClick={this.openPin} className="pin-it-button">
+                <div>Pin It!</div>
+                <Modal
+                    style={modalStyle}
+                    isOpen={this.state.pinIsOpen}
+                    onRequestClose={this.closePin} >
 
+                    <button onClick={this.closePin} className='clickable' style={{float: 'right'}}>X</button>
+                    <PinIt pin={ pin }
+                      boards={this.props.boards}
+                      createPin={this.props.createPin.bind(this)}
+                      closePin={this.closePin}/>
+                  </Modal>
+              </div>
 
               <img src={pin.image_url} />
+
             <div className="interactive-pin-buttons">
               <div onClick={this.openModal} className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
                 <Modal

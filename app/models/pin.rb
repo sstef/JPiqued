@@ -18,6 +18,7 @@
 #
 
 class Pin < ApplicationRecord
+  require "open-uri"
   validates :description, :creator_id, presence: true
   has_attached_file :image, default_url: "https://s3.us-east-2.amazonaws.com/jpiqued-dev/missing_image.jpg"
   validates_attachment :image,
@@ -32,7 +33,7 @@ class Pin < ApplicationRecord
     class_name: 'Board'
 
   def image_from_url(url)
-    self.image = URI.parse(url)
+    self.image = open(url.to_s)
   end
 
 end
