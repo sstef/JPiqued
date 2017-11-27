@@ -79,7 +79,7 @@ class BoardShow extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '200px',
-          height                     : '300px',
+          height                     : '345px',
         }
       }
     const privateBoard = () => {

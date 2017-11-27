@@ -7,7 +7,6 @@ class EditBoard extends React.Component {
     super(props);
     this.state = this.props.board;
     this.updateBoard = this.props.updateBoard.bind(this);
-    this.deleteBoard = this.props.deleteBoard.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.onSelected = this.onSelected.bind(this);
@@ -36,9 +35,7 @@ class EditBoard extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    this.deleteBoard(this.state).then(() => {
-
-    })
+    this.deleteBoard(this.state).then(() => this.forceUpdate())
   }
 
   onSelected(e){

@@ -21,7 +21,6 @@ const BoardIndexItem = ({ board, router, deleteBoard, history, pins=null, user, 
           <h3 className="board-name">{board.name}</h3>
           <img src={pins[0].image_url} className="board-default"/>
         </Link>
-        <button onClick={() => deleteBoard(board.id)} id="board-delete">Delete</button>
       </div>
       </div>
     </li>
@@ -29,3 +28,6 @@ const BoardIndexItem = ({ board, router, deleteBoard, history, pins=null, user, 
 };
 
 export default withRouter(BoardIndexItem);
+
+
+// <button onClick={() => deleteBoard(board.id)} id="board-delete">Delete</button>

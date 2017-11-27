@@ -15,7 +15,7 @@ const BoardReducer = (state = {}, action) => {
       return merge({}, state, newBoards);
     case RECEIVE_PINS:
       const nwBoards = {};
-      Object.values(action.pins).forEach(pin => nwBoards[pin.board.id] = pin.board );
+      Object.values(action.pins).forEach(pin => (nwBoards[pin.board.id] = pin.board));
       return merge({}, state, nwBoards);
     case RECEIVE_BOARD:
       const newBoard = merge({}, action.board);

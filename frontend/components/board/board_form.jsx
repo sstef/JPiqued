@@ -83,7 +83,7 @@ class BoardForm extends React.Component {
           <Toggle
             onSelect={this.handleChange}
             defaultChecked={this.state.secret} />
-
+          <br></br>
           <label>Category:</label>
             <select onChange={this.onSelected} value={options[index]}>
               {
