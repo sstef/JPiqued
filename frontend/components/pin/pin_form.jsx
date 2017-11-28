@@ -125,7 +125,7 @@ class PinForm extends React.Component {
 
             <label>Pick a board:</label>
             <br/>
-            <select onChange={this.onSelected} value={this.state.board_id}>
+            <select onChange={this.onSelected} value={this.state.board_id} class="board-dropdown">
               {
                 boards.map(board => {
                   return (

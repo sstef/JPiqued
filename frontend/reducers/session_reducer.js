@@ -7,6 +7,8 @@ function SessionReducer (state = { currentUser: null }, action) {
   switch(action.type){
 
     case RECEIVE_CURRENT_USER:
+    debugger
+
       const newUser = Object.assign({}, action.user);
       newUser.boards = newUser.boards.map(board => board.id);
       newUser.pins = newUser.pins.map(pin => pin.id);

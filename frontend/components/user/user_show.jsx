@@ -75,7 +75,7 @@ class UserShow extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '200px',
-          height                     : '300px',
+          height                     : '260px',
         }
       }
     return(
@@ -144,7 +144,7 @@ class UserShow extends React.Component {
           </div>
         );
       }
-      
+
     const panes = [
       {title: 'Boards', content: this.getUserBoards() },
       {title: 'Pins', content: this.getUserPins() }

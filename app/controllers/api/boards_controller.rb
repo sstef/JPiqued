@@ -29,13 +29,13 @@ class Api::BoardsController < ApplicationController
   end
 
   def destroy
-    @board = Board.find(params[:id])
-
-    if @board.destroy
-      render :index
-    else
-      render json: @board.errors.full_messages, status: 422
+    board = Board.find(params[:id])
+    board.pin_ids.each do |pinid|
+      pin = Pin.find(pinid)
+      pin.destroy
     end
+    board.destroy
+    render json: {}
   end
 
   private

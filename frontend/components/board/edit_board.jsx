@@ -36,7 +36,7 @@ class EditBoard extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    this.deleteBoard(this.state).then(() => {
+    this.deleteBoard(this.state.id).then(() => {
 
     })
   }
@@ -88,7 +88,7 @@ class EditBoard extends React.Component {
             defaultChecked={this.state.secret} />
 
           <label>Category:</label>
-            <select onChange={this.onSelected} value={options[index]}>
+            <select onChange={this.onSelected} value={options[index]} class="board-dropdown">
               {
                 options.map(option => {
                   return (

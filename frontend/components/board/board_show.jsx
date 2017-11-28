@@ -78,7 +78,7 @@ class BoardShow extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '200px',
-          height                     : '300px',
+          height                     : '310px',
         }
       }
     const privateBoard = () => {
@@ -102,7 +102,7 @@ class BoardShow extends React.Component {
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal} >
 
-                  <div onClick={this.closeModal} className='modal-close clickable'>X</div>
+                  <div onClick={this.closeModal} className='clickable' style={{float: "right"}}>X</div>
                   <EditBoard board={ board }
                     updateBoard={this.updateBoard}
                     deleteBoard={this.deleteBoard}/>

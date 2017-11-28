@@ -75,7 +75,7 @@ class PinIndex extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '250px',
-          height                     : '450px',
+          height                     : '455px',
         }
       }
     if (this.props.length < 1) {
