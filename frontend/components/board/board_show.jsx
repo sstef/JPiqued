@@ -4,6 +4,7 @@ import NavBar from '../navbar_container';
 import PinIndexItem from '../pin/pin_index_item';
 import EditBoard from './edit_board';
 import Modal from 'react-modal';
+import {withRouter} from "react-router-dom";
 
 class BoardShow extends React.Component {
   constructor(props){
@@ -104,6 +105,7 @@ class BoardShow extends React.Component {
 
                   <div onClick={this.closeModal} className='clickable' style={{float: "right"}}>X</div>
                   <EditBoard board={ board }
+                    history={this.props.history}
                     updateBoard={this.updateBoard}
                     deleteBoard={this.deleteBoard}/>
                 </Modal>
@@ -150,4 +152,4 @@ class BoardShow extends React.Component {
   }
 }
 
-export default BoardShow;
+export default withRouter(BoardShow);

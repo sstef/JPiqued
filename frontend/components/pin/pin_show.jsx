@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigation } from 'react-router-dom';
+import { Link, Navigation, withRouter } from 'react-router-dom';
 import NavBar from '../navbar_container';
 import isEmpty from 'lodash/isEmpty';
 import PinIndexItem from './pin_index_item';
@@ -106,9 +106,7 @@ class PinShow extends React.Component {
 
     return (
         <div className="pin-show-page">
-            <Link to="/">
-              <div className="index-link clickable">X</div>
-            </Link>
+            <div onClick={this.props.history.goBack} className="index-link clickable">X</div>
 
             <div className="pin-details">
               <h2 className={pin.title ? "title-header" : "hidden"}>
@@ -139,7 +137,7 @@ class PinShow extends React.Component {
               </div>
                 <div style={{fontSize: '20px', marginTop: '55px'}}>
                   <p style={{marginBottom: '15px'}}>{pin.description}</p>
-                  <p style={{marginBottom: '15px'}}>Marked as: {pin.keywords.map(keyword => keyword.text).join(', ')}</p>
+                  <p style={{marginBottom: '15px'}}>Marked as: {pin.category}</p>
                   <div className="pin-show-user-info">
                     <h5>Pinned by:{' '}
                       <Link to={`/users/${pin.creator_id}`}><strong>
@@ -160,4 +158,4 @@ class PinShow extends React.Component {
   }
 }
 
-export default PinShow;
+export default withRouter(PinShow);

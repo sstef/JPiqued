@@ -1,6 +1,7 @@
 import React from 'react';
 import map from 'lodash/map';
 import Toggle from 'react-toggle';
+import {withRouter} from "react-router-dom";
 
 class EditBoard extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class EditBoard extends React.Component {
   handleDelete(e) {
     e.preventDefault();
     this.deleteBoard(this.state.id).then(() => {
-
+      this.props.history.goBack();
     })
   }
 
@@ -109,4 +110,4 @@ class EditBoard extends React.Component {
   }
 }
 
-export default EditBoard;
+export default withRouter(EditBoard);

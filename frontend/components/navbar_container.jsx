@@ -31,6 +31,7 @@ class NavBar extends React.Component {
       this.openModal = this.openModal.bind(this);
       this.updateUser = this.props.updateUser.bind(this);
       this.closeModal = this.closeModal.bind(this);
+      this.logout = this.logout.bind(this)
   }
 
   openModal() {
@@ -53,6 +54,10 @@ class NavBar extends React.Component {
      }
 
      this.toggleDropdown()
+  }
+
+  logout () {
+    this.props.logout().then(window.location.reload());
   }
 
   handleOutsideClick (e) {
@@ -140,7 +145,7 @@ class NavBar extends React.Component {
                 </div>
 
                 <br />
-              <div onClick={this.props.logout} className="logout-button">
+              <div onClick={this.logout} className="logout-button">
                 Logout
               </div>
 
