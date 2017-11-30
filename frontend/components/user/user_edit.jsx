@@ -37,17 +37,16 @@ class UserEditForm extends React.Component {
 
     userData.append("user[id]", this.props.user.id);
     userData.append("user[name]", this.state.name);
-    if (!!this.state.email) userData.append("user[email]", this.state.email);
-    if (!!this.state.password) userData.append("user[password]", this.state.password);
+    if (this.state.email !== "") userData.append("user[email]", this.state.email);
+    if (this.state.password !== "") userData.append("user[password]", this.state.password);
 
     if (file) {
       userData.append("user[avatar]", file);
     }
-    debugger
 
     this.props.updateUser(userData).then(() => {
       this.setState(name: "", email: "", password: "", imageUrl: "", imageFile: null)
-    });
+    }).then(() => this.props.closeModal()).then(() => this.forceUpdate());
   }
 
   render () {

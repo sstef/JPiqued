@@ -140,7 +140,7 @@ class NavBar extends React.Component {
                       onRequestClose={this.closeModal} >
 
                       <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-                      <UserEditForm user={this.props.currentUser} updateUser={this.updateUser} />
+                      <UserEditForm user={this.props.currentUser} updateUser={this.updateUser} closeModal={this.closeModal} />
                     </Modal>
                 </div>
 
