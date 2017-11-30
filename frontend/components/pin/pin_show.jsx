@@ -100,7 +100,7 @@ class PinShow extends React.Component {
         outline                    : 'none',
         padding                    : '20px',
         width                      : '200px',
-        height                     : '305px',
+        height                     : '237px',
       }
     }
 
@@ -126,7 +126,7 @@ class PinShow extends React.Component {
                     <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
                     <PinEditForm pin={ this.props.pin }
                       updatePin={this.props.updatePin.bind(this)}
-                      closeModal={this.closeModal.bind(this)}/>
+                      closeModal={this.closeModal}/>
                   </Modal>
               </div>
 

@@ -7,7 +7,6 @@ class EditBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.board;
-    this.updateBoard = this.props.updateBoard.bind(this);
     this.deleteBoard = this.props.deleteBoard.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -32,7 +31,7 @@ class EditBoard extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let board = this.state;
-    this.updateBoard(board)
+    this.props.updateBoard(board).then(() => this.props.closeModal())
   }
 
   handleDelete(e) {
@@ -89,7 +88,7 @@ class EditBoard extends React.Component {
             defaultChecked={this.state.secret} />
 
           <label>Category:</label>
-            <select onChange={this.onSelected} value={options[index]} class="board-dropdown">
+            <select onChange={this.onSelected} value={options[index]} className="board-dropdown">
               {
                 options.map(option => {
                   return (

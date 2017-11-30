@@ -106,6 +106,7 @@ class BoardShow extends React.Component {
                   <div onClick={this.closeModal} className='clickable' style={{float: "right"}}>X</div>
                   <EditBoard board={ board }
                     history={this.props.history}
+                    closeModal={this.closeModal}
                     updateBoard={this.updateBoard}
                     deleteBoard={this.deleteBoard}/>
                 </Modal>
