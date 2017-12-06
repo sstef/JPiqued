@@ -75,7 +75,11 @@ class UserShow extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '200px',
+<<<<<<< HEAD
           height                     : '280px',
+=======
+          height                     : '260px',
+>>>>>>> master
         }
       }
     return(

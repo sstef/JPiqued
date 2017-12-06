@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, Navigation } from 'react-router-dom';
 import NavBar from '../navbar_container';
@@ -17,7 +18,6 @@ class PinShow extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openPin = this.openPin.bind(this);
     this.closePin = this.closePin.bind(this);
-    debugger
   }
 
 
@@ -45,6 +45,7 @@ class PinShow extends React.Component {
   }
 
   closeModal() {
+    debugger
     this.setState({modalIsOpen: false});
   }
 
@@ -57,7 +58,7 @@ class PinShow extends React.Component {
   }
 
   _handleClick(){
-    this.setState({modalOpen:true});
+    this.setState({modalIsOpen:true});
   }
 
   _relatedPins(){
@@ -91,7 +92,7 @@ class PinShow extends React.Component {
       return <div class="load"><div class="loading" /></div>;
     }
 
-  const modalStyle = {
+  const updatePinStyle = {
       overlay : {
         position          : 'fixed',
         top               : 0,
@@ -104,6 +105,31 @@ class PinShow extends React.Component {
         position                   : 'absolute',
         top                        : '40%',
         left                       : '8%',
+        border                     : '1px solid #ccc',
+        background                 : '#fff',
+        overflow                   : 'auto',
+        WebkitOverflowScrolling    : 'touch',
+        borderRadius               : '15px',
+        outline                    : 'none',
+        padding                    : '20px',
+        width                      : '200px',
+        height                     : '237px',
+      }
+    }
+
+  const pinItStyle = {
+      overlay : {
+        position          : 'fixed',
+        top               : 0,
+        left              : 0,
+        right             : 0,
+        bottom            : 0,
+        backgroundColor  : 'none',
+      },
+      content : {
+        position                   : 'absolute',
+        top                        : '25%',
+        right                      : '33%',
         border                     : '1px solid #ccc',
         background                 : '#fff',
         overflow                   : 'auto',
@@ -127,10 +153,26 @@ class PinShow extends React.Component {
                 {pin.title}
               </h2>
 
+              <img src={pin.image_url} />
+
+            <div className="interactive-pin-buttons">
+              <div onClick={this.openModal} className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
+                <Modal
+                    style={updatePinStyle}
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal} >
+
+                    <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
+                    <PinEditForm pin={ this.props.pin }
+                      updatePin={this.props.updatePin.bind(this)}
+                      closeModal={this.closeModal}/>
+                  </Modal>
+              </div>
+
               <div onClick={this.openPin} className="pin-it-button">
                 <div>Pin It!</div>
                 <Modal
-                    style={modalStyle}
+                    style={pinItStyle}
                     isOpen={this.state.pinIsOpen}
                     onRequestClose={this.closePin} >
 
@@ -142,22 +184,6 @@ class PinShow extends React.Component {
                   </Modal>
               </div>
 
-              <img src={pin.image_url} />
-
-            <div className="interactive-pin-buttons">
-              <div onClick={this.openModal} className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
-                <Modal
-                    style={modalStyle}
-                    isOpen={this.state.modalIsOpen}
-                    onRequestClose={this.closeModal} >
-
-                    <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-                    <PinEditForm pin={ this.props.pin }
-                      updatePin={this.props.updatePin.bind(this)}
-                      closeModal={this.closeModal.bind(this)}/>
-                  </Modal>
-              </div>
-
               <a href={pin.link_url} target="_blank">
                 <div className="pin-show-link-button clickable">Visit</div>
               </a>
@@ -165,7 +191,7 @@ class PinShow extends React.Component {
               </div>
                 <div style={{fontSize: '20px', marginTop: '55px'}}>
                   <p style={{marginBottom: '15px'}}>{pin.description}</p>
-                  <p style={{marginBottom: '15px'}}>Marked as: {pin.keywords.map(keyword => keyword.text).join(', ')}</p>
+                  <p style={{marginBottom: '15px'}}>Marked as: {pin.category}</p>
                   <div className="pin-show-user-info">
                     <h5>Pinned by:{' '}
                       <Link to={`/users/${pin.creator_id}`}><strong>

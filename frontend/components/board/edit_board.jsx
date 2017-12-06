@@ -1,12 +1,17 @@
 import React from 'react';
 import map from 'lodash/map';
 import Toggle from 'react-toggle';
+import {withRouter} from "react-router-dom";
 
 class EditBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.board;
+<<<<<<< HEAD
     this.updateBoard = this.props.updateBoard.bind(this);
+=======
+    this.deleteBoard = this.props.deleteBoard.bind(this);
+>>>>>>> master
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.onSelected = this.onSelected.bind(this);
@@ -30,12 +35,18 @@ class EditBoard extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let board = this.state;
-    this.updateBoard(board)
+    this.props.updateBoard(board).then(() => this.props.closeModal())
   }
 
   handleDelete(e) {
     e.preventDefault();
+<<<<<<< HEAD
     this.deleteBoard(this.state).then(() => this.forceUpdate())
+=======
+    this.deleteBoard(this.state.id).then(() => {
+      this.props.history.goBack();
+    })
+>>>>>>> master
   }
 
   onSelected(e){
@@ -85,7 +96,7 @@ class EditBoard extends React.Component {
             defaultChecked={this.state.secret} />
 
           <label>Category:</label>
-            <select onChange={this.onSelected} value={options[index]}>
+            <select onChange={this.onSelected} value={options[index]} className="board-dropdown">
               {
                 options.map(option => {
                   return (
@@ -106,4 +117,4 @@ class EditBoard extends React.Component {
   }
 }
 
-export default EditBoard;
+export default withRouter(EditBoard);

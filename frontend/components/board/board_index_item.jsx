@@ -16,12 +16,21 @@ const BoardIndexItem = ({ board, router, deleteBoard, history, pins=null, user, 
   return (
     <li>
       <div className="board-index-item">
+<<<<<<< HEAD
       <div className="pin-index-item">
         <Link to={`/${creator}/board/${board.id}`} style={{cursor:'zoom-in'}} >
           <h3 className="board-name">{board.name}</h3>
           <img src={pins[0].image_url} className="board-default"/>
         </Link>
       </div>
+=======
+        <div className="pin-index-item">
+          <Link to={`/${creator}/board/${board.id}`} style={{cursor:'zoom-in'}} >
+            <h3 className="board-name">{board.name}</h3>
+            <img src={pins[0].image_url} className="board-default"/>
+          </Link>
+        </div>
+>>>>>>> master
       </div>
     </li>
   )
@@ -29,5 +38,8 @@ const BoardIndexItem = ({ board, router, deleteBoard, history, pins=null, user, 
 
 export default withRouter(BoardIndexItem);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 // <button onClick={() => deleteBoard(board.id)} id="board-delete">Delete</button>

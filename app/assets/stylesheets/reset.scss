@@ -55,9 +55,10 @@ caption, th, td {
 
 .loading {
   background-image: image_url('loading_spinner.gif');
-  height: 200px;
-  width: 200px;
+  height: 60px;
+  width: 60px;
   background-size: 100%;
+  margin-top: 70px;
 }
 
 #root {

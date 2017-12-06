@@ -83,9 +83,13 @@ class BoardForm extends React.Component {
           <Toggle
             onSelect={this.handleChange}
             defaultChecked={this.state.secret} />
+<<<<<<< HEAD
           <br></br>
+=======
+          <br/>
+>>>>>>> master
           <label>Category:</label>
-            <select onChange={this.onSelected} value={options[index]}>
+            <select onChange={this.onSelected} value={options[index]} className="board-dropdown">
               {
                 options.map(option => {
                   return (

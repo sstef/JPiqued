@@ -52,35 +52,39 @@ end
 
 Board.destroy_all
 
-30.times do
-  Board.create!(
-    name: Faker::HowIMetYourMother.character,
-    description: Faker::MostInterestingManInTheWorld.quote,
-    creator_id: User.all.sample.id,
-    category: CATEGORIES.sample
-  )
+User.all.each do |user|
+  4.times do
+    Board.create!(
+      name: Faker::GameOfThrones.house,
+      description: Faker::MostInterestingManInTheWorld.quote,
+      creator_id: user.id,
+      category: CATEGORIES.sample
+    )
+  end
 end
 
 Pin.destroy_all
 
 90.times do
   creator = User.all.sample.id
-  Pin.create!(
-    title: Faker::HowIMetYourMother.catch_phrase,
+  board = User.find_by_id(creator).boards.sample
+  pin = Pin.create!(
+    title: Faker::Movie.quote ,
     creator_id: creator,
-    board_id: User.find_by_id(creator).boards.sample.id,
+    board_id: board.id,
     link_url: Faker::Internet.url,
-    description: Faker::TheFreshPrinceOfBelAir.quote,
+    description: Faker::Hobbit.quote,
     image: IMAGES.sample
     )
+  board.pin_ids << pin.id
 end
 
-10.times do
-  User.all.each do |user|
-    user.boards.each do |board|
-      board.update_attribute(:pin_ids, 5.times.collect { Pin.all.sample.id } )
-    end
-  end
-end
+# 10.times do
+#   User.all.each do |user|
+#     user.boards.each do |board|
+#       board.update_attribute(:pin_ids, 5.times.collect { Pin.all.sample.id } )
+#     end
+#   end
+# end
 
 Pin.all.each{|pin| pin.destroy if (pin.board_id == nil)}

@@ -17,8 +17,12 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   fetchBoard: id => dispatch(fetchBoard(id)),
   createPin: pin => dispatch(createPin(pin)),
+<<<<<<< HEAD
   deletePin: id => dispatch(deletePin(id)),
   updateBoard: id => dispatch(fetchBoard(id)),
+=======
+  updateBoard: id => dispatch(updateBoard(id)),
+>>>>>>> master
   deleteBoard: id => dispatch(deleteBoard(id)),
 });
 

@@ -8,7 +8,10 @@ class Api::PinsController < ApplicationController
   def create
     image = nil
     if pin_params[:image].include?('.com')
+<<<<<<< HEAD
       debugger
+=======
+>>>>>>> master
       image = params[:pin].delete(:image)
     end
 
@@ -17,6 +20,9 @@ class Api::PinsController < ApplicationController
     @pin.creator_id = currentUser.id
 
     if @pin.save
+      if !image.nil?
+        @pin.update(image: 'https://' + image)
+      end
       render :show
     else
       render json: @pin.errors.full_messages, status: 422

@@ -4,6 +4,7 @@ import NavBar from '../navbar_container';
 import PinIndexItem from '../pin/pin_index_item';
 import EditBoard from './edit_board';
 import Modal from 'react-modal';
+import {withRouter} from "react-router-dom";
 
 class BoardShow extends React.Component {
   constructor(props){
@@ -79,7 +80,11 @@ class BoardShow extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '200px',
+<<<<<<< HEAD
           height                     : '345px',
+=======
+          height                     : '310px',
+>>>>>>> master
         }
       }
     const privateBoard = () => {
@@ -103,8 +108,10 @@ class BoardShow extends React.Component {
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal} >
 
-                  <div onClick={this.closeModal} className='modal-close clickable'>X</div>
+                  <div onClick={this.closeModal} className='clickable' style={{float: "right"}}>X</div>
                   <EditBoard board={ board }
+                    history={this.props.history}
+                    closeModal={this.closeModal}
                     updateBoard={this.updateBoard}
                     deleteBoard={this.deleteBoard}/>
                 </Modal>
@@ -152,4 +159,4 @@ class BoardShow extends React.Component {
   }
 }
 
-export default BoardShow;
+export default withRouter(BoardShow);

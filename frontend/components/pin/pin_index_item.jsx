@@ -16,3 +16,5 @@ const PinIndexItem = ({ key, pin, router, history }) => {
 };
 
 export default withRouter(PinIndexItem);
+
+// <button onClick={() => deletePin(pin.id)}>Delete</button>

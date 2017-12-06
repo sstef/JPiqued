@@ -5,7 +5,10 @@ import map from 'lodash/map';
 class PinIt extends React.Component {
   constructor(props) {
     super(props);
+<<<<<<< HEAD
     debugger
+=======
+>>>>>>> master
     const pin = this.props.pin;
     this.state = {
             title: pin.title,

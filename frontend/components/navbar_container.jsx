@@ -29,7 +29,9 @@ class NavBar extends React.Component {
       this.handleClick = this.handleClick.bind(this);
       this.handleOutsideClick = this.handleOutsideClick.bind(this);
       this.openModal = this.openModal.bind(this);
+      this.updateUser = this.props.updateUser.bind(this);
       this.closeModal = this.closeModal.bind(this);
+      this.logout = this.logout.bind(this)
   }
 
   openModal() {
@@ -54,6 +56,10 @@ class NavBar extends React.Component {
      this.toggleDropdown()
   }
 
+  logout () {
+    this.props.logout().then(window.location.reload());
+  }
+
   handleOutsideClick (e) {
     // if (this.node.contains(e.target)) {
     //   return;
@@ -67,7 +73,7 @@ class NavBar extends React.Component {
       return <div></div>;
     };
 
-    const modalStyle = {
+    const userEditStyle = {
         overlay : {
           position          : 'fixed',
           top               : 0,
@@ -90,7 +96,7 @@ class NavBar extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '250px',
-          height                     : '450px',
+          height                     : '330px',
         }
       }
 
@@ -128,18 +134,18 @@ class NavBar extends React.Component {
               <div className="edit-account" >
                   <div onClick={this.openModal} className="account-button">Edit Account</div>
                     <Modal
-                      style={modalStyle}
+                      style={userEditStyle}
                       isOpen={this.state.modalIsOpen}
                       onAfterOpen={this.afterOpenModal}
                       onRequestClose={this.closeModal} >
 
                       <button onClick={this.closeModal} className='clickable' style={{float: 'right'}}>X</button>
-                      <UserEditForm user={this.props.currentUser} updateUser={this.props.updateUser.bind(this)} />
+                      <UserEditForm user={this.props.currentUser} updateUser={this.updateUser} closeModal={this.closeModal} />
                     </Modal>
                 </div>
 
                 <br />
-              <div onClick={this.props.logout} className="logout-button">
+              <div onClick={this.logout} className="logout-button">
                 Logout
               </div>
 

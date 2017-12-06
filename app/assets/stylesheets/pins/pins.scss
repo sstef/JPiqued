@@ -30,7 +30,7 @@
   -moz-column-width: 250px;
   -o-column-width: 250px;
   -ms-column-width: 250px;
-  column-width: 250px;
+  column-width: 260px;
 
   -webkit-column-rule-style: hidden;
   -moz-column-rule-style: hidden;
@@ -51,6 +51,7 @@
   font-weight: bold;
   border-radius: 5px;
   text-align: center;
+  margin-bottom: 5px;
 }
 
 .pin-form > label {
@@ -94,9 +95,8 @@
 }
 
 #image-preview {
-
-  height: 150px;
-  width: 150px;
+  height: 205px;
+  width: 243px;
 }
 
 .pin-index-item  {
@@ -146,5 +146,27 @@
 
 .pin-form > form > input[type="submit"],
 .pin-form > form > input[type="submit"]:hover {
-  margin-top: 35px;
+  margin-top: 20px;
+}
+
+.board-dropdown {
+  width: 183px;
+  height: 24px;
+  border-radius: 5px;
+  background-color: white;
+  border: solid 1px #1E84A4;
+}
+
+.pin-it-button {
+  position: absolute;
+  background-color: #3F88B9;
+  margin-top: 7px;
+  right: 46%;
+  height: 25px;
+  font-size: 16px;
+  padding: 3px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
 }

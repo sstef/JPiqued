@@ -41,7 +41,8 @@ class PinEditForm extends React.Component {
       this.props.updatePin(this.state).then(() => {
         this.props.closeModal();
       });
-    });} else {
+    });
+  } else {
       this.props.updatePin(this.state).then(() => this.props.closeModal());
     }
   }

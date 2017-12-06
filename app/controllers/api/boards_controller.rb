@@ -30,6 +30,13 @@ class Api::BoardsController < ApplicationController
 
   def destroy
     board = Board.find(params[:id])
+<<<<<<< HEAD
+=======
+    board.pin_ids.each do |pinid|
+      pin = Pin.find(pinid)
+      pin.destroy
+    end
+>>>>>>> master
     board.destroy
     render json: {}
   end

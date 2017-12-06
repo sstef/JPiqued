@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
     boards: state.session.currentUser.boards.map(id => state.entities.boards[id]),
     pin: state.entities.pins[ownProps.match.params.pinId],
     pins: Object.keys(state.entities.pins).map(id => state.entities.pins[id]),
-    currentUser: state.session.currentUser,
+    currentUser: state.session.currentUser.user,
   });
 };
 
@@ -15,7 +15,11 @@ const mapDispatchToProps = dispatch => ({
   fetchPins: () => dispatch(fetchPins()),
   fetchPin: id => dispatch(fetchPin(id)),
   updatePin: pin => dispatch(updatePin(pin)),
+<<<<<<< HEAD
   createPin: pin => dispatch(createPin(pin)),
+=======
+  createPin: pin => dispatch(createPin(pin))
+>>>>>>> master
 });
 
 export default connect(
