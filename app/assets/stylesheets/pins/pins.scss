@@ -156,3 +156,17 @@
   background-color: white;
   border: solid 1px #1E84A4;
 }
+
+.pin-it-button {
+  position: absolute;
+  background-color: #3F88B9;
+  margin-top: 7px;
+  right: 46%;
+  height: 25px;
+  font-size: 16px;
+  padding: 3px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}

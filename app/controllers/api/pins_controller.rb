@@ -6,9 +6,18 @@ class Api::PinsController < ApplicationController
   end
 
   def create
+    image = nil
+    if pin_params[:image].include?('.com')
+      image = params[:pin].delete(:image)
+    end
+
     @pin = Pin.new(pin_params)
     @pin.creator_id = currentUser.id
+
     if @pin.save
+      if !image.nil?
+        @pin.update(image: 'https://' + image)
+      end
       render :show
     else
       render json: @pin.errors.full_messages, status: 422
