@@ -31,6 +31,10 @@ class Pin < ApplicationRecord
     foreign_key: :board_id,
     class_name: 'Board'
 
+  has_many :comments,
+    foreign_key: :pin_id,
+    class_name: :comment
+
   def image_from_url(url)
     self.image = URI.parse(url)
   end

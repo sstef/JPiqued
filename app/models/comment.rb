@@ -21,5 +21,4 @@ class Comment < ApplicationRecord
     foreign_key: :pin_id,
     class_name: :Pin
 
-
 end

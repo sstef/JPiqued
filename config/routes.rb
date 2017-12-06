@@ -4,11 +4,11 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     resources :users, only: [:create, :show, :update]
-    
+
     resources :boards, except: [:new, :edit]
 
     resources :pins, except: [:new, :edit] do
-      resources :comments, only: [:create, :show]
+      resources :comments, only: [:create, :show, :destroy]
     end
 
     resources :comments, only: [:destroy]
