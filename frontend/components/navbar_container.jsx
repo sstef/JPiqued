@@ -73,7 +73,7 @@ class NavBar extends React.Component {
       return <div></div>;
     };
 
-    const modalStyle = {
+    const userEditStyle = {
         overlay : {
           position          : 'fixed',
           top               : 0,
@@ -96,7 +96,7 @@ class NavBar extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '250px',
-          height                     : '450px',
+          height                     : '330px',
         }
       }
 
@@ -134,7 +134,7 @@ class NavBar extends React.Component {
               <div className="edit-account" >
                   <div onClick={this.openModal} className="account-button">Edit Account</div>
                     <Modal
-                      style={modalStyle}
+                      style={userEditStyle}
                       isOpen={this.state.modalIsOpen}
                       onAfterOpen={this.afterOpenModal}
                       onRequestClose={this.closeModal} >

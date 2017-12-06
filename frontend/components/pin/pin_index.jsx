@@ -52,7 +52,7 @@ class PinIndex extends React.Component {
   }
 
   render () {
-    const modalStyle = {
+    const pinFormStyle = {
         overlay : {
           position          : 'fixed',
           top               : 0,
@@ -75,7 +75,7 @@ class PinIndex extends React.Component {
           outline                    : 'none',
           padding                    : '20px',
           width                      : '250px',
-          height                     : '455px',
+          height                     : '510px',
         }
       }
     if (this.props.length < 1) {
@@ -118,7 +118,7 @@ class PinIndex extends React.Component {
             <Button onClick={this.openModal}> + </Button>
           </div>
           <Modal
-            style={modalStyle}
+            style={pinFormStyle}
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal} >
 
