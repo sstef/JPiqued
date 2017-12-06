@@ -191,7 +191,7 @@ class PinShow extends React.Component {
               </div>
                 <div style={{fontSize: '20px', marginTop: '55px'}}>
                   <p style={{marginBottom: '15px'}}>{pin.description}</p>
-                  <p style={{marginBottom: '15px'}}>Marked as: {pin.keywords.map(keyword => keyword.text).join(', ')}</p>
+                  <p style={{marginBottom: '15px'}}>Marked as: {pin.category}</p>
                   <div className="pin-show-user-info">
                     <h5>Pinned by:{' '}
                       <Link to={`/users/${pin.creator_id}`}><strong>
