@@ -7,11 +7,9 @@ Rails.application.routes.draw do
 
     resources :boards, except: [:new, :edit]
 
-    resources :pins, except: [:new, :edit] do
-      resources :comments, only: [:create, :show, :destroy]
-    end
+    resources :pins, except: [:new, :edit]
 
-    resources :comments, only: [:destroy]
+    resources :comments, only: [:create, :show, :destroy]
   end
 
     root to: 'static_pages#root'

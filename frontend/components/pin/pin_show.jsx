@@ -89,7 +89,7 @@ class PinShow extends React.Component {
   render () {
     const pin = this.props.pin;
     if (!pin) {
-      return <div class="load"><div class="loading" /></div>;
+      return <div className="load"><div className="loading" /></div>;
     }
 
   const updatePinStyle = {

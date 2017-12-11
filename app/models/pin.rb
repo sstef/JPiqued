@@ -32,6 +32,7 @@ class Pin < ApplicationRecord
     class_name: 'Board'
 
   has_many :comments,
+    primary_key: :id,
     foreign_key: :pin_id,
     class_name: :comment
 

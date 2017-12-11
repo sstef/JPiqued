@@ -14,4 +14,3 @@ json.board do
   json.creator_id pin.creator_id
   json.pins pin.board.pins
 end
-json.comment pin.comments, partial: 'api/comments/comment.json.jbuilder', as: :comment
