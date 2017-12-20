@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     resources :users, only: [:create, :show, :update]
-    
+    post '/users/:id/follow', to: 'users#follow_user'
+
     resources :boards, except: [:new, :edit]
 
     resources :pins, except: [:new, :edit] do
