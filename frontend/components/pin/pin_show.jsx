@@ -15,7 +15,7 @@ class PinShow extends React.Component {
   constructor(props){
     super(props);
     this._relatedPins = this._relatedPins.bind(this);
-    this.state = Object.assign({}, this.props.pin, { modalIsOpen: false, pinIsOpen: false }, {body: ''});
+    this.state = Object.assign({}, this.props.pin, { modalIsOpen: false }, { pinIsOpen: false }, {body: ''});
     this.submitComment = this.submitComment.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -42,6 +42,7 @@ class PinShow extends React.Component {
     if (this.props.match.params.pinId !== nextProps.match.params.pinId) {
       this.props.fetchPin(nextProps.match.params.pinId);
     }
+    window.scrollTo(0, 0);
   }
 
   update(field) {
@@ -68,6 +69,7 @@ class PinShow extends React.Component {
 
   _handleClick(){
     this.setState({modalIsOpen:true});
+    this.setState({pinIsOpen:true});
   }
 
   _relatedPins(){
@@ -162,9 +164,8 @@ class PinShow extends React.Component {
 
     return (
         <div className="pin-show-page">
-            <Link to="/">
-              <div className="index-link clickable">X</div>
-            </Link>
+            <div className="index-link clickable"
+              onClick={this.props.history.goBack}>X</div>
 
             <div className="pin-details">
               <h2 className={pin.title ? "title-header" : "hidden"}>
@@ -174,7 +175,8 @@ class PinShow extends React.Component {
               <img src={pin.image_url} />
 
             <div className="interactive-pin-buttons">
-              <div onClick={this.openModal} className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"}>
+              <div>
+              <div onClick={this.openModal} className={(this.props.currentUser.id === this.props.pin.creator_id) ? "edit-button" : "hidden"} />
                 <Modal
                     style={updatePinStyle}
                     isOpen={this.state.modalIsOpen}
@@ -187,8 +189,9 @@ class PinShow extends React.Component {
                   </Modal>
               </div>
 
-              <div onClick={this.openPin} className="pin-it-button">
-                <div>Pin It!</div>
+              <div>
+                <div onClick={this.openPin}
+                  className="pin-it-button">Pin It!</div>
                 <Modal
                     style={pinItStyle}
                     isOpen={this.state.pinIsOpen}
