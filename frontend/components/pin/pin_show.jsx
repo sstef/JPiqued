@@ -7,17 +7,21 @@ import PinIndexItem from './pin_index_item';
 import PinEditForm from './edit_pin';
 import Modal from 'react-modal';
 import find from 'lodash/find';
+import forEach from 'lodash/forEach';
 import PinIt from './pin_it';
+import CommentShow from '../comment/comment_show';
 
 class PinShow extends React.Component {
   constructor(props){
     super(props);
     this._relatedPins = this._relatedPins.bind(this);
-    this.state = Object.assign({}, this.props.pin, { modalIsOpen: false, pinIsOpen: false });
+    this.state = Object.assign({}, this.props.pin, { modalIsOpen: false, pinIsOpen: false }, {body: ''});
+    this.submitComment = this.submitComment.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.openPin = this.openPin.bind(this);
     this.closePin = this.closePin.bind(this);
+    this.update = this.update.bind(this);
   }
 
 
@@ -30,7 +34,7 @@ class PinShow extends React.Component {
 
 
   componentDidMount() {
-    this.props.fetchPins();
+    this.props.fetchPin(this.props.match.params.pinId);
     window.scrollTo(0, 0);
   }
 
@@ -40,12 +44,17 @@ class PinShow extends React.Component {
     }
   }
 
+  update(field) {
+    return (e) => {
+      this.setState({[field]: e.target.value});
+    };
+  }
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
 
   closeModal() {
-    debugger
     this.setState({modalIsOpen: false});
   }
 
@@ -85,11 +94,20 @@ class PinShow extends React.Component {
     );
   }
 
+  submitComment() {
+    const comment = {body: this.state.body, pin_id: this.props.match.params.pinId}
+    this.props.createComment(comment).then(this.setState(body: ''))
+  }
 
   render () {
     const pin = this.props.pin;
     if (!pin) {
-      return <div class="load"><div class="loading" /></div>;
+      return <div className="load"><div className="loading" /></div>;
+    }
+
+    const comments = []
+    if (!isEmpty(this.props.comments)) {
+      forEach(this.props.comments, comment => comments.push(comment));
     }
 
   const updatePinStyle = {
@@ -201,6 +219,23 @@ class PinShow extends React.Component {
                     </h5>
                   </div>
                 </div>
+
+                <div className="pin-comments">Comments</div>
+                <ul className="comment-index-list">
+                    {
+                      comments.map(comment => (
+                        <CommentShow
+                          key={comment.id}
+                          comment={comment} />
+                      ))
+                    }
+                </ul>
+                <form className="add-comment" onSubmit={this.submitComment}>
+                  <textarea placeholder="Add comment..."
+                    onChange={this.update('body')}
+                    value={this.state.body}/>
+                  <input type="submit" value="Submit"/>
+                </form>
               </div>
 
             <div className="index-pins">
