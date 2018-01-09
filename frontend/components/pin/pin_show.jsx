@@ -96,7 +96,7 @@ class PinShow extends React.Component {
 
   submitComment() {
     const comment = {body: this.state.body, pin_id: this.props.match.params.pinId}
-    this.props.createComment(comment).then(this.setState(body: ''))
+    this.props.createComment(comment).then(this.setState({body: ''}))
   }
 
   render () {
