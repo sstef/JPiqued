@@ -17,7 +17,8 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #FFFFFC
+  background-color: #FFFFFC;
+  vertical-align: middle;
 }
 
 .user-dropdown {
@@ -138,7 +139,7 @@ a > h1:hover {
 }
 
 .searchbar {
-  background-color: #D1D0D0 !important;
+  // background-color: #D1D0D0 !important;
   border-radius: 5px;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -147,9 +148,11 @@ a > h1:hover {
 }
 
 .home-button {
-  padding: 9px;
-  margin-top: 3px;
-  font-size: 2.4vw;
+  padding-left: 15px;
+  font-size: 2.2vw;
+  padding-right: 16px;
+  padding-top: 7px;
+  padding-bottom: 5px;
 }
 
 .edit-form > h3 {
