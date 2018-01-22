@@ -23,4 +23,11 @@ module.exports = {
     ]
   },
   devtool: 'source-map',
+  plugins: debug ? [] : [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ]
 };
