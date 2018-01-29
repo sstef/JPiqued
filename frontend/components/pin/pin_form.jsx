@@ -28,7 +28,8 @@ class PinForm extends React.Component {
            id: tags.length + 1,
            text: tag
        });
-       this.setState({tags: tags});
+       this.setState({tags: tags});    formData.append("pin[keywords]", this.keywords);
+
    }
 
   update(field) {
@@ -65,7 +66,8 @@ class PinForm extends React.Component {
     formData.append("pin[title]", this.state.title);
     formData.append("pin[link_url]", this.state.link_url);
     formData.append("pin[description]", this.state.description);
-    formData.append("pin[keywords]", this.keywords);
+    // For later implementation: keywords
+    // formData.append("pin[keywords]", this.keywords);
     formData.append("pin[board_id]", this.state.board_id);
 
     if (file) {

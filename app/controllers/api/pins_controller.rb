@@ -7,7 +7,8 @@ class Api::PinsController < ApplicationController
 
   def create
     image = nil
-    if pin_params[:image].include?('.com')
+    
+    if pin_params[:image].instance_of?(String)
       image = params[:pin].delete(:image)
     end
 
