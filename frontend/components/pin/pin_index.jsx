@@ -95,6 +95,20 @@ class PinIndex extends React.Component {
 
     const boards = this.props.boards
 
+    function compare (a,b){
+      let comparison = 0;
+      if (b.id > a.id){
+         comparison = 1;
+      }else{
+         comparison = -1;
+      }
+
+      return comparison
+    }
+
+    const sortedPins = this.props.pins.sort(compare)
+
+
     return (
       <div className="pin-index-page">
         <header>
@@ -103,7 +117,7 @@ class PinIndex extends React.Component {
         <div className="index-pins">
           <ul className="pin-index-list">
             {
-              this.props.pins.map(pin => (
+              sortedPins.map(pin => (
                 <PinIndexItem
                   key={pin.id}
                   deletePin={this.deletePin}
