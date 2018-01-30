@@ -127,14 +127,16 @@ class PinForm extends React.Component {
 
             <label>Pick a board:</label>
             <br/>
-            <select onChange={this.onSelected} value={this.state.board_id} className="board-dropdown">
-              {
-                boards.map(board => {
-                  return (
-                    <option key={board.id} value={`${board.id}`}>{board.name}</option>
-                  );
-                })
-              }
+            <select onChange={this.onSelected}
+                value={this.state.board_id || ""}
+                className="board-dropdown">
+                  {
+                    boards.map(board => {
+                      return (
+                        <option key={board.id} value={`${board.id}`}>{board.name}</option>
+                      );
+                    })
+                  }
             </select>
             <input type="submit" value="Pin it!" />
         </form>
